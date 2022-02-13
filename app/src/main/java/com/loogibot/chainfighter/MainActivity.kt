@@ -8,7 +8,10 @@ import android.widget.ImageView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.titlewindow)
+
+        val startButton: Button = findViewById(R.id.startGame)
+        startButton.setOnClickListener{setContentView(R.layout.activity_main)}
 
         val playerButtonOne: Button = findViewById(R.id.moveOne)
         playerButtonOne.setOnClickListener {moveChoice(1)}
@@ -16,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         val playerButtonTwo: Button = findViewById(R.id.moveTwo)
         playerButtonTwo.setOnClickListener {moveChoice(2)}
     }
-
 
     private fun moveChoice(movePos: Int) {
 
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         var playerChoice = playerMove.moveCycle()
 
         val playerImage: ImageView = findViewById(R.id.playerChoice)
+
 
         val drawPlayerMove = when (playerChoice) {
             kick -> R.drawable.player_kick
@@ -43,21 +46,20 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class MoveAvailable(private val movePos: Int)  {
+data class Move(val name: String, val damage: Int, val firstAdv: String, val secondAdv: String) {
+}
+
+class MoveAvailable(private val movePos: Int , val move: String) {
+
+    val kick = Move("kick",25, "punch", "shield")
+    val grab = Move("grab",5, "kick", "shield")
+    val dodge = Move("dodge",0, "kick", "grab")
+    val shield = Move("shield",5, "punch", "dodge")
+    val punch = Move("punch",15, "grab", "dodge")
 
     fun moveCycle() {
-        if (movePos == 1) {}
+        if (movePos == 1) {(1..5).random()}
         if (movePos == 2) {(1..5).random()}
         if (movePos == 3) {(1..5).random()}
     }
-}
-
-data class move(val name: String, val damage: Int, val firstAdv: String, val secondAdv: String) {
-
-    val kick = move("kick",25, "punch", "shield")
-    val punch = listOf("punch",15, "grab", "dodge")
-    val grab = listOf("grab",5, "kick", "shield")
-    val dodge = listOf("dodge",0, "kick", "grab")
-    val shield = listOf("shield",5, "punch", "dodge")
-
 }

@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/playerChoice"
-        android:layout_width="215dp"
-        android:layout_height="225dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/plyrHpLabel"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toEndOf="@+id/playerMove"
-        app:layout_constraintTop_toBottomOf="@+id/moveResult"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@drawable/player_grab" />
+   <ImageView
+       android:id="@+id/playerChoice"
+       android:layout_width="215dp"
+       android:layout_height="225dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="@+id/plyrHpLabel"
+       app:layout_constraintHorizontal_bias="0.952"
+       app:layout_constraintStart_toEndOf="@+id/playerMove"
+       app:layout_constraintTop_toBottomOf="@+id/moveResult"
+       app:layout_constraintVertical_bias="0.0"
+       app:srcCompat="@drawable/player_punch"
+       tools:srcCompat="@drawable/player_grab" />
 
     <Button
         android:id="@+id/moveTwo"
