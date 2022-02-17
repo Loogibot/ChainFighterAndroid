@@ -8,7 +8,7 @@ import android.widget.ImageView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.titlewindow)
+        setContentView(R.layout.activity_main)
 
         val startButton: Button = findViewById(R.id.startGame)
         startButton.setOnClickListener{setContentView(R.layout.activity_main)}
@@ -47,16 +47,23 @@ class MainActivity : AppCompatActivity() {
 }
 
 data class Move(val name: String, val damage: Int, val firstAdv: String, val secondAdv: String) {
-}
-
-
-class MoveAvailable(private val movePos: Int , val move: String) {
 
     val kick = Move("kick",25, "punch", "shield")
     val grab = Move("grab",5, "kick", "shield")
     val dodge = Move("dodge",0, "kick", "grab")
     val shield = Move("shield",5, "punch", "dodge")
     val punch = Move("punch",15, "grab", "dodge")
+
+}
+
+class MoveAvailable(private val movePos: Int) {
+
+
+    fun moveCompare(player: String, opponent: String) {
+        if (player == opponent) {
+            return
+        }
+    }
 
     fun moveCycle() {
         if (movePos == 1) {(1..5).random()}

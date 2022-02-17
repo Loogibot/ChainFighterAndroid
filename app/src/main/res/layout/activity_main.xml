@@ -110,18 +110,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.474" />
 
-    <ImageView
-        android:id="@+id/opponentChoice"
-        android:layout_width="215dp"
-        android:layout_height="225dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintBottom_toTopOf="@+id/moveResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/moveTwo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@drawable/opponent_dodge" />
+ <ImageView
+     android:id="@+id/opponentChoice"
+     android:layout_width="256dp"
+     android:layout_height="258dp"
+     android:layout_marginTop="96dp"
+     app:layout_constraintBottom_toTopOf="@+id/moveResult"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.0"
+     app:layout_constraintStart_toStartOf="@+id/moveTwo"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintVertical_bias="0.0"
+     tools:srcCompat="@drawable/opponent_dodge" />
 
     <TextView
         android:id="@+id/playerMove"
