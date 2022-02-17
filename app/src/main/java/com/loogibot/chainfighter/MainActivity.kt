@@ -31,12 +31,11 @@ class MainActivity : AppCompatActivity() {
 
         val playerImage: ImageView = findViewById(R.id.playerChoice)
 
-
-        val drawPlayerMove = when (playerChoice) {
-            kick -> R.drawable.player_kick
-            punch -> R.drawable.player_punch
-            dodge -> R.drawable.player_dodge
-            grab -> R.drawable.player_grab
+        val drawPlayerMove = when (playerChoice.name) {
+            "kick" -> R.drawable.player_kick
+            "punch" -> R.drawable.player_punch
+            "dodge" -> R.drawable.player_dodge
+            "grab" -> R.drawable.player_grab
             else -> R.drawable.player_shield
         }
 
@@ -47,6 +46,9 @@ class MainActivity : AppCompatActivity() {
 }
 
 data class Move(val name: String, val damage: Int, val firstAdv: String, val secondAdv: String) {
+}
+
+class MoveAvailable(private val movePos: Int) {
 
     val kick = Move("kick",25, "punch", "shield")
     val grab = Move("grab",5, "kick", "shield")
@@ -54,10 +56,7 @@ data class Move(val name: String, val damage: Int, val firstAdv: String, val sec
     val shield = Move("shield",5, "punch", "dodge")
     val punch = Move("punch",15, "grab", "dodge")
 
-}
-
-class MoveAvailable(private val movePos: Int) {
-
+    val allMoves = listOf(kick,grab,dodge,shield,punch)
 
     fun moveCompare(player: String, opponent: String) {
         if (player == opponent) {
@@ -65,9 +64,11 @@ class MoveAvailable(private val movePos: Int) {
         }
     }
 
-    fun moveCycle() {
-        if (movePos == 1) {(1..5).random()}
-        if (movePos == 2) {(1..5).random()}
-        if (movePos == 3) {(1..5).random()}
+    fun moveCycle(): Move {
+        return when (movePos) {
+        1 -> allMoves.random()
+        2 -> allMoves.random()
+        else -> allMoves.random()
+            }
     }
 }
