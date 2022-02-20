@@ -3,31 +3,33 @@ package com.loogibot.chainfighter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+
 import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.titlewindow)
 
         val startButton: Button = findViewById(R.id.startGame)
         startButton.setOnClickListener{setContentView(R.layout.activity_main)}
+
+    }
+
+    private fun moveChoice(movePos: Int) {
 
         val playerButtonOne: Button = findViewById(R.id.moveOne)
         playerButtonOne.setOnClickListener {moveChoice(1)}
 
         val playerButtonTwo: Button = findViewById(R.id.moveTwo)
         playerButtonTwo.setOnClickListener {moveChoice(2)}
-    }
-
-    private fun moveChoice(movePos: Int) {
 
         val opponentMove = MoveAvailable(3)
         val opponentChoice = opponentMove.moveCycle()
         val opponentImage: ImageView = findViewById(R.id.opponentChoice)
 
-        var playerMove = MoveAvailable(movePos)
-        var playerChoice = playerMove.moveCycle()
+        val playerMove = MoveAvailable(movePos)
+        val playerChoice = playerMove.moveCycle()
 
         val playerImage: ImageView = findViewById(R.id.playerChoice)
 

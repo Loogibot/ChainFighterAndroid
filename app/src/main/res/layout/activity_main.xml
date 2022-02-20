@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
- <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <ImageView
-       android:id="@+id/playerChoice"
-       android:layout_width="215dp"
-       android:layout_height="225dp"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="@+id/plyrHpLabel"
-       app:layout_constraintHorizontal_bias="0.952"
-       app:layout_constraintStart_toEndOf="@+id/playerMove"
-       app:layout_constraintTop_toBottomOf="@+id/moveResult"
-       app:layout_constraintVertical_bias="0.0"
-       app:srcCompat="@drawable/player_punch"
-       tools:srcCompat="@drawable/player_grab"
-       android:contentDescription="@string/player_move" />
+    <ImageView
+        android:id="@+id/playerChoice"
+        android:layout_width="215dp"
+        android:layout_height="225dp"
+        android:layout_above="@+id/playerHP"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/player_move"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/plyrHpLabel"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toEndOf="@+id/playerMove"
+        app:layout_constraintTop_toBottomOf="@+id/moveResult"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/player_grab" />
 
     <Button
         android:id="@+id/moveTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/moveTwo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="79dp"
+        android:layout_marginBottom="94dp"
+        android:text="@string/STARTGAME"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/moveOne"
         app:layout_constraintHorizontal_bias="0.287"
@@ -37,6 +45,10 @@
         android:id="@+id/moveOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="84dp"
         android:text="@string/moveOne"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +91,12 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="200dp"
         android:layout_height="17dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="122dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="147dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -91,6 +109,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="200dp"
         android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="47dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/opponentChoice"
         app:layout_constraintEnd_toEndOf="@+id/moveOne"
@@ -117,14 +137,14 @@
      android:layout_width="256dp"
      android:layout_height="258dp"
      android:layout_marginTop="96dp"
+     android:contentDescription="TODO"
      app:layout_constraintBottom_toTopOf="@+id/moveResult"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintHorizontal_bias="0.0"
      app:layout_constraintStart_toStartOf="@+id/moveTwo"
      app:layout_constraintTop_toTopOf="parent"
      app:layout_constraintVertical_bias="0.0"
-     tools:srcCompat="@drawable/opponent_dodge"
-     android:contentDescription="TODO" />
+     tools:srcCompat="@drawable/opponent_dodge" />
 
     <TextView
         android:id="@+id/playerMove"
@@ -155,4 +175,4 @@
         app:layout_constraintTop_toBottomOf="@+id/moveResult"
         app:layout_constraintVertical_bias="1.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
