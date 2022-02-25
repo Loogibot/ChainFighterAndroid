@@ -1,8 +1,24 @@
 <resources>
     <string name="app_name">ChainFighter</string>
+    <string name="start_game">SARTGAME</string>
+
     <string name="moveOne">Button</string>
-    <string name="STARTGAME">Button</string>
+    <string name="moveTwo">Button</string>
+
     <string name="player_hp">PLAYER HP</string>
     <string name="opponent_hp">OPPONENT HP</string>
+
     <string name="player_move">player_move</string>
+    <string name="opponent_move">opponent_move</string>
+
+    <string name="kick">KICK</string>
+    <string name="punch">PUNCH</string>
+    <string name="grab">GRAB</string>
+    <string name="dodge">DODGE</string>
+    <string name="shield">SHIELD</string>
+
+    <string name="cancel">MOVES CANCEL!</string>
+    <string name="opponent_damage">OPPONENT TAKES DAMAGE!</string>
+    <string name="player_damage">PLAYER TAKES DAMAGE!</string>
+
 </resources>
