@@ -15,22 +15,25 @@
         android:layout_marginStart="-40dp"
         android:layout_marginEnd="-45dp"
         android:layout_marginBottom="191dp"
-        android:layout_weight="1"
         android:rotationX="-21"
         app:srcCompat="@drawable/cf_title_name"
         tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/cf_title_name" />
+        tools:srcCompat="@drawable/cf_title_name"
+        android:contentDescription="@string/app_name" />
 
     <Button
         android:id="@+id/startGame"
         android:layout_width="wrap_content"
         android:layout_height="89dp"
+        android:layout_alignTop="@+id/titleName"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="109dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="60dp"
-        android:text="@string/STARTGAME" />
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/start_game"
+        android:textSize="24sp" />
 
 </RelativeLayout>

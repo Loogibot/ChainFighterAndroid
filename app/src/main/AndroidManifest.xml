@@ -11,7 +11,7 @@
         android:theme="@style/Theme.ChainFighter">
         <activity
             android:name=".MainActivity"
-            android:label="CHAIN FIGHTER - a game by loogibot"
+            android:label="ch@in f*ghter"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
