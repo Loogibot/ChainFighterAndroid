@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/odd_gray">
 
     <ImageView
         android:id="@+id/titleName"
@@ -15,11 +16,11 @@
         android:layout_marginStart="-40dp"
         android:layout_marginEnd="-45dp"
         android:layout_marginBottom="191dp"
+        android:contentDescription="@string/app_name"
         android:rotationX="-21"
         app:srcCompat="@drawable/cf_title_name"
         tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/cf_title_name"
-        android:contentDescription="@string/app_name" />
+        tools:srcCompat="@drawable/cf_title_name" />
 
     <Button
         android:id="@+id/startGame"
