@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.titlewindow)
+        // switch activity layout for this implementation
 
         val startButton: Button = findViewById(R.id.startGame)
         startButton.setOnClickListener {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         } // starts game
     }
 
-    fun gameStart () {
+    private fun gameStart () {
 
         val playerButtonOne: Button = findViewById(R.id.moveOne)
         val playerButtonTwo: Button = findViewById(R.id.moveTwo)
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun drawMoves(playerChoice: Move) {
+    private fun drawMoves(playerChoice: Move) {
         // draws moves when choice is made
 
         val opponentChoice = moveAvailable(opponent)
