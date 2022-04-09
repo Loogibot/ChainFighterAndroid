@@ -97,7 +97,7 @@ var moveString = " "
 fun moveAvailable(player: String): MainActivity.Move {
     val playingMove = randomMoves(player)
     moveString = playingMove.name
-    return playingMove;
+    return playingMove
 }
 
 fun randomMoves(player: String): MainActivity.Move {
