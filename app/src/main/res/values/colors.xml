@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-
     <color name="light_coral">#E6687B</color>
     <color name="coral_ish">#AF4F5E</color>
     <color name="odd_gray">#CBC5A5</color>
