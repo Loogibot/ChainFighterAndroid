@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/odd_gray">
+    android:background="@color/odd_gray"
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/titleName"
@@ -35,6 +36,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="100dp"
         android:text="@string/start_game"
+        android:textColor="#C5E1A5"
         android:textSize="24sp" />
 
 </RelativeLayout>

@@ -3,15 +3,13 @@ package com.loogibot.chainfighter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-
 import android.widget.ImageView
-import java.text.FieldPosition
+
 
 class MainActivity : AppCompatActivity() {
 
-    private val playerButtonOne: Button = findViewById(R.id.moveOne)
-    private val playerButtonTwo: Button = findViewById(R.id.moveTwo)
-
+    private lateinit var playerButtonOne: Button
+    private lateinit var playerButtonTwo: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -21,12 +19,15 @@ class MainActivity : AppCompatActivity() {
 
         val startButton: Button = findViewById(R.id.startGame)
         startButton.setOnClickListener {
-        setContentView(R.layout.activity_main)
-        gameStart()
+            setContentView(R.layout.activity_main)
+            gameStart()
         } // starts game
     }
 
-    private fun gameStart () {
+    private fun gameStart() {
+
+        playerButtonOne = findViewById(R.id.moveOne)
+        playerButtonTwo = findViewById(R.id.moveTwo)
 
         playerButtonOne.text = moveString
         playerButtonTwo.text = moveString
@@ -72,9 +73,6 @@ class MainActivity : AppCompatActivity() {
         playerButtonOne.text = playerChoice.name
         playerButtonTwo.text = playerChoice.name
 
-
-        // playerButtonOne.text = moveText
-        // playerButtonTwo.text = moveText
     }
 
     class Fighter(val hP: Int = 200,val position: String, val gameTurn: Int = 0) {
@@ -87,27 +85,29 @@ class MainActivity : AppCompatActivity() {
         // creates template of all possible moves with name, damage and that move's advantages
         }
 
-}
 
-val kick = MainActivity.Move("kick", 25, "punch", "shield")
-val grab = MainActivity.Move("grab", 5, "kick", "shield")
-val dodge = MainActivity.Move("dodge", 0, "kick", "grab")
-val shield = MainActivity.Move("shield", 5, "punch", "dodge")
-val punch = MainActivity.Move("punch", 15, "grab", "dodge")
+// For now, below does not need to change
 
-val player1 = "player_one"
-val player2 = "player_two"
-val opponent = "opponent"
 
-var moveString = " "
+private val kick = Move("kick", 25, "punch", "shield")
+private val grab = Move("grab", 5, "kick", "shield")
+private val dodge = Move("dodge", 0, "kick", "grab")
+private val shield = Move("shield", 5, "punch", "dodge")
+private val punch = Move("punch", 15, "grab", "dodge")
 
-fun moveAvailable(player: String): MainActivity.Move {
+private val player1 = "player_one"
+private val player2 = "player_two"
+private val opponent = "opponent"
+
+private var moveString = "move"
+
+private fun moveAvailable(player: String): Move {
     val playingMove = randomMoves(player)
     moveString = playingMove.name
     return playingMove
 }
 
-fun randomMoves(player: String): MainActivity.Move {
+private fun randomMoves(player: String): Move {
     val allMoves = listOf(kick, grab, dodge, shield, punch)
 
     return when (player) {
@@ -115,4 +115,5 @@ fun randomMoves(player: String): MainActivity.Move {
         "player_two" -> allMoves.random()
         else -> allMoves.random()
     }
+}
 }
