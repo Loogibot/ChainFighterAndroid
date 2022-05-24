@@ -8,6 +8,7 @@ import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
 
+    // use lateinit to make UI on class load, but before onCreate
     private lateinit var playerButtonOne: Button
     private lateinit var playerButtonTwo: Button
 
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.titlewindow)
         // switch activity layout for this implementation
+        // there's a better way by making the title window its own activity,
+        // but this is fine fow now
 
         val startButton: Button = findViewById(R.id.startGame)
         startButton.setOnClickListener {
@@ -46,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         // draws moves when choice is made
 
         val opponentChoice = moveAvailable(opponent)
+
         val opponentImage: ImageView = findViewById(R.id.opponentChoice)
         val playerImage: ImageView = findViewById(R.id.playerChoice)
 
@@ -75,45 +79,42 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    class Fighter(val hP: Int = 200,val position: String, val gameTurn: Int = 0) {
-        // sets up beginning stats and turn
-
-
-        }
-
-    data class Move( val name: String, val damage: Int, val firstAdv: String, val secondAdv: String ) {
+    data class Move(
+        val name: String,
+        val damage: Int,
+        val firstAdv: String,
+        val secondAdv: String
+    ) {
         // creates template of all possible moves with name, damage and that move's advantages
-        }
-
-
-// For now, below does not need to change
-
-
-private val kick = Move("kick", 25, "punch", "shield")
-private val grab = Move("grab", 5, "kick", "shield")
-private val dodge = Move("dodge", 0, "kick", "grab")
-private val shield = Move("shield", 5, "punch", "dodge")
-private val punch = Move("punch", 15, "grab", "dodge")
-
-private val player1 = "player_one"
-private val player2 = "player_two"
-private val opponent = "opponent"
-
-private var moveString = "move"
-
-private fun moveAvailable(player: String): Move {
-    val playingMove = randomMoves(player)
-    moveString = playingMove.name
-    return playingMove
-}
-
-private fun randomMoves(player: String): Move {
-    val allMoves = listOf(kick, grab, dodge, shield, punch)
-
-    return when (player) {
-        "player_one" -> allMoves.random()
-        "player_two" -> allMoves.random()
-        else -> allMoves.random()
     }
-}
+
+// For now, below does not need to change, much
+
+    private val kick = Move("kick", 25, "punch", "shield")
+    private val grab = Move("grab", 5, "kick", "shield")
+    private val dodge = Move("dodge", 0, "kick", "grab")
+    private val shield = Move("shield", 5, "punch", "dodge")
+    private val punch = Move("punch", 15, "grab", "dodge")
+
+    private val player1 = "player_one"
+    private val player2 = "player_two"
+    private val opponent = "opponent"
+
+    private var moveString = "press"
+
+    private fun moveAvailable(player: String): Move {
+        val playingMove = randomMoves(player)
+        moveString = playingMove.name
+        return playingMove
+    }
+
+    private fun randomMoves(player: String): Move {
+
+        val allMoves = listOf(kick, grab, dodge, shield, punch)
+        return when (player) {
+            "player_two" -> allMoves.random()
+            "player_one" -> allMoves.random()
+            else -> allMoves.random()
+        }
+    }
 }
