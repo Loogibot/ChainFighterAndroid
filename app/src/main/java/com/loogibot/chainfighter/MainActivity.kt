@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,11 +30,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun gameStart() {
 
+        Toast.makeText(applicationContext, "SELECT A MOVE", Toast.LENGTH_LONG).show()
+
         playerButtonOne = findViewById(R.id.moveOne)
         playerButtonTwo = findViewById(R.id.moveTwo)
 
-        playerButtonOne.text = moveString
-        playerButtonTwo.text = moveString
+        playerButtonTwo.text = moveAvailable(player).name
+        playerButtonOne.text = moveAvailable(player).name
 
         playerButtonOne.setOnClickListener {
             drawMoves(moveAvailable(player1))
@@ -42,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         playerButtonTwo.setOnClickListener {
             drawMoves(moveAvailable(player2))
         }
-
     }
 
     private fun drawMoves(playerChoice: Move) {
@@ -77,6 +79,9 @@ class MainActivity : AppCompatActivity() {
         playerButtonOne.text = playerChoice.name
         playerButtonTwo.text = playerChoice.name
 
+        playerButtonOne.text = moveString
+        playerButtonTwo.text = moveString
+
     }
 
     data class Move(
@@ -96,6 +101,7 @@ class MainActivity : AppCompatActivity() {
     private val shield = Move("shield", 5, "punch", "dodge")
     private val punch = Move("punch", 15, "grab", "dodge")
 
+    private val player = "player"
     private val player1 = "player_one"
     private val player2 = "player_two"
     private val opponent = "opponent"
@@ -103,6 +109,7 @@ class MainActivity : AppCompatActivity() {
     private var moveString = "press"
 
     private fun moveAvailable(player: String): Move {
+
         val playingMove = randomMoves(player)
         moveString = playingMove.name
         return playingMove
@@ -112,8 +119,7 @@ class MainActivity : AppCompatActivity() {
 
         val allMoves = listOf(kick, grab, dodge, shield, punch)
         return when (player) {
-            "player_two" -> allMoves.random()
-            "player_one" -> allMoves.random()
+            in "player", "player_two" , "player_one"-> allMoves.random()
             else -> allMoves.random()
         }
     }

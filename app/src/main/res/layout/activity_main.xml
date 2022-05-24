@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/odd_gray"
+    android:background="@color/teal_50"
     android:padding="5dp"
     tools:context=".MainActivity">
 
@@ -16,8 +16,13 @@
         android:layout_row="3"
         android:layout_column="1"
         android:layout_gravity="center"
+        android:fontFamily="@font/aclonica"
         android:text="@string/result"
-        android:textColor="#5D4037" />
+        android:textColor="@color/teal_700" />
+
+    <!-- moves -->
+
+    <!-- hp -->
 
     <Button
         android:id="@+id/moveOne"
@@ -27,15 +32,11 @@
         android:layout_column="0"
         android:layout_gravity="center"
         android:text="@string/moveOne"
-        android:textColor="#FFF3E0"
+        android:fontFamily="@font/aclonica"
+        android:textColor="@color/teal_200"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
-    <!-- moves -->
-
-    <!-- hp -->
-
-
-    <Button
+        <Button
         android:id="@+id/moveTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +45,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/moveTwo"
-        android:textColor="#FFF3E0"
+        android:fontFamily="@font/aclonica"
+        android:textColor="@color/teal_200"
         tools:ignore="TextContrastCheck" />
 
     <ImageView
@@ -53,6 +55,7 @@
         android:layout_height="200dp"
         android:layout_row="2"
         android:layout_column="1"
+        android:layout_gravity="bottom"
         android:contentDescription="@string/opponent_move" />
 
     <ImageView
@@ -61,7 +64,7 @@
         android:layout_height="200dp"
         android:layout_row="3"
         android:layout_column="0"
-        android:layout_gravity="start"
+        android:layout_gravity="top"
         android:contentDescription="@string/player_move"
         tools:srcCompat="@drawable/player_grab" />
 
@@ -74,8 +77,8 @@
         android:layout_height="50dp"
         android:layout_row="3"
         android:layout_column="1"
-        android:layout_gravity="top
-" />
+        android:layout_gravity="top"
+        android:background="@color/teal_200" />
 
     <ProgressBar
         android:id="@+id/playerHP"
@@ -84,7 +87,8 @@
         android:layout_height="50dp"
         android:layout_row="4"
         android:layout_column="0"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"
+        android:background="@color/teal_200" />
 
     <TextView
         android:id="@+id/moveResult"
@@ -92,19 +96,21 @@
         android:layout_height="50dp"
         android:layout_row="2"
         android:layout_column="0"
+        android:fontFamily="@font/aclonica"
         android:layout_gravity="center"
         android:text="@string/result"
-        android:textColor="#5D4037" />
+        android:textColor="@color/teal_700" />
 
     <TextView
         android:id="@+id/plyrHpLabel"
-        android:layout_width="80dp"
-        android:layout_height="23dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:layout_row="4"
         android:layout_column="0"
         android:layout_gravity="end"
+        android:fontFamily="@font/aclonica"
         android:text="@string/player_hp"
-        android:textColor="#5D4037" />
+        android:textColor="@color/teal_700" />
 
     <TextView
         android:id="@+id/playerMove"
@@ -113,8 +119,9 @@
         android:layout_row="3"
         android:layout_column="0"
         android:layout_gravity="start"
+        android:fontFamily="@font/aclonica"
         android:text="@string/player_move"
-        android:textColor="#5D4037" />
+        android:textColor="@color/teal_700" />
 
     <TextView
         android:id="@+id/oppHpLabel"
@@ -122,9 +129,10 @@
         android:layout_height="20dp"
         android:layout_row="3"
         android:layout_column="1"
+        android:fontFamily="@font/aclonica"
         android:layout_gravity="start"
         android:text="@string/opponent_hp"
-        android:textColor="#5D4037" />
+        android:textColor="@color/teal_700" />
 
     <TextView
         android:id="@+id/opponentMove"
@@ -132,8 +140,9 @@
         android:layout_height="20dp"
         android:layout_row="2"
         android:layout_column="1"
-        android:layout_gravity="right"
+        android:fontFamily="@font/aclonica"
+        android:layout_gravity="end"
         android:text="@string/opponent_move"
-        android:textColor="#5D4037" />
+        android:textColor="@color/teal_700" />
 
 </GridLayout>

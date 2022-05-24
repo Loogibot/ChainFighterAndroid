@@ -32,11 +32,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="379dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="101dp"
+        android:fontFamily="@font/aclonica"
         android:text="@string/start_game"
-        android:textColor="#C5E1A5"
+        android:textColor="@color/odd_gray"
         android:textSize="24sp" />
 
 </RelativeLayout>
