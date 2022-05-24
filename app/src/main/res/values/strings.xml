@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ChainFighter</string>
-    <string name="start_game">SARTGAME</string>
+    <string name="start_game">STARTGAME</string>
+    <string name="result">RESULT</string>
 
     <string name="moveOne">Button</string>
     <string name="moveTwo">Button</string>
