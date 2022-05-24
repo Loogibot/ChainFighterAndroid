@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 
 import android.widget.ImageView
+import java.text.FieldPosition
 
 class MainActivity : AppCompatActivity() {
+
+    private val playerButtonOne: Button = findViewById(R.id.moveOne)
+    private val playerButtonTwo: Button = findViewById(R.id.moveTwo)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +27,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun gameStart () {
-
-        val playerButtonOne: Button = findViewById(R.id.moveOne)
-        val playerButtonTwo: Button = findViewById(R.id.moveTwo)
 
         playerButtonOne.text = moveString
         playerButtonTwo.text = moveString
@@ -45,7 +46,6 @@ class MainActivity : AppCompatActivity() {
 
         val opponentChoice = moveAvailable(opponent)
         val opponentImage: ImageView = findViewById(R.id.opponentChoice)
-
         val playerImage: ImageView = findViewById(R.id.playerChoice)
 
         val drawPlayerMove = when (playerChoice.name) {
@@ -69,17 +69,24 @@ class MainActivity : AppCompatActivity() {
         playerImage.setImageResource(drawPlayerMove)
         opponentImage.setImageResource(drawOpponentMove)
 
+        playerButtonOne.text = playerChoice.name
+        playerButtonTwo.text = playerChoice.name
+
+
         // playerButtonOne.text = moveText
         // playerButtonTwo.text = moveText
     }
+
+    class Fighter(val hP: Int = 200,val position: String, val gameTurn: Int = 0) {
+        // sets up beginning stats and turn
+
+
+        }
 
     data class Move( val name: String, val damage: Int, val firstAdv: String, val secondAdv: String ) {
         // creates template of all possible moves with name, damage and that move's advantages
         }
 
-    data class BaseStats(val playerHP: Int = 200, val opponentHP: Int = 200, val gameTurn: Int = 0) {
-        // sets up beginning stats and turn
-        }
 }
 
 val kick = MainActivity.Move("kick", 25, "punch", "shield")
