@@ -2,8 +2,10 @@
 <resources>
     <color name="light_coral">#E6687B</color>
     <color name="coral_ish">#AF4F5E</color>
-    <color name="odd_gray">#CBC5A5</color>
+    <color name="odd_gray">#AFD5D5</color>
+    <color name="teal_400">#FF02B1A9</color>
     <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_50">#FFBFF3F2</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

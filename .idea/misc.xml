@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/luigi/OneDrive/Coding Projects/Android Apps/ChainFighter/app/src/main/res/layout/activity_main.xml" value="0.21" />
-        <entry key="..\:/Users/luigi/OneDrive/Coding Projects/Android Apps/ChainFighter/app/src/main/res/layout/titlewindow.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/luigi/OneDrive/Coding Projects/Android Apps/ChainFighter/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/luigi/OneDrive/Coding Projects/Android Apps/ChainFighter/app/src/main/res/layout/titlewindow.xml" value="0.25" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.12" />
+      </ProjectState>
+    </option>
+  </component>
 </project>
