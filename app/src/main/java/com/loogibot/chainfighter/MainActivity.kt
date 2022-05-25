@@ -1,8 +1,10 @@
 package com.loogibot.chainfighter
 
+import android.os.Build.VERSION_CODES.M
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,9 +22,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var opponentHP: TextView
     private lateinit var playerMove: TextView
     private lateinit var opponentMove: TextView
-//    private lateinit var playerHPBar: ProgressBar
-//    private lateinit var opponentHPBar: ProgressBar
-//    private lateinit var Result: TextView
+    private lateinit var playerHPBar: ProgressBar
+    private lateinit var opponentHPBar: ProgressBar
+    private lateinit var Result: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -41,7 +43,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun gameStart() {
 
-        Toast.makeText(applicationContext, "SELECT A MOVE", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(applicationContext, "SELECT A MOVE", Toast.LENGTH_SHORT).show()
+
+        Result = findViewById(R.id.moveResult)
+
+        playerHPBar = findViewById(R.id.playerHP)
+        opponentHPBar = findViewById(R.id.opponentHP)
 
         playerHP = findViewById(R.id.plyrHpLabel)
         opponentHP = findViewById(R.id.oppHpLabel)
@@ -55,46 +62,33 @@ class MainActivity : AppCompatActivity() {
         dodgeButton = findViewById(R.id.dodgeButton)
         shieldButton = findViewById(R.id.shieldButton)
 
-        val kickMove = moveAvailable(kick)
-        val punchMove = moveAvailable(punch)
-        val grabMove = moveAvailable(grab)
-        val dodgeMove = moveAvailable(dodge)
-        val shieldMove = moveAvailable(shield)
+        kickButton.text = kick.name
+        punchButton.text = punch.name
+        grabButton.text = grab.name
+        dodgeButton.text = dodge.name
+        shieldButton.text = shield.name
 
-        kickButton.text = kickMove
-        punchButton.text = punchMove
-        grabButton.text = grabMove
-        dodgeButton.text = dodgeMove
-        shieldButton.text = shieldMove
-
-        val playerHealth = 200
-        val opponentHealth = 200
         playerHP.text = "PLAYER HP: " + playerHealth.toString()
         opponentHP.text = "OPPONENT HP: " + opponentHealth.toString()
 
         kickButton.setOnClickListener {
-            drawMoves(kickMove)
+            drawMoves(kick)
         }
-
         punchButton.setOnClickListener {
-            drawMoves(punchMove)
+            drawMoves(punch)
         }
-
         grabButton.setOnClickListener {
-            drawMoves(grabMove)
+            drawMoves(grab)
         }
-
         dodgeButton.setOnClickListener {
-            drawMoves(dodgeMove)
+            drawMoves(dodge)
         }
-
         shieldButton.setOnClickListener {
-            drawMoves(shieldMove)
+            drawMoves(shield)
         }
-
     }
 
-    private fun drawMoves(playerChoice: String) {
+    private fun drawMoves(playerChoice: Move) {
         // draws moves when choice is made
 
         val opponentChoice = randomMoves(opponent)
@@ -102,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         opponentImage = findViewById(R.id.opponentChoice)
         playerImage = findViewById(R.id.playerChoice)
 
-        val drawPlayerMove = when (playerChoice) {
+        val drawPlayerMove = when (playerChoice.name) {
             "kick" -> R.drawable.player_kick
             "punch" -> R.drawable.player_punch
             "dodge" -> R.drawable.player_dodge
@@ -110,7 +104,6 @@ class MainActivity : AppCompatActivity() {
             "shield" -> R.drawable.player_shield
             else -> R.drawable.none_image
         }
-
         val drawOpponentMove = when (opponentChoice.name) {
             "kick" -> R.drawable.player_kick
             "punch" -> R.drawable.player_punch
@@ -123,16 +116,34 @@ class MainActivity : AppCompatActivity() {
         playerImage.setImageResource(drawPlayerMove)
         opponentImage.setImageResource(drawOpponentMove)
 
-        playerMove.text = playerChoice
-        opponentMove.text = opponentChoice.name
+        playerMove.text = "YOUR MOVE IS: " + playerChoice.name.uppercase(Locale.getDefault())
+        opponentMove.text =
+            "OPPONENT'S MOVE IS: " + opponentChoice.name.uppercase(Locale.getDefault())
 
+        moveCompare(playerChoice, opponentChoice)
         moveResult()
 
     }
 
     private fun moveResult() {
-
         gameStart()
+    }
+
+    private fun moveCompare(player: Move, opponent: Move) {
+        if (player.name != opponent.name) {
+            if (player.name in opponent.firstAdv || player.name in opponent.secondAdv) {
+                Result.text = getString(R.string.opponent_damage)
+                opponentHP.text = (opponentHealth - player.damage).toString()
+
+            }
+            if (opponent.name in player.firstAdv || opponent.name in player.secondAdv) {
+                Result.text = getString(R.string.player_damage)
+                playerHP.text = (playerHealth - opponent.damage).toString()
+
+            }
+        } else {
+            Result.text = getString(R.string.cancel)
+        }
     }
 
 
@@ -154,6 +165,8 @@ class MainActivity : AppCompatActivity() {
 
     private val opponent = "opponent"
     private var moveString = "press"
+    private val playerHealth = 200
+    private val opponentHealth = 200
 
     private fun moveAvailable(move: Move): String {
         moveString = move.name
