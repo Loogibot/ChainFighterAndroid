@@ -9,8 +9,8 @@
     <string name="player_hp">PLAYER HP</string>
     <string name="opponent_hp">OPPONENT HP</string>
 
-    <string name="player_move">player_move</string>
-    <string name="opponent_move">opponent_move</string>
+    <string name="player_move">YOUR MOVE</string>
+    <string name="opponent_move">OPPONENT MOVE</string>
 
     <string name="kick">KICK</string>
     <string name="punch">PUNCH</string>
