@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">ChainFighter</string>
     <string name="start_game">STARTGAME</string>
+    <string name="new_game">NEW GAME</string>
+    <string name="to_titlescreen">RETURN TO TITLE SCREEN</string>
+
+    <string name="you_won">YOU WON!</string>
+    <string name="opponent_won">OPPONENT WON!</string>
 
     <string name="move_detail">WHAT JUST HAPPENED?</string>
     <string name="result">RESULT</string>

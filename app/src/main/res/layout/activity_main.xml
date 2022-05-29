@@ -11,68 +11,68 @@
 
     <TextView
         android:id="@+id/move_details"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_row="2"
         android:layout_column="2"
         android:layout_columnSpan="2"
-        android:layout_gravity="end"
+        android:layout_gravity="start"
         android:fontFamily="@font/aclonica"
         android:text="@string/move_detail"
         android:textColor="@color/teal_700"
-        android:textSize="24dp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/punchButton"
-        android:layout_width="120dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_row="6"
         android:layout_column="1"
-        android:layout_gravity="center"
+        android:layout_gravity="fill"
         android:fontFamily="@font/aclonica"
         android:text="@string/punch"
         android:textColor="@color/teal_200" />
 
     <Button
         android:id="@+id/kickButton"
-        android:layout_width="120dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_row="5"
         android:layout_column="1"
-        android:layout_gravity="center"
+        android:layout_gravity="fill"
         android:fontFamily="@font/aclonica"
         android:text="@string/kick"
         android:textColor="@color/teal_200" />
 
     <Button
         android:id="@+id/dodgeButton"
-        android:layout_width="120dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_row="6"
         android:layout_column="0"
-        android:layout_gravity="center"
+        android:layout_gravity="fill"
         android:fontFamily="@font/aclonica"
         android:text="@string/dodge"
         android:textColor="@color/teal_200" />
 
     <Button
         android:id="@+id/grabButton"
-        android:layout_width="120dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_row="5"
         android:layout_column="2"
-        android:layout_gravity="center"
+        android:layout_gravity="fill"
         android:fontFamily="@font/aclonica"
         android:text="@string/grab"
         android:textColor="@color/teal_200" />
 
     <Button
         android:id="@+id/shieldButton"
-        android:layout_width="120dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_row="6"
         android:layout_column="2"
-        android:layout_gravity="center"
+        android:layout_gravity="fill"
         android:fontFamily="@font/aclonica"
         android:text="@string/shield"
         android:textColor="@color/teal_200" />
@@ -109,6 +109,7 @@
         android:layout_column="0"
         android:layout_columnSpan="3"
         android:layout_gravity="start"
+        android:max="200"
         android:background="@color/teal_200" />
 
     <ProgressBar
@@ -120,6 +121,7 @@
         android:layout_column="0"
         android:layout_columnSpan="3"
         android:layout_gravity="start"
+        android:max="200"
         android:background="@color/teal_200" />
 
     <TextView
@@ -140,9 +142,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="3"
-        android:layout_column="1"
-        android:layout_columnSpan="1"
-        android:layout_gravity="start"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="center_horizontal"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
         android:text="@string/player_hp"
@@ -166,8 +168,8 @@
         android:layout_height="wrap_content"
         android:layout_row="0"
         android:layout_column="0"
-        android:layout_columnSpan="2"
-        android:layout_gravity="end"
+        android:layout_columnSpan="3"
+        android:layout_gravity="center_horizontal"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
         android:text="@string/opponent_hp"

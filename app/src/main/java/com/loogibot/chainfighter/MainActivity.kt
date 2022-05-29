@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.*
 import java.util.*
 
-
 class MainActivity : AppCompatActivity() {
 
     // use lateinit to make UI on class load, but before onCreate
@@ -14,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var grabButton: Button
     private lateinit var dodgeButton: Button
     private lateinit var shieldButton: Button
+    private lateinit var returnToTitleScreen: Button
 
     private lateinit var opponentImage: ImageView
     private lateinit var playerImage: ImageView
@@ -22,7 +22,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var opponentHP: TextView
     private lateinit var playerMove: TextView
     private lateinit var opponentMove: TextView
-    private lateinit var Result: TextView
+    private lateinit var result: TextView
+    private lateinit var finalResult: TextView
     private lateinit var moveDetail: TextView
 
     private lateinit var playerHPBar: ProgressBar
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun gameStart() {
         // make from UI elements
-        Result = findViewById(R.id.moveResult)
+        result = findViewById(R.id.moveResult)
         moveDetail = findViewById(R.id.move_details)
 
         playerHPBar = findViewById(R.id.playerHP)
@@ -118,13 +119,13 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.none_image
         }
 
-        playerHP.text = playerHPLabel + playerHealth.toString()
-        opponentHP.text = opponentHPLabel + opponentHealth.toString()
+        (playerHPLabel + playerHealth.toString()).also { playerHP.text = it }
+        (opponentHPLabel + opponentHealth.toString()).also { opponentHP.text = it }
 
         playerImage.setImageResource(drawPlayerMove)
         opponentImage.setImageResource(drawOpponentMove)
 
-        playerMove.text = "YOUR MOVE IS " + playerChoice.name.uppercase(Locale.getDefault())
+        ("YOUR MOVE IS " + playerChoice.name.uppercase(Locale.getDefault())).also { playerMove.text = it }
         opponentMove.text =
             "OPPONENT'S MOVE IS " + opponentChoice.name.uppercase(Locale.getDefault())
 
@@ -134,19 +135,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun moveResult() {
         turnManager++
-        Toast.makeText(applicationContext, "Turn Number " + turnManager.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Turn Number $turnManager", Toast.LENGTH_SHORT).show()
 
         while (playerHealth > 0 || opponentHealth > 0) {
             gameStart()
             break
         }
-        if (playerHealth == 0) {
-            Result.text = getString(R.string.plHP0)
-            gameEnd()
+        if (playerHealth <= 0) {
+            result.text = getString(R.string.plHP0)
+            gameEnd(opponent)
         }
-        if (opponentHealth == 0) {
-            Result.text = getString(R.string.opHP0)
-            gameEnd()
+        if (opponentHealth <= 0) {
+            result.text = getString(R.string.opHP0)
+            gameEnd(player)
         }
     }
 
@@ -155,30 +156,43 @@ class MainActivity : AppCompatActivity() {
         if (player.name != opponent.name) {
             // if player is advantageous
             if (player.name in opponent.firstAdv || player.name in opponent.secondAdv) {
-                Result.text = getString(R.string.opponent_damage) + " -" + player.damage// who takes dam
-                moveDetail.text = opponent.name.uppercase() + isWeakToText + player.name.uppercase()
+                // note the lambda here is the same syntax as opponent win conditional results
+                (getString(R.string.opponent_damage) + " -" + player.damage).also { result.text = it }// who takes dam
+                (opponent.name.uppercase() + isWeakToText + player.name.uppercase()).also { moveDetail.text = it }
                 plHPDam += player.damage
                 opponentHealth -= player.damage
-                opponentHP.text = opponentHPLabel + opponentHealth.toString()
-
+                (opponentHPLabel + opponentHealth.toString()).also { opponentHP.text = it }
+                opponentHPBar.progress = opponentHealth
             }
             // if opponent is advantageous
             else if (opponent.name in player.firstAdv || opponent.name in player.secondAdv) {
-                Result.text = getString(R.string.player_damage) + " -" + opponent.damage// who takes dam
+                result.text = getString(R.string.player_damage) + " -" + opponent.damage// who takes dam
                 moveDetail.text = player.name.uppercase() + isWeakToText + opponent.name.uppercase()
                 opHPDam += opponent.damage
                 playerHealth -= opponent.damage
                 playerHP.text = playerHPLabel + playerHealth.toString()
-
+                playerHPBar.progress = playerHealth
             }
         } else {
-            Result.text = getString(R.string.cancel)
+            result.text = getString(R.string.cancel)
         }
         moveResult()
     }
 
-    private fun gameEnd() {
+    private fun gameEnd(final: String) {
+        setContentView(R.layout.endgamepage)
 
+        finalResult = findViewById(R.id.final_result)
+        returnToTitleScreen = findViewById(R.id.to_titlescreen)
+
+        when (final) {
+            player -> finalResult.text = getString(R.string.you_won)
+            opponent -> finalResult.text = getString(R.string.opponent_won)
+        }
+
+        returnToTitleScreen.setOnClickListener{
+            recreate()
+        }
     }
 
     // creates template of all possible moves with name, damage and that move's advantages
@@ -187,10 +201,9 @@ class MainActivity : AppCompatActivity() {
         val damage: Int,
         val firstAdv: String,
         val secondAdv: String
-    ) {}
+    )
 
 // For now, below does not need to change, much
-
     private val kick = Move("kick", 25, "punch", "shield")
     private val grab = Move("grab", 5, "kick", "shield")
     private val dodge = Move("dodge", 5, "kick", "grab")
@@ -198,6 +211,7 @@ class MainActivity : AppCompatActivity() {
     private val punch = Move("punch", 15, "grab", "dodge")
 
     private val opponent = "opponent"
+    private val player = "player"
     private val opponentHPLabel = "OPPONENT HP IS "
     private val playerHPLabel = "PLAYER HP IS "
     private val isWeakToText = " IS WEAK TO "
