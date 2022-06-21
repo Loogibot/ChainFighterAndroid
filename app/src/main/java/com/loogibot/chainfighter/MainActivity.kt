@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var playerHPBar: ProgressBar
     private lateinit var opponentHPBar: ProgressBar
 
-    val m = MoveData()
-
+    //Bring in MoveData
+    private val m = MoveData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -68,8 +68,6 @@ class MainActivity : AppCompatActivity() {
         grabButton = findViewById(R.id.grabButton)
         dodgeButton = findViewById(R.id.dodgeButton)
         shieldButton = findViewById(R.id.shieldButton)
-
-        //Bring in MoveData
 
         // relate buttons to moves
         kickButton.text = m.kick.name
@@ -137,7 +135,6 @@ class MainActivity : AppCompatActivity() {
             "OPPONENT'S MOVE IS " + opponentChoice.name.uppercase(Locale.getDefault())
 
         moveCompare(playerChoice, opponentChoice)
-
     }
 
     private fun moveResult() {
@@ -204,8 +201,8 @@ class MainActivity : AppCompatActivity() {
 
 // For now, below does not need to change, much
 
-    private val opponent = "opponent"
-    private val player = "player"
+    private val opponent = R.string.opponent.toString()
+    private val player = R.string.player.toString()
     private val opponentHPLabel = "OPPONENT HP IS "
     private val playerHPLabel = "PLAYER HP IS "
     private val isWeakToText = " IS WEAK TO "

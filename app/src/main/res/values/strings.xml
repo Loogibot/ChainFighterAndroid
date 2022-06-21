@@ -4,6 +4,9 @@
     <string name="new_game">NEW GAME</string>
     <string name="to_titlescreen">RETURN TO TITLE SCREEN</string>
 
+    <string name="player">PLAYER</string>
+    <string name="opponent">OPPONENT</string>
+
     <string name="you_won">YOU WON!</string>
     <string name="opponent_won">OPPONENT WON!</string>
 
@@ -27,6 +30,5 @@
     <string name="grab">GRAB</string>
     <string name="dodge">DODGE</string>
     <string name="shield">SHIELD</string>
-
 
 </resources>
