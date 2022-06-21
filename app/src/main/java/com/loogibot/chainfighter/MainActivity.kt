@@ -3,6 +3,8 @@ package com.loogibot.chainfighter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.loogibot.chainfighter.moves.MoveData
+import com.loogibot.chainfighter.moves.Move
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var playerHPBar: ProgressBar
     private lateinit var opponentHPBar: ProgressBar
+
+    val m = MoveData()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -64,12 +69,14 @@ class MainActivity : AppCompatActivity() {
         dodgeButton = findViewById(R.id.dodgeButton)
         shieldButton = findViewById(R.id.shieldButton)
 
+        //Bring in MoveData
+
         // relate buttons to moves
-        kickButton.text = kick.name
-        punchButton.text = punch.name
-        grabButton.text = grab.name
-        dodgeButton.text = dodge.name
-        shieldButton.text = shield.name
+        kickButton.text = m.kick.name
+        punchButton.text = m.punch.name
+        grabButton.text = m.grab.name
+        dodgeButton.text = m.dodge.name
+        shieldButton.text = m.shield.name
 
         if (turnManager == 0) {
             playerHealth = 200
@@ -78,19 +85,19 @@ class MainActivity : AppCompatActivity() {
 
         // button operation
         kickButton.setOnClickListener {
-            drawMoves(kick)
+            drawMoves(m.kick)
         }
         punchButton.setOnClickListener {
-            drawMoves(punch)
+            drawMoves(m.punch)
         }
         grabButton.setOnClickListener {
-            drawMoves(grab)
+            drawMoves(m.grab)
         }
         dodgeButton.setOnClickListener {
-            drawMoves(dodge)
+            drawMoves(m.dodge)
         }
         shieldButton.setOnClickListener {
-            drawMoves(shield)
+            drawMoves(m.shield)
         }
     }
 
@@ -195,20 +202,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // creates template of all possible moves with name, damage and that move's advantages
-    data class Move(
-        val name: String,
-        val damage: Int,
-        val firstAdv: String,
-        val secondAdv: String
-    )
-
 // For now, below does not need to change, much
-    private val kick = Move("kick", 25, "punch", "shield")
-    private val grab = Move("grab", 5, "kick", "shield")
-    private val dodge = Move("dodge", 5, "kick", "grab")
-    private val shield = Move("shield", 5, "punch", "dodge")
-    private val punch = Move("punch", 15, "grab", "dodge")
 
     private val opponent = "opponent"
     private val player = "player"
@@ -223,7 +217,7 @@ class MainActivity : AppCompatActivity() {
     private var turnManager = 0
 
     private fun randomMoves(player: String): Move {
-        val allMoves = listOf(kick, grab, dodge, shield, punch)
+        val allMoves = listOf(m.kick, m.grab, m.dodge, m.shield, m.punch)
         return when (player) {
             opponent -> allMoves.random()
             else -> allMoves.random()
