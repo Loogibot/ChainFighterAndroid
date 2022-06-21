@@ -1,11 +1,11 @@
 package com.loogibot.chainfighter.moves
 
-class MoveData {
+class MoveData : MoveAdapter() {
 
-    val kick = Move("kick", 25, "punch", "shield")
-    val grab = Move("grab", 5, "kick", "shield")
-    val dodge = Move("dodge", 5, "kick", "grab")
-    val shield = Move("shield", 5, "punch", "dodge")
-    var punch = Move("punch", 15, "grab", "dodge")
+    val kick = Move(kickStr, 25, punchStr, shieldStr)
+    val grab = Move(grabStr, 5, kickStr, shieldStr)
+    val dodge = Move(dodgeStr, 5, kickStr, grabStr)
+    val shield = Move(shieldStr, 5, punchStr, dodgeStr)
+    var punch = Move(punchStr, 15, grabStr, dodgeStr)
 
 }
