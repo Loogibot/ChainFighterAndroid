@@ -1,13 +1,23 @@
 <resources>
     <string name="app_name">ChainFighter</string>
     <string name="start_game">STARTGAME</string>
+    <string name="new_game">NEW GAME</string>
+    <string name="to_titlescreen">RETURN TO TITLE SCREEN</string>
+
+    <string name="you_won">YOU WON!</string>
+    <string name="opponent_won">OPPONENT WON!</string>
+
+    <string name="move_detail">WHAT JUST HAPPENED?</string>
     <string name="result">RESULT</string>
+    <string name="cancel">MOVES CANCEL, NO DAMAGE!</string>
+    <string name="opponent_damage">OPPONENT TAKES DAMAGE!</string>
+    <string name="player_damage">YOU TAKE DAMAGE!</string>
 
-    <string name="moveOne">Button</string>
-    <string name="moveTwo">Button</string>
+    <string name="plHP0">YOUR HP IS 0! YOU LOSE!</string>
+    <string name="opHP0">OPPONENT HP IS 0! YOU WIN!</string>
 
-    <string name="player_hp">PLAYER HP</string>
-    <string name="opponent_hp">OPPONENT HP</string>
+    <string name="player_hp">PLAYER HP IS 200</string>
+    <string name="opponent_hp">OPPONENT HP IS 200</string>
 
     <string name="player_move">YOUR MOVE</string>
     <string name="opponent_move">OPPONENT MOVE</string>
@@ -18,8 +28,5 @@
     <string name="dodge">DODGE</string>
     <string name="shield">SHIELD</string>
 
-    <string name="cancel">MOVES CANCEL!</string>
-    <string name="opponent_damage">OPPONENT TAKES DAMAGE!</string>
-    <string name="player_damage">PLAYER TAKES DAMAGE!</string>
 
 </resources>
