@@ -1,22 +1,24 @@
 package com.loogibot.chainfighter
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import com.loogibot.chainfighter.R.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.titlewindow)
+        setContentView(layout.titlewindow)
 
-        val startButton: Button = findViewById(R.id.startGame)
-        startButton.setOnClickListener{setContentView(R.layout.activity_main)}
+        val startButton: Button = findViewById(id.startGame)
+        startButton.setOnClickListener{setContentView(layout.activity_main)}
 
-        val playerButtonOne: Button = findViewById(R.id.moveOne)
+        val playerButtonOne: Button = findViewById(id.moveOne)
         playerButtonOne.setOnClickListener {moveChoice(1)}
 
-        val playerButtonTwo: Button = findViewById(R.id.moveTwo)
+        val playerButtonTwo: Button = findViewById(id.moveTwo)
         playerButtonTwo.setOnClickListener {moveChoice(2)}
     }
 
@@ -24,25 +26,24 @@ class MainActivity : AppCompatActivity() {
 
         val opponentMove = MoveAvailable(3)
         val opponentChoice = opponentMove.moveCycle()
-        val opponentImage: ImageView = findViewById(R.id.opponentChoice)
+        val opponentImage: ImageView = findViewById(id.opponentChoice)
 
         var playerMove = MoveAvailable(movePos)
         var playerChoice = playerMove.moveCycle()
 
-        val playerImage: ImageView = findViewById(R.id.playerChoice)
+        val playerImage: ImageView = findViewById(id.playerChoice)
 
 
         val drawPlayerMove = when (playerChoice) {
-            kick -> R.drawable.player_kick
-            punch -> R.drawable.player_punch
-            dodge -> R.drawable.player_dodge
-            grab -> R.drawable.player_grab
-            else -> R.drawable.player_shield
+            kick -> drawable.player_kick
+            punch -> drawable.player_punch
+            dodge -> drawable.player_dodge
+            grab -> drawable.player_grab
+            else -> drawable.player_shield
         }
 
         playerImage.setImageResource(drawPlayerMove)
         opponentChoice
-
     }
 }
 
