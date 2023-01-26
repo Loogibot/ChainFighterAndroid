@@ -1,34 +1,34 @@
 <resources>
-    <string name="app_name">ChainFighter</string>
-    <string name="start_game">STARTGAME</string>
-    <string name="new_game">NEW GAME</string>
-    <string name="to_titlescreen">RETURN TO TITLE SCREEN</string>
+    <string name="app_name" translatable="false">ChainFighter</string>
+    <string name="start_game" translatable="false">STARTGAME</string>
+    <string name="new_game" translatable="false">NEW GAME</string>
+    <string name="to_titlescreen" translatable="false">RETURN TO TITLE SCREEN</string>
 
-    <string name="player">PLAYER</string>
-    <string name="opponent">OPPONENT</string>
+    <string name="player" translatable="false">PLAYER</string>
+    <string name="opponent" translatable="false">OPPONENT</string>
 
-    <string name="you_won">YOU WON!</string>
-    <string name="opponent_won">OPPONENT WON!</string>
+    <string name="you_won" translatable="false">YOU WON!</string>
+    <string name="opponent_won" translatable="false">OPPONENT WON!</string>
 
-    <string name="move_detail">WHAT JUST HAPPENED?</string>
-    <string name="result">RESULT</string>
-    <string name="cancel">MOVES CANCEL, NO DAMAGE!</string>
-    <string name="opponent_damage">OPPONENT TAKES DAMAGE!</string>
-    <string name="player_damage">YOU TAKE DAMAGE!</string>
+    <string name="move_detail" translatable="false">WHAT JUST HAPPENED?</string>
+    <string name="result" translatable="false">RESULT</string>
+    <string name="cancel" translatable="false">MOVES CANCEL, NO DAMAGE!</string>
+    <string name="opponent_damage" translatable="false">OPPONENT TAKES DAMAGE!</string>
+    <string name="player_damage" translatable="false">YOU TAKE DAMAGE!</string>
 
-    <string name="plHP0">YOUR HP IS 0! YOU LOSE!</string>
-    <string name="opHP0">OPPONENT HP IS 0! YOU WIN!</string>
+    <string name="plHP0" translatable="false">YOUR HP IS 0! YOU LOSE!</string>
+    <string name="opHP0" translatable="false">OPPONENT HP IS 0! YOU WIN!</string>
 
-    <string name="player_hp">PLAYER HP IS 200</string>
-    <string name="opponent_hp">OPPONENT HP IS 200</string>
+    <string name="player_hp" translatable="false">PLAYER HP IS 200</string>
+    <string name="opponent_hp" translatable="false">OPPONENT HP IS 200</string>
 
-    <string name="player_move">YOUR MOVE</string>
-    <string name="opponent_move">OPPONENT MOVE</string>
+    <string name="player_move" translatable="false">YOUR MOVE</string>
+    <string name="opponent_move" translatable="false">OPPONENT MOVE</string>
 
-    <string name="kick">KICK</string>
-    <string name="punch">PUNCH</string>
-    <string name="grab">GRAB</string>
-    <string name="dodge">DODGE</string>
-    <string name="shield">SHIELD</string>
+    <string name="kick" translatable="false">KICK</string>
+    <string name="punch" translatable="false">PUNCH</string>
+    <string name="grab" translatable="false">GRAB</string>
+    <string name="dodge" translatable="false">DODGE</string>
+    <string name="shield" translatable="false">SHIELD</string>
 
 </resources>
