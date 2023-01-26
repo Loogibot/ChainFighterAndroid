@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/playerMove"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_gravity="top"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/player_move"
+        android:textColor="@color/teal_700" />
+
+    <TextView
+        android:id="@+id/plyrHpLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/aclonica"
+        android:padding="5dp"
+        android:text="@string/player_hp"
+        android:textColor="@color/teal_700" />
+
+    <ProgressBar
+        android:id="@+id/playerHP"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="start"
+        android:background="@color/teal_200"
+        android:max="200" />
+
+    <ImageView
+        android:id="@+id/playerChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="start"
+        android:contentDescription="@string/player_move"
+        tools:srcCompat="@drawable/player_grab" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
