@@ -15,11 +15,17 @@
         layout="@layout/opponent_view"
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="5dp" />
+
     <include layout="@layout/player_view" />
 
     <include
         layout="@layout/move_buttons"
-        app:layout_constraintBottom_toBottomOf="@+id/include" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/include"
+        app:layout_constraintStart_toStartOf="@+id/include" />
 
     <TextView
         android:id="@+id/move_details"
@@ -33,9 +39,6 @@
         android:text="@string/move_detail"
         android:textColor="@color/teal_700"
         android:textSize="18sp" />
-
-
-    <!-- labels -->
 
     <TextView
         android:id="@+id/moveResult"
