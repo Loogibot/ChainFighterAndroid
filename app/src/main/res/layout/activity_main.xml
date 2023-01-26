@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +9,17 @@
     tools:context=".MainActivity">
 
     <!-- input -->
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/opponent_view"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="5dp" />
+    <include layout="@layout/player_view" />
+
+    <include
+        layout="@layout/move_buttons"
+        app:layout_constraintBottom_toBottomOf="@+id/include" />
 
     <TextView
         android:id="@+id/move_details"
@@ -22,107 +34,8 @@
         android:textColor="@color/teal_700"
         android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/punchButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="1"
-        android:layout_gravity="fill"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/punch"
-        android:textColor="@color/teal_200" />
-
-    <Button
-        android:id="@+id/kickButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="5"
-        android:layout_column="1"
-        android:layout_gravity="fill"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/kick"
-        android:textColor="@color/teal_200" />
-
-    <Button
-        android:id="@+id/dodgeButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="0"
-        android:layout_gravity="fill"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/dodge"
-        android:textColor="@color/teal_200" />
-
-    <Button
-        android:id="@+id/grabButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="5"
-        android:layout_column="2"
-        android:layout_gravity="fill"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/grab"
-        android:textColor="@color/teal_200" />
-
-    <Button
-        android:id="@+id/shieldButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="2"
-        android:layout_gravity="fill"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/shield"
-        android:textColor="@color/teal_200" />
-
-    <ImageView
-        android:id="@+id/opponentChoice"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_row="1"
-        android:layout_column="1"
-        android:layout_columnSpan="2"
-        android:layout_gravity="end"
-        android:contentDescription="@string/opponent_move" />
 
     <!-- labels -->
-
-    <ImageView
-        android:id="@+id/playerChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:layout_columnSpan="3"
-        android:layout_gravity="start"
-        android:contentDescription="@string/player_move"
-        tools:srcCompat="@drawable/player_grab" />
-
-    <ProgressBar
-        android:id="@+id/opponentHP"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:layout_columnSpan="3"
-        android:layout_gravity="start"
-        android:max="200"
-        android:background="@color/teal_200" />
-
-    <ProgressBar
-        android:id="@+id/playerHP"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:layout_columnSpan="3"
-        android:layout_gravity="start"
-        android:max="200"
-        android:background="@color/teal_200" />
 
     <TextView
         android:id="@+id/moveResult"
@@ -137,54 +50,4 @@
         android:textColor="@color/teal_700"
         android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/plyrHpLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:layout_columnSpan="3"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/aclonica"
-        android:padding="5dp"
-        android:text="@string/player_hp"
-        android:textColor="@color/teal_700" />
-
-    <TextView
-        android:id="@+id/playerMove"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:layout_columnSpan="2"
-        android:layout_gravity="top"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/player_move"
-        android:textColor="@color/teal_700" />
-
-    <TextView
-        android:id="@+id/oppHpLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:layout_columnSpan="3"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/aclonica"
-        android:padding="5dp"
-        android:text="@string/opponent_hp"
-        android:textColor="@color/teal_700" />
-
-    <TextView
-        android:id="@+id/opponentMove"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_row="1"
-        android:layout_column="1"
-        android:layout_columnSpan="2"
-        android:layout_gravity="end"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/opponent_move"
-        android:textColor="@color/teal_700" />
-
-</GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
