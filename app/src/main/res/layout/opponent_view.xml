@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <ProgressBar
+        android:id="@+id/opponentHP"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:background="@color/teal_200"
+        android:max="200" />
 
     <TextView
         android:id="@+id/oppHpLabel"
@@ -9,7 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_row="0"
         android:layout_column="0"
-        android:layout_columnSpan="3"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
@@ -21,33 +31,29 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_row="1"
-        android:layout_column="1"
-        android:layout_columnSpan="2"
-        android:layout_gravity="end"
-        android:contentDescription="@string/opponent_move" />
-
-    <ProgressBar
-        android:id="@+id/opponentHP"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_row="0"
         android:layout_column="0"
-        android:layout_columnSpan="3"
-        android:layout_gravity="start"
-        android:background="@color/teal_200"
-        android:max="200" />
+        android:contentDescription="@string/opponent_move" />
 
     <TextView
         android:id="@+id/opponentMove"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="20dp"
         android:layout_row="1"
-        android:layout_column="1"
-        android:layout_columnSpan="2"
-        android:layout_gravity="end"
+        android:layout_column="0"
         android:fontFamily="@font/aclonica"
         android:text="@string/opponent_move"
         android:textColor="@color/teal_700" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/move_details"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_gravity="end"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/move_detail"
+        android:textColor="@color/teal_700"
+        android:textSize="18sp" />
+
+</GridLayout>

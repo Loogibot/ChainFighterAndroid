@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="5dp">
 
     <Button
         android:id="@+id/punchButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:layout_gravity="fill"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="1"
         android:fontFamily="@font/aclonica"
+        android:padding="5dp"
         android:text="@string/punch"
-        android:textColor="@color/teal_200" />
+        android:textColor="@color/teal_200"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/kickButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="1"
-        android:layout_gravity="fill"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="1"
         android:fontFamily="@font/aclonica"
+        android:padding="5dp"
         android:text="@string/kick"
-        android:textColor="@color/teal_200" />
+        android:textColor="@color/teal_200"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/dodgeButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="2"
-        android:layout_gravity="fill"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="1"
         android:fontFamily="@font/aclonica"
+        android:padding="5dp"
         android:text="@string/dodge"
-        android:textColor="@color/teal_200" />
+        android:textColor="@color/teal_200"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/grabButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="2"
-        android:layout_gravity="fill"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="1"
         android:fontFamily="@font/aclonica"
+        android:padding="5dp"
         android:text="@string/grab"
-        android:textColor="@color/teal_200" />
+        android:textColor="@color/teal_200"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/shieldButton"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_gravity="fill"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="1"
         android:fontFamily="@font/aclonica"
+        android:padding="5dp"
         android:text="@string/shield"
-        android:textColor="@color/teal_200" />
-</GridLayout>
+        android:textColor="@color/teal_200"
+        android:textSize="12sp" />
+</LinearLayout>
