@@ -42,16 +42,17 @@ class MainActivity : AppCompatActivity() {
         // there's a better way by making the title window its own activity,
         // but this is fine fow now
 
+
         val startButton: Button = findViewById(R.id.startGame)
         startButton.setOnClickListener {
             setContentView(R.layout.activity_main)
             gameStart()
         } // starts game
+
     }
 
     private fun gameStart() {
         // make from UI elements
-
         result = findViewById(R.id.moveResult)
         moveDetail = findViewById(R.id.move_details)
 
@@ -69,14 +70,6 @@ class MainActivity : AppCompatActivity() {
         grabButton = findViewById(R.id.grabButton)
         dodgeButton = findViewById(R.id.dodgeButton)
         shieldButton = findViewById(R.id.shieldButton)
-
-        // relate buttons to move name
-
-        kickButton.text = m.kick.name
-        punchButton.text = m.punch.name
-        grabButton.text = m.grab.name
-        dodgeButton.text = m.dodge.name
-        shieldButton.text = m.shield.name
 
         if (turnManager == 0) {
             playerHealth = 200
@@ -109,29 +102,11 @@ class MainActivity : AppCompatActivity() {
         opponentImage = findViewById(R.id.opponentChoice)
         playerImage = findViewById(R.id.playerChoice)
 
-        val drawPlayerMove = when (playerChoice.name) {
-            "kick" -> R.drawable.player_kick
-            "punch" -> R.drawable.player_punch
-            "dodge" -> R.drawable.player_dodge
-            "grab" -> R.drawable.player_grab
-            "shield" -> R.drawable.player_shield
-            else -> R.drawable.none_image
-        }
-        val drawOpponentMove = when (opponentChoice.name) {
-            "kick" -> R.drawable.player_kick
-            "punch" -> R.drawable.player_punch
-            "dodge" -> R.drawable.player_dodge
-            "grab" -> R.drawable.player_grab
-            "shield" -> R.drawable.player_shield
-            else -> R.drawable.none_image
-        }
-
         (playerHPLabel + playerHealth.toString()).also { playerHP.text = it }
         (opponentHPLabel + opponentHealth.toString()).also { opponentHP.text = it }
 
-        playerImage.setImageResource(drawPlayerMove)
-        opponentImage.setImageResource(drawOpponentMove)
-
+        playerImage.setImageResource(playerChoice.moveImg)
+        opponentImage.setImageResource(opponentChoice.moveImg)
 
         "OPPONENT'S MOVE IS ${opponentChoice.name.uppercase(Locale.getDefault())}".also {
             opponentMove.text = it
