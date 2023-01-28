@@ -1,11 +1,12 @@
 package com.loogibot.chainfighter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import com.loogibot.chainfighter.moves.MoveData
+import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.moves.Move
-import java.util.*
+import com.loogibot.chainfighter.moves.m
+import com.loogibot.chainfighter.player.Players
+import com.loogibot.chainfighter.ui.drawMoves
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,9 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var dodgeButton: Button
     private lateinit var shieldButton: Button
     private lateinit var returnToTitleScreen: Button
-
-    private lateinit var opponentImage: ImageView
-    private lateinit var playerImage: ImageView
 
     private lateinit var playerHP: TextView
     private lateinit var opponentHP: TextView
@@ -32,7 +30,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var opponentHPBar: ProgressBar
 
     //Bring in MoveData
-    private val m = MoveData()
+
+    private val p = Players()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -41,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         // switch activity layout for this implementation
         // there's a better way by making the title window its own activity,
         // but this is fine fow now
-
 
         val startButton: Button = findViewById(R.id.startGame)
         startButton.setOnClickListener {
@@ -71,9 +69,9 @@ class MainActivity : AppCompatActivity() {
         dodgeButton = findViewById(R.id.dodgeButton)
         shieldButton = findViewById(R.id.shieldButton)
 
-        if (turnManager == 0) {
-            playerHealth = 200
-            opponentHealth = 200
+        if (p.turnManager == 0) {
+            p.playerHealth = 200
+            p.opponentHealth = 200
         }
 
         // button operation
@@ -94,42 +92,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun drawMoves(playerChoice: Move) {
-        // draws moves when choice is made
-
-        val opponentChoice = randomMoves()
-
-        opponentImage = findViewById(R.id.opponentChoice)
-        playerImage = findViewById(R.id.playerChoice)
-
-        (playerHPLabel + playerHealth.toString()).also { playerHP.text = it }
-        (opponentHPLabel + opponentHealth.toString()).also { opponentHP.text = it }
-
-        playerImage.setImageResource(playerChoice.moveImg)
-        opponentImage.setImageResource(opponentChoice.moveImg)
-
-        "OPPONENT'S MOVE IS ${opponentChoice.name.uppercase(Locale.getDefault())}".also {
-            opponentMove.text = it
-        }
-
-        moveCompare(playerChoice, opponentChoice)
-    }
 
     private fun moveResult() {
-        turnManager++
-        Toast.makeText(applicationContext, "Turn Number $turnManager", Toast.LENGTH_SHORT).show()
+        p.turnManager++
+        Toast.makeText(applicationContext, "Turn Number $p.turnManager", Toast.LENGTH_SHORT).show()
 
-        while (playerHealth > 0 || opponentHealth > 0) {
+        while (p.playerHealth > 0 || p.opponentHealth > 0) {
             gameStart()
             break
         }
-        if (playerHealth <= 0) {
+        if (p.playerHealth <= 0) {
             result.text = getString(R.string.plHP0)
-            gameEnd(opponent)
+            gameEnd(p.opponent)
         }
-        if (opponentHealth <= 0) {
+        if (p.opponentHealth <= 0) {
             result.text = getString(R.string.opHP0)
-            gameEnd(player)
+            gameEnd(p.player)
         }
     }
 
@@ -142,13 +120,13 @@ class MainActivity : AppCompatActivity() {
                 (getString(R.string.opponent_damage) + " -" + player.damage).also {
                     result.text = it
                 }// who takes dam
-                (opponent.name.uppercase() + isWeakToText + player.name.uppercase()).also {
+                (opponent.name.uppercase() + p.isWeakToText + player.name.uppercase()).also {
                     moveDetail.text = it
                 }
-                plHPDam += player.damage
-                opponentHealth -= player.damage
-                (opponentHPLabel + opponentHealth.toString()).also { opponentHP.text = it }
-                opponentHPBar.progress = opponentHealth
+                p.plHPDam += player.damage
+                p.opponentHealth -= player.damage
+                (p.opponentHPLabel + p.opponentHealth.toString()).also { opponentHP.text = it }
+                opponentHPBar.progress = p.opponentHealth
             }
             // if opponent is advantageous
             else if (opponent.name in player.firstAdv || opponent.name in player.secondAdv) {
@@ -157,13 +135,13 @@ class MainActivity : AppCompatActivity() {
                 }// who takes dam
                 moveDetail.text = buildString {
                     append(player.name.uppercase())
-                    append(isWeakToText)
+                    append(p.isWeakToText)
                     append(opponent.name.uppercase())
                 }
-                opHPDam += opponent.damage
-                playerHealth -= opponent.damage
-                "$playerHPLabel$playerHealth".also { playerHP.text = it }
-                playerHPBar.progress = playerHealth
+                p.opHPDam += opponent.damage
+                p.playerHealth -= opponent.damage
+                "$p.playerHPLabel$p.playerHealth".also { playerHP.text = it }
+                playerHPBar.progress = p.playerHealth
             }
         } else {
             result.text = getString(R.string.cancel)
@@ -178,8 +156,8 @@ class MainActivity : AppCompatActivity() {
         returnToTitleScreen = findViewById(R.id.to_titlescreen)
 
         when (final) {
-            player -> finalResult.text = getString(R.string.you_won)
-            opponent -> finalResult.text = getString(R.string.opponent_won)
+            p.player -> finalResult.text = getString(R.string.you_won)
+            p.opponent -> finalResult.text = getString(R.string.opponent_won)
         }
 
         returnToTitleScreen.setOnClickListener {
@@ -187,25 +165,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-// For now, below does not need to change, much
-
-    private val opponent = R.string.opponent.toString()
-    private val player = R.string.player.toString()
-    private val opponentHPLabel = "OPPONENT HP IS "
-    private val playerHPLabel = "PLAYER HP IS "
-    private val isWeakToText = " IS WEAK TO "
-
-    private var plHPDam = 0
-    private var opHPDam = 0
-    private var playerHealth = 200
-    private var opponentHealth = 200
-    private var turnManager = 0
-
-    private fun randomMoves(): Move {
-        val allMoves = listOf(m.kick, m.grab, m.dodge, m.shield, m.punch)
-        return when (player) {
-            opponent -> allMoves.random()
-            else -> allMoves.random()
-        }
-    }
 }
