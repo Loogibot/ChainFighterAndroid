@@ -1,26 +1,26 @@
 package com.loogibot.chainfighter.ui
 
 import android.widget.ImageView
-import com.loogibot.chainfighter.R
+import android.widget.TextView
 import com.loogibot.chainfighter.moves.Move
-import com.loogibot.chainfighter.gamestate.RandomMove
+import com.loogibot.chainfighter.gamestate.moveCompare
+import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.player.Players
 import java.util.*
 
-fun drawMoves(playerChoice: Move) {
+// called in gameStart from MainActivity
+fun drawMoves(
+    playerChoice: Move,
+    playerImage: ImageView,
+    opponentImage: ImageView,
+    opponentMove: TextView
+) {
     // draws moves when choice is made
 
-    val p = Players()
-    lateinit var opponentImage: ImageView
-    lateinit var playerImage: ImageView
+    val opponentChoice = randomMove()
 
-    val opponentChoice = RandomMove()
-
-    opponentImage = findViewById(R.id.opponentChoice)
-    playerImage = findViewById(R.id.playerChoice)
-
-    (p.playerHPLabel + p.playerHealth.toString()).also { playerHP.text = it }
-    (p.opponentHPLabel + p.opponentHealth.toString()).also { opponentHP.text = it }
+    Players.playerHPLabel + Players.playerHealth
+    Players.opponentHPLabel + Players.opponentHealth
 
     playerImage.setImageResource(playerChoice.moveImg)
     opponentImage.setImageResource(opponentChoice.moveImg)
@@ -28,6 +28,5 @@ fun drawMoves(playerChoice: Move) {
     "OPPONENT'S MOVE IS ${opponentChoice.name.uppercase(Locale.getDefault())}".also {
         opponentMove.text = it
     }
-
     moveCompare(playerChoice, opponentChoice)
 }

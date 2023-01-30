@@ -3,7 +3,6 @@ package com.loogibot.chainfighter
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.m
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
@@ -18,20 +17,22 @@ class MainActivity : AppCompatActivity() {
     private lateinit var shieldButton: Button
     private lateinit var returnToTitleScreen: Button
 
+    private lateinit var opponentImage: ImageView
+    private lateinit var playerImage: ImageView
+
     private lateinit var playerHP: TextView
     private lateinit var opponentHP: TextView
+
     private lateinit var playerMove: TextView
     private lateinit var opponentMove: TextView
-    private lateinit var result: TextView
+
+    lateinit var result: TextView
     private lateinit var finalResult: TextView
+
     private lateinit var moveDetail: TextView
 
     private lateinit var playerHPBar: ProgressBar
     private lateinit var opponentHPBar: ProgressBar
-
-    //Bring in MoveData
-
-    private val p = Players()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -46,10 +47,9 @@ class MainActivity : AppCompatActivity() {
             setContentView(R.layout.activity_main)
             gameStart()
         } // starts game
-
     }
 
-    private fun gameStart() {
+    fun gameStart() {
         // make from UI elements
         result = findViewById(R.id.moveResult)
         moveDetail = findViewById(R.id.move_details)
@@ -69,100 +69,45 @@ class MainActivity : AppCompatActivity() {
         dodgeButton = findViewById(R.id.dodgeButton)
         shieldButton = findViewById(R.id.shieldButton)
 
-        if (p.turnManager == 0) {
-            p.playerHealth = 200
-            p.opponentHealth = 200
+        opponentImage = findViewById(R.id.opponentChoice)
+        playerImage = findViewById(R.id.playerChoice)
+
+        if (Players.turnManager == 0) {
+            Players.playerHealth = 200
+            Players.opponentHealth = 200
         }
 
         // button operation
         kickButton.setOnClickListener {
-            drawMoves(m.kick)
+            drawMoves(m.kick, playerImage, opponentImage, opponentMove)
         }
         punchButton.setOnClickListener {
-            drawMoves(m.punch)
+            drawMoves(m.punch, playerImage, opponentImage, opponentMove)
         }
         grabButton.setOnClickListener {
-            drawMoves(m.grab)
+            drawMoves(m.grab, playerImage, opponentImage, opponentMove)
         }
         dodgeButton.setOnClickListener {
-            drawMoves(m.dodge)
+            drawMoves(m.dodge, playerImage, opponentImage, opponentMove)
         }
         shieldButton.setOnClickListener {
-            drawMoves(m.shield)
+            drawMoves(m.shield, playerImage, opponentImage, opponentMove)
         }
+
     }
 
-
-    private fun moveResult() {
-        p.turnManager++
-        Toast.makeText(applicationContext, "Turn Number $p.turnManager", Toast.LENGTH_SHORT).show()
-
-        while (p.playerHealth > 0 || p.opponentHealth > 0) {
-            gameStart()
-            break
-        }
-        if (p.playerHealth <= 0) {
-            result.text = getString(R.string.plHP0)
-            gameEnd(p.opponent)
-        }
-        if (p.opponentHealth <= 0) {
-            result.text = getString(R.string.opHP0)
-            gameEnd(p.player)
-        }
-    }
-
-    private fun moveCompare(player: Move, opponent: Move) {
-
-        if (player.name != opponent.name) {
-            // if player is advantageous
-            if (player.name in opponent.firstAdv || player.name in opponent.secondAdv) {
-                // note the lambda here is the same syntax as opponent win conditional results
-                (getString(R.string.opponent_damage) + " -" + player.damage).also {
-                    result.text = it
-                }// who takes dam
-                (opponent.name.uppercase() + p.isWeakToText + player.name.uppercase()).also {
-                    moveDetail.text = it
-                }
-                p.plHPDam += player.damage
-                p.opponentHealth -= player.damage
-                (p.opponentHPLabel + p.opponentHealth.toString()).also { opponentHP.text = it }
-                opponentHPBar.progress = p.opponentHealth
-            }
-            // if opponent is advantageous
-            else if (opponent.name in player.firstAdv || opponent.name in player.secondAdv) {
-                "${this.getString(R.string.player_damage)} -${opponent.damage}".also {
-                    result.text = it
-                }// who takes dam
-                moveDetail.text = buildString {
-                    append(player.name.uppercase())
-                    append(p.isWeakToText)
-                    append(opponent.name.uppercase())
-                }
-                p.opHPDam += opponent.damage
-                p.playerHealth -= opponent.damage
-                "$p.playerHPLabel$p.playerHealth".also { playerHP.text = it }
-                playerHPBar.progress = p.playerHealth
-            }
-        } else {
-            result.text = getString(R.string.cancel)
-        }
-        moveResult()
-    }
-
-    private fun gameEnd(final: String) {
+    fun gameEnd(final: String) {
         setContentView(R.layout.endgamepage)
 
         finalResult = findViewById(R.id.final_result)
         returnToTitleScreen = findViewById(R.id.to_titlescreen)
 
         when (final) {
-            p.player -> finalResult.text = getString(R.string.you_won)
-            p.opponent -> finalResult.text = getString(R.string.opponent_won)
+            Players.player -> finalResult.text = getString(R.string.you_won)
+            Players.opponent -> finalResult.text = getString(R.string.opponent_won)
         }
-
         returnToTitleScreen.setOnClickListener {
             recreate()
         }
     }
-
 }
