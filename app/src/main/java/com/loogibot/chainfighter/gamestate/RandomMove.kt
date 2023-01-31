@@ -1,7 +1,7 @@
 package com.loogibot.chainfighter.gamestate
 
 import com.loogibot.chainfighter.moves.Move
-import com.loogibot.chainfighter.moves.m
+import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Players
 
 fun randomMove(): Move {

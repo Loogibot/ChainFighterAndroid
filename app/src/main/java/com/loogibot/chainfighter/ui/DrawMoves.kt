@@ -11,13 +11,12 @@ import java.util.*
 // called in gameStart from MainActivity
 fun drawMoves(
     playerChoice: Move,
-    playerImage: ImageView,
-    opponentImage: ImageView,
-    opponentMove: TextView
+    uiObj: List<Any>
 ) {
     // draws moves when choice is made
-
     val opponentChoice = randomMove()
+    val playerImage:ImageView = uiObj[8] as ImageView
+    val opponentImage:ImageView = uiObj[9] as ImageView
 
     Players.playerHPLabel + Players.playerHealth
     Players.opponentHPLabel + Players.opponentHealth
@@ -26,7 +25,8 @@ fun drawMoves(
     opponentImage.setImageResource(opponentChoice.moveImg)
 
     "OPPONENT'S MOVE IS ${opponentChoice.name.uppercase(Locale.getDefault())}".also {
+        val opponentMove:TextView = uiObj[7] as TextView
         opponentMove.text = it
     }
-    moveCompare(playerChoice, opponentChoice)
+    moveCompare(playerChoice, opponentChoice, uiObj)
 }

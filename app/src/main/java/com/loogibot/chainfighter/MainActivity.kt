@@ -3,13 +3,14 @@ package com.loogibot.chainfighter
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.loogibot.chainfighter.moves.m
+import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
 
 class MainActivity : AppCompatActivity() {
 
     // use late init to make UI on class load, but before onCreate
+
     private lateinit var kickButton: Button
     private lateinit var punchButton: Button
     private lateinit var grabButton: Button
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var playerMove: TextView
     private lateinit var opponentMove: TextView
 
-    lateinit var result: TextView
+    private lateinit var result: TextView
     private lateinit var finalResult: TextView
 
     private lateinit var moveDetail: TextView
@@ -49,8 +50,9 @@ class MainActivity : AppCompatActivity() {
         } // starts game
     }
 
-    fun gameStart() {
+    private fun gameStart() {
         // make from UI elements
+
         result = findViewById(R.id.moveResult)
         moveDetail = findViewById(R.id.move_details)
 
@@ -72,6 +74,19 @@ class MainActivity : AppCompatActivity() {
         opponentImage = findViewById(R.id.opponentChoice)
         playerImage = findViewById(R.id.playerChoice)
 
+        val uIObjectsList: List<Any> = listOf(
+            result,
+            moveDetail,
+            playerHPBar,
+            opponentHPBar,
+            playerHP,
+            opponentHP,
+            playerMove,
+            opponentMove,
+            playerImage,
+            opponentImage
+        )
+
         if (Players.turnManager == 0) {
             Players.playerHealth = 200
             Players.opponentHealth = 200
@@ -79,24 +94,39 @@ class MainActivity : AppCompatActivity() {
 
         // button operation
         kickButton.setOnClickListener {
-            drawMoves(m.kick, playerImage, opponentImage, opponentMove)
+            drawMoves(m.kick, uIObjectsList)
         }
         punchButton.setOnClickListener {
-            drawMoves(m.punch, playerImage, opponentImage, opponentMove)
+            drawMoves(m.punch, uIObjectsList)
         }
         grabButton.setOnClickListener {
-            drawMoves(m.grab, playerImage, opponentImage, opponentMove)
+            drawMoves(m.grab, uIObjectsList)
         }
         dodgeButton.setOnClickListener {
-            drawMoves(m.dodge, playerImage, opponentImage, opponentMove)
+            drawMoves(m.dodge, uIObjectsList)
         }
         shieldButton.setOnClickListener {
-            drawMoves(m.shield, playerImage, opponentImage, opponentMove)
+            drawMoves(m.shield, uIObjectsList)
         }
-
     }
 
-    fun gameEnd(final: String) {
+    fun moveResult(result: TextView) {
+        Players.turnManager++
+
+        while (Players.playerHealth > 0 || Players.opponentHealth > 0) run {
+            gameStart()
+        }
+        if (Players.playerHealth <= 0) {
+            result.text = R.string.plHP0.toString()
+            gameEnd(Players.opponent)
+        }
+        if (Players.opponentHealth <= 0) {
+            result.text = R.string.opHP0.toString()
+            gameEnd(Players.player)
+        }
+    }
+
+    private fun gameEnd(final: String) {
         setContentView(R.layout.endgamepage)
 
         finalResult = findViewById(R.id.final_result)
