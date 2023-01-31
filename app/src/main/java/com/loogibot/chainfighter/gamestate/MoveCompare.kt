@@ -1,5 +1,6 @@
 package com.loogibot.chainfighter.gamestate
 
+
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.loogibot.chainfighter.MainActivity
@@ -21,7 +22,7 @@ fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>) {
         if (playerMove.name in opponentMove.firstAdv || playerMove.name in opponentMove.secondAdv) {
             // note the lambda here is the same syntax as opponent win conditional results
 
-            result.text = opponent_damage.toString() + " -" + playerMove.damage
+            result.text = opponent_damage.toString() + " - " + playerMove.damage
 
             (opponentMove.name.uppercase() + Players.isWeakToText + playerMove.name.uppercase()).also {
                 moveDetail.text = it
@@ -53,5 +54,5 @@ fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>) {
     } else {
         result.text = cancel.toString()
     }
-    moveResult(result)
+    MainActivity()::moveResult.run { result }
 }

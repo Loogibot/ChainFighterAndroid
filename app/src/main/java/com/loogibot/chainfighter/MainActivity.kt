@@ -1,5 +1,6 @@
 package com.loogibot.chainfighter
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -108,6 +109,7 @@ class MainActivity : AppCompatActivity() {
         shieldButton.setOnClickListener {
             drawMoves(m.shield, uIObjectsList)
         }
+
     }
 
     fun moveResult(result: TextView) {
