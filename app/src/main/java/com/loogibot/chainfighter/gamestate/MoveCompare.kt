@@ -6,7 +6,6 @@ import com.loogibot.chainfighter.R.string.*
 import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.player.Players
 
-
 fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>) {
 
     val result = uiObj[0] as TextView

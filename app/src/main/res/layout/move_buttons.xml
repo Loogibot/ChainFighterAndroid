@@ -11,9 +11,11 @@
         android:layout_weight="1"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
+        android:backgroundTint="@color/teal_700"
         android:text="@string/punch"
         android:textColor="@color/teal_200"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        style="?android:attr/buttonBarButtonStyle" />
 
     <Button
         android:id="@+id/kickButton"
@@ -22,9 +24,11 @@
         android:layout_weight="1"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
+        android:backgroundTint="@color/teal_700"
         android:text="@string/kick"
         android:textColor="@color/teal_200"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        style="?android:attr/buttonBarButtonStyle" />
 
     <Button
         android:id="@+id/dodgeButton"
@@ -32,10 +36,12 @@
         android:layout_height="70dp"
         android:layout_weight="1"
         android:fontFamily="@font/aclonica"
+        android:backgroundTint="@color/teal_700"
         android:padding="5dp"
         android:text="@string/dodge"
         android:textColor="@color/teal_200"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        style="?android:attr/buttonBarButtonStyle" />
 
     <Button
         android:id="@+id/grabButton"
@@ -44,9 +50,11 @@
         android:layout_weight="1"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
+        android:backgroundTint="@color/teal_700"
         android:text="@string/grab"
         android:textColor="@color/teal_200"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        style="?android:attr/buttonBarButtonStyle" />
 
     <Button
         android:id="@+id/shieldButton"
@@ -54,8 +62,10 @@
         android:layout_height="70dp"
         android:layout_weight="1"
         android:fontFamily="@font/aclonica"
+        android:backgroundTint="@color/teal_700"
         android:padding="5dp"
         android:text="@string/shield"
         android:textColor="@color/teal_200"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        style="?android:attr/buttonBarButtonStyle" />
 </LinearLayout>
