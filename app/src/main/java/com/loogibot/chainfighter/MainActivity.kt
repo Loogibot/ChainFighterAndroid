@@ -1,6 +1,5 @@
 package com.loogibot.chainfighter
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +8,8 @@ import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
 
 class MainActivity : AppCompatActivity() {
+
+
 
     // use late init to make UI on class load, but before onCreate
 
@@ -112,7 +113,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun moveResult(result: TextView) {
+    fun moveResult() {
         Players.turnManager++
 
         while (Players.playerHealth > 0 || Players.opponentHealth > 0) run {
@@ -135,8 +136,8 @@ class MainActivity : AppCompatActivity() {
         returnToTitleScreen = findViewById(R.id.to_titlescreen)
 
         when (final) {
-            Players.player -> finalResult.text = getString(R.string.you_won)
-            Players.opponent -> finalResult.text = getString(R.string.opponent_won)
+            (Players.player) -> finalResult.text = getString(R.string.you_won)
+            (Players.opponent) -> finalResult.text = getString(R.string.opponent_won)
         }
         returnToTitleScreen.setOnClickListener {
             recreate()

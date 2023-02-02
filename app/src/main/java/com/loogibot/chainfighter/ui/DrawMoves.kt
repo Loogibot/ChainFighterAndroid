@@ -6,7 +6,6 @@ import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.player.Players
-import java.util.*
 
 // called in gameStart from MainActivity
 fun drawMoves(
@@ -17,6 +16,7 @@ fun drawMoves(
     val opponentChoice = randomMove()
     val playerImage:ImageView = uiObj[8] as ImageView
     val opponentImage:ImageView = uiObj[9] as ImageView
+    // val opponentMove:TextView = uiObj[7] as TextView
 
     Players.playerHPLabel + Players.playerHealth
     Players.opponentHPLabel + Players.opponentHealth
@@ -24,9 +24,5 @@ fun drawMoves(
     playerImage.setImageResource(playerChoice.moveImg)
     opponentImage.setImageResource(opponentChoice.moveImg)
 
-    "OPPONENT'S MOVE IS ${opponentChoice.name.uppercase(Locale.getDefault())}".also {
-        val opponentMove:TextView = uiObj[7] as TextView
-        opponentMove.text = it
-    }
     moveCompare(playerChoice, opponentChoice, uiObj)
 }

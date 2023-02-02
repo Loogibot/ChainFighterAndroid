@@ -1,13 +1,14 @@
 package com.loogibot.chainfighter.moves
 
+import com.loogibot.chainfighter.R.string.*
 import com.loogibot.chainfighter.R
-
 
 open class MoveSource {
     companion object M {
         val m = MoveData()
     }
-    val kickStr = R.string.kick.toString()
+
+    val kickStr = kick.toString()
     val grabStr = R.string.grab.toString()
     val dodgeStr = R.string.dodge.toString()
     val shieldStr = R.string.shield.toString()
