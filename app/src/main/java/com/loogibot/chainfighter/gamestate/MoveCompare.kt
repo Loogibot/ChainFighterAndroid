@@ -2,11 +2,10 @@ package com.loogibot.chainfighter.gamestate
 
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.loogibot.chainfighter.R.string.*
 import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.player.Players
 
-fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>) {
+fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>): String {
 
     val result = uiObj[0] as TextView
     val moveDetail = uiObj[1] as TextView
@@ -14,6 +13,8 @@ fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>) {
     val opponentHPBar = uiObj[3] as ProgressBar
     val playerHP = uiObj[4] as TextView
     val opponentHP = uiObj[5] as TextView
+    val cancel = uiObj[8] as String
+    var winner = "NO ONE YET"
 
     if (playerMove.name != opponentMove.name) {
         // if player is advantageous
@@ -49,7 +50,9 @@ fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>) {
 
         }
     } else {
-        result.text = cancel.toString()
+        result.text = cancel
     }
-
+    if (Players.opponentHealth <= 0) winner = Players.player
+    else if (Players.playerHealth <= 0) winner = Players.opponent
+    return winner
 }

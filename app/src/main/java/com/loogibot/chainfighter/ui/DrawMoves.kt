@@ -9,14 +9,14 @@ import com.loogibot.chainfighter.gamestate.randomMove
 fun drawMoves(
     playerChoice: Move,
     uiObj: List<Any>
-) {
+): String {
     // draws moves when choice is made
     val opponentChoice = randomMove()
-    val opponentImage:ImageView = uiObj[6] as ImageView
-    val playerImage:ImageView = uiObj[7] as ImageView
+    val opponentImage: ImageView = uiObj[6] as ImageView
+    val playerImage: ImageView = uiObj[7] as ImageView
 
     playerImage.setImageResource(playerChoice.moveImg)
     opponentImage.setImageResource(opponentChoice.moveImg)
 
-    moveCompare(playerChoice, opponentChoice, uiObj)
+    return moveCompare(playerChoice, opponentChoice, uiObj)
 }
