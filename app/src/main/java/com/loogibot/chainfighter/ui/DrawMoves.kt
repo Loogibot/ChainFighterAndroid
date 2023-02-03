@@ -12,8 +12,8 @@ fun drawMoves(
 ) {
     // draws moves when choice is made
     val opponentChoice = randomMove()
-    val playerImage:ImageView = uiObj[7] as ImageView
     val opponentImage:ImageView = uiObj[6] as ImageView
+    val playerImage:ImageView = uiObj[7] as ImageView
 
     playerImage.setImageResource(playerChoice.moveImg)
     opponentImage.setImageResource(opponentChoice.moveImg)

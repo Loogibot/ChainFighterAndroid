@@ -1,6 +1,7 @@
 package com.loogibot.chainfighter.moves
 
 // sets the move properties
+
 class MoveData : MoveSource() {
     val kick = Move(kickStr, 25, punchStr, shieldStr, kickImg)
     val grab = Move(grabStr, 5, kickStr, shieldStr, grabImg)

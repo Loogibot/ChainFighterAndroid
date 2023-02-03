@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
+import com.loogibot.chainfighter.databinding.EndgamepageBinding
 import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.titlewindow)
         // switch activity layout for this implementation
-        // there's a better way by making the title window its own activity,
+        // there's (probably) a better way by making the title window its own activity,
         // but this is fine fow now
 
         val startButton: Button = findViewById(R.id.startGame)
@@ -28,8 +29,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun gameStart() {
-        // make from UI elements
 
+        // pass around ui elements from activity_main
         val uIObjectsList: List<Any> = listOf(
             binding.playerView.moveResult,
             binding.opponentView.moveDetails,
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             binding.playerView.plyrHpLabel,
             binding.opponentView.oppHpLabel,
             binding.opponentView.opponentChoiceImg,
-            binding.playerView.playerChoiceImg
+            binding.playerView.playerChoiceImg,
         )
 
         if (Players.turnManager == 0) {
@@ -65,7 +66,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     fun moveResult() {
+
         Players.turnManager++
 
         while (Players.playerHealth > 0 || Players.opponentHealth > 0) run {
@@ -73,26 +76,26 @@ class MainActivity : AppCompatActivity() {
         }
         if (Players.playerHealth <= 0) {
             binding.playerView.moveResult.text = R.string.plHP0.toString()
-            //gameEnd(Players.opponent)
+            gameEnd(Players.opponent)
         }
         if (Players.opponentHealth <= 0) {
             binding.playerView.moveResult.text = R.string.opHP0.toString()
-            //gameEnd(Players.player)
+            gameEnd(Players.player)
+        }
+
+    }
+
+    private fun gameEnd(final: String) {
+        val binding: EndgamepageBinding = EndgamepageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        when (final) {
+            (Players.player) -> binding.finalResult.text = getString(R.string.you_won)
+            (Players.opponent) -> binding.finalResult.text = getString(R.string.opponent_won)
+        }
+        binding.toTitlescreen.setOnClickListener {
+            recreate()
         }
     }
 
-//    private fun gameEnd(final: String) {
-//        setContentView(R.layout.endgamepage)
-//
-//        finalResult = findViewById(R.id.final_result)
-//        returnToTitleScreen = findViewById(R.id.to_titlescreen)
-//
-//        when (final) {
-//            (Players.player) -> finalResult.text = getString(R.string.you_won)
-//            (Players.opponent) -> finalResult.text = getString(R.string.opponent_won)
-//        }
-//        returnToTitleScreen.setOnClickListener {
-//            recreate()
-//        }
-//    }
 }
