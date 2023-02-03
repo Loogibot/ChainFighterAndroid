@@ -3,90 +3,43 @@ package com.loogibot.chainfighter
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.loogibot.chainfighter.databinding.ActivityMainBinding
+import com.loogibot.chainfighter.databinding.EndgamepageBinding
 import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
-
-
-    // use late init to make UI on class load, but before onCreate
-
-    private lateinit var kickButton: Button
-    private lateinit var punchButton: Button
-    private lateinit var grabButton: Button
-    private lateinit var dodgeButton: Button
-    private lateinit var shieldButton: Button
-    private lateinit var returnToTitleScreen: Button
-
-    private lateinit var opponentImage: ImageView
-    private lateinit var playerImage: ImageView
-
-    private lateinit var playerHP: TextView
-    private lateinit var opponentHP: TextView
-
-    private lateinit var playerMove: TextView
-    private lateinit var opponentMove: TextView
-
-    private lateinit var result: TextView
-    private lateinit var finalResult: TextView
-
-    private lateinit var moveDetail: TextView
-
-    private lateinit var playerHPBar: ProgressBar
-    private lateinit var opponentHPBar: ProgressBar
-
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.titlewindow)
         // switch activity layout for this implementation
-        // there's a better way by making the title window its own activity,
+        // there's (probably) a better way by making the title window its own activity,
         // but this is fine fow now
 
         val startButton: Button = findViewById(R.id.startGame)
         startButton.setOnClickListener {
-            setContentView(R.layout.activity_main)
+            setContentView(binding.root)
             gameStart()
         } // starts game
     }
 
     private fun gameStart() {
-        // make from UI elements
 
-        result = findViewById(R.id.moveResult)
-        moveDetail = findViewById(R.id.move_details)
-
-        playerHPBar = findViewById(R.id.playerHP)
-        opponentHPBar = findViewById(R.id.opponentHP)
-
-        playerHP = findViewById(R.id.plyrHpLabel)
-        opponentHP = findViewById(R.id.oppHpLabel)
-
-        playerMove = findViewById(R.id.playerMove)
-        opponentMove = findViewById(R.id.opponentMove)
-
-        kickButton = findViewById(R.id.kickButton)
-        punchButton = findViewById(R.id.punchButton)
-        grabButton = findViewById(R.id.grabButton)
-        dodgeButton = findViewById(R.id.dodgeButton)
-        shieldButton = findViewById(R.id.shieldButton)
-
-        opponentImage = findViewById(R.id.opponentChoice)
-        playerImage = findViewById(R.id.playerChoice)
-
+        // pass around ui elements from activity_main
         val uIObjectsList: List<Any> = listOf(
-            result,
-            moveDetail,
-            playerHPBar,
-            opponentHPBar,
-            playerHP,
-            opponentHP,
-            playerMove,
-            opponentMove,
-            playerImage,
-            opponentImage
+            binding.playerView.moveResult,
+            binding.opponentView.moveDetails,
+            binding.playerView.playerHPBar,
+            binding.opponentView.opponentHPBar,
+            binding.playerView.plyrHpLabel,
+            binding.opponentView.oppHpLabel,
+            binding.opponentView.opponentChoiceImg,
+            binding.playerView.playerChoiceImg,
         )
 
         if (Players.turnManager == 0) {
@@ -95,52 +48,54 @@ class MainActivity : AppCompatActivity() {
         }
 
         // button operation
-        kickButton.setOnClickListener {
+        binding.moveButtonView.kickButton.setOnClickListener {
             drawMoves(m.kick, uIObjectsList)
         }
-        punchButton.setOnClickListener {
+        binding.moveButtonView.punchButton.setOnClickListener {
             drawMoves(m.punch, uIObjectsList)
         }
-        grabButton.setOnClickListener {
+        binding.moveButtonView.grabButton.setOnClickListener {
             drawMoves(m.grab, uIObjectsList)
         }
-        dodgeButton.setOnClickListener {
+        binding.moveButtonView.dodgeButton.setOnClickListener {
             drawMoves(m.dodge, uIObjectsList)
         }
-        shieldButton.setOnClickListener {
+        binding.moveButtonView.shieldButton.setOnClickListener {
             drawMoves(m.shield, uIObjectsList)
         }
 
     }
 
+
     fun moveResult() {
+
         Players.turnManager++
 
         while (Players.playerHealth > 0 || Players.opponentHealth > 0) run {
             gameStart()
         }
         if (Players.playerHealth <= 0) {
-            result.text = R.string.plHP0.toString()
+            binding.playerView.moveResult.text = R.string.plHP0.toString()
             gameEnd(Players.opponent)
         }
         if (Players.opponentHealth <= 0) {
-            result.text = R.string.opHP0.toString()
+            binding.playerView.moveResult.text = R.string.opHP0.toString()
             gameEnd(Players.player)
         }
+
     }
 
     private fun gameEnd(final: String) {
-        setContentView(R.layout.endgamepage)
-
-        finalResult = findViewById(R.id.final_result)
-        returnToTitleScreen = findViewById(R.id.to_titlescreen)
+        val binding: EndgamepageBinding = EndgamepageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         when (final) {
-            (Players.player) -> finalResult.text = getString(R.string.you_won)
-            (Players.opponent) -> finalResult.text = getString(R.string.opponent_won)
+            (Players.player) -> binding.finalResult.text = getString(R.string.you_won)
+            (Players.opponent) -> binding.finalResult.text = getString(R.string.opponent_won)
         }
-        returnToTitleScreen.setOnClickListener {
+        binding.toTitlescreen.setOnClickListener {
             recreate()
         }
     }
+
 }
