@@ -1,6 +1,7 @@
 package com.loogibot.chainfighter
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndgamepageBinding
@@ -53,47 +54,53 @@ open class MainActivity : AppCompatActivity() {
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
             drawMoves(m.kick, uIObjectsList)
+            moveResult(drawMoves(m.kick, uIObjectsList))
         }
         binding.moveButtonView.punchButton.setOnClickListener {
             drawMoves(m.punch, uIObjectsList)
+            moveResult(drawMoves(m.punch, uIObjectsList))
         }
         binding.moveButtonView.grabButton.setOnClickListener {
             drawMoves(m.grab, uIObjectsList)
+            moveResult(drawMoves(m.grab, uIObjectsList))
         }
         binding.moveButtonView.dodgeButton.setOnClickListener {
             drawMoves(m.dodge, uIObjectsList)
+            moveResult(drawMoves(m.dodge, uIObjectsList))
         }
         binding.moveButtonView.shieldButton.setOnClickListener {
             drawMoves(m.shield, uIObjectsList)
+            moveResult(drawMoves(m.shield, uIObjectsList))
         }
 
     }
 
-    private fun moveResult() {
+    private fun moveResult(status: String) {
 
         Players.turnManager++
 
         if (Players.playerHealth <= 0) {
             binding.playerView.moveResult.text = R.string.plHP0.toString()
-            gameEnd(Players.opponent)
+            gameEnd(status)
         }
         if (Players.opponentHealth <= 0) {
             binding.playerView.moveResult.text = R.string.opHP0.toString()
-            gameEnd(Players.player)
+            gameEnd(status)
         }
-
     }
 
     private fun gameEnd(final: String) {
         val eBinding: EndgamepageBinding = EndgamepageBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(eBinding.root)
 
         when (final) {
-            (Players.player) -> eBinding.finalResult.text = getString(R.string.you_won)
-            (Players.opponent) -> eBinding.finalResult.text = getString(R.string.opponent_won)
+            Players.player -> eBinding.finalResult.text = getString(R.string.you_won)
+            Players.opponent -> eBinding.finalResult.text = getString(R.string.opponent_won)
         }
         eBinding.toTitlescreen.setOnClickListener {
             recreate()
+            Players.playerHealth = 200
+            Players.opponentHealth = 200
         }
     }
 }
