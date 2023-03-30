@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:layout_height="wrap_content">
 
     <Button
         android:id="@+id/punchButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="70dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/teal_700"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
-        android:backgroundTint="@color/teal_700"
         android:text="@string/punch"
         android:textColor="@color/teal_200"
-        android:textSize="12sp"
-        style="?android:attr/buttonBarButtonStyle" />
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/kickButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="70dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/teal_700"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
-        android:backgroundTint="@color/teal_700"
         android:text="@string/kick"
         android:textColor="@color/teal_200"
-        android:textSize="12sp"
-        style="?android:attr/buttonBarButtonStyle" />
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/dodgeButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="70dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
-        android:fontFamily="@font/aclonica"
         android:backgroundTint="@color/teal_700"
+        android:fontFamily="@font/aclonica"
         android:padding="5dp"
         android:text="@string/dodge"
         android:textColor="@color/teal_200"
-        android:textSize="12sp"
-        style="?android:attr/buttonBarButtonStyle" />
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/grabButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="70dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/teal_700"
         android:fontFamily="@font/aclonica"
         android:padding="5dp"
-        android:backgroundTint="@color/teal_700"
         android:text="@string/grab"
         android:textColor="@color/teal_200"
-        android:textSize="12sp"
-        style="?android:attr/buttonBarButtonStyle" />
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/shieldButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="70dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
-        android:fontFamily="@font/aclonica"
         android:backgroundTint="@color/teal_700"
+        android:fontFamily="@font/aclonica"
         android:padding="5dp"
         android:text="@string/shield"
         android:textColor="@color/teal_200"
-        android:textSize="12sp"
-        style="?android:attr/buttonBarButtonStyle" />
+        android:textSize="12sp" />
 </LinearLayout>

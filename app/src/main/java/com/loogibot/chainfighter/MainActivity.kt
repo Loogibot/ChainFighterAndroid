@@ -72,7 +72,6 @@ open class MainActivity : AppCompatActivity() {
             drawMoves(m.shield, uIObjectsList)
             moveResult(drawMoves(m.shield, uIObjectsList))
         }
-
     }
 
     private fun moveResult(status: String) {
