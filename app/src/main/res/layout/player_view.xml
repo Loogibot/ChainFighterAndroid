@@ -2,7 +2,8 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:layout_margin="3dp"
+    android:background="@color/teal_700">
 
     <TextView
         android:id="@+id/moveResult"
@@ -12,8 +13,9 @@
         android:layout_column="0"
         android:layout_gravity="start"
         android:fontFamily="@font/aclonica"
+        android:padding="3dp"
         android:text="@string/result"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/teal_200"
         android:textSize="24sp" />
 
     <TextView
@@ -24,8 +26,9 @@
         android:layout_column="0"
         android:layout_gravity="end"
         android:fontFamily="@font/aclonica"
+        android:padding="3dp"
         android:text="@string/player_chain"
-        android:textColor="@color/teal_700" />
+        android:textColor="@color/teal_200" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,35 +36,36 @@
         android:layout_row="1"
         android:layout_column="0">
 
-        <TextView
-            android:id="@+id/firstMoveTitle"
+        <ImageView
+            android:id="@+id/PFirstMoveImg"
             android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:fontFamily="@font/aclonica"
-            android:text="@string/player_s_first_move"
-            android:textColor="@color/teal_700" />
+            android:background="@color/teal_50"
+            android:contentDescription="@string/player_chain" />
 
-        <TextView
-            android:id="@+id/secondMoveTitle"
+        <ImageView
+            android:id="@+id/PSecondMoveImg"
             android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:fontFamily="@font/aclonica"
-            android:text="@string/player_s_second_move"
-            android:textColor="@color/teal_700" />
+            android:background="@color/teal_50"
+            android:contentDescription="@string/player_chain" />
 
-        <TextView
-            android:id="@+id/thirdMoveTitle"
+        <ImageView
+            android:id="@+id/PThirdMoveImg"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_gravity="end"
-            android:fontFamily="@font/aclonica"
-            android:text="@string/player_s_third_move"
-            android:textColor="@color/teal_700" />
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@color/teal_50"
+            android:contentDescription="@string/player_chain" />
 
     </LinearLayout>
 
@@ -69,31 +73,48 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_row="1"
-        android:layout_column="0">
+        android:layout_column="0"
+        android:layout_marginBottom="5dp">
 
-        <ImageView
-            android:id="@+id/firstMoveImg"
+        <TextView
+            android:id="@+id/PFirstMoveTitle"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:contentDescription="@string/player_chain" />
+            android:background="@color/teal_400"
+            android:fontFamily="@font/aclonica"
+            android:padding="3dp"
+            android:text="@string/player_s_first_move"
+            android:textColor="@color/teal_50" />
 
-        <ImageView
-            android:id="@+id/secondMoveImg"
+        <TextView
+            android:id="@+id/PSecondMoveTitle"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:contentDescription="@string/player_chain"/>
-
-        <ImageView
-            android:id="@+id/thirdMoveImg"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_weight="1"
-            android:contentDescription="@string/player_chain" />
+            android:background="@color/teal_400"
+            android:fontFamily="@font/aclonica"
+            android:padding="3dp"
+            android:text="@string/player_s_second_move"
+            android:textColor="@color/teal_50" />
+
+        <TextView
+            android:id="@+id/PThirdMoveTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@color/teal_400"
+            android:fontFamily="@font/aclonica"
+            android:padding="3dp"
+            android:text="@string/player_s_third_move"
+            android:textColor="@color/teal_50" />
 
     </LinearLayout>
 

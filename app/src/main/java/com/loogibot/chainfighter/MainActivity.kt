@@ -37,12 +37,26 @@ open class MainActivity : AppCompatActivity() {
         val uIObjectsList: List<Any> = listOf(
             binding.playerView.moveResult,
             binding.opponentView.moveDetails,
+
             binding.playerView.playerHPBar,
             binding.opponentView.opponentHPBar,
+
             binding.playerView.plyrHpLabel,
             binding.opponentView.oppHpLabel,
-            binding.opponentView.opponentChoiceImg,
-            binding.playerView.playerChoiceImg,
+
+            binding.opponentView.OFirstMoveImg,
+            binding.opponentView.OSecondMoveImg,
+            binding.opponentView.OSecondMoveImg,
+            binding.opponentView.OFirstMoveTitle,
+            binding.opponentView.OSecondMoveTitle,
+            binding.opponentView.OThirdMoveTitle,
+
+            binding.playerView.PFirstMoveImg,
+            binding.playerView.PSecondMoveImg,
+            binding.playerView.PThirdMoveImg,
+            binding.playerView.PFirstMoveTitle,
+            binding.playerView.PSecondMoveTitle,
+            binding.playerView.PThirdMoveTitle,
             getString(R.string.cancel)
         )
 
