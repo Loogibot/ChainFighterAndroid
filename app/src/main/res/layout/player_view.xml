@@ -45,7 +45,9 @@
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@color/teal_50"
-            android:contentDescription="@string/player_chain" />
+            android:contentDescription="@string/player_chain"
+            android:maxHeight="200dp"
+            android:minHeight="70dp" />
 
         <ImageView
             android:id="@+id/PSecondMoveImg"
@@ -54,7 +56,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/teal_50"
-            android:contentDescription="@string/player_chain" />
+            android:contentDescription="@string/player_chain"
+            android:maxHeight="200dp"
+            android:minHeight="70dp" />
 
         <ImageView
             android:id="@+id/PThirdMoveImg"
@@ -65,7 +69,9 @@
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@color/teal_50"
-            android:contentDescription="@string/player_chain" />
+            android:contentDescription="@string/player_chain"
+            android:maxHeight="200dp"
+            android:minHeight="70dp" />
 
     </LinearLayout>
 

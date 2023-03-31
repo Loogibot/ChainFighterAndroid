@@ -1,12 +1,13 @@
 package com.loogibot.chainfighter
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndgamepageBinding
 import com.loogibot.chainfighter.databinding.TitlewindowBinding
+import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.MoveSource.M.m
+import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
 
@@ -64,6 +65,8 @@ open class MainActivity : AppCompatActivity() {
             Players.playerHealth = 200
             Players.opponentHealth = 200
         }
+        // create chain for player
+
 
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
@@ -86,6 +89,20 @@ open class MainActivity : AppCompatActivity() {
             drawMoves(m.shield, uIObjectsList)
             moveResult(drawMoves(m.shield, uIObjectsList))
         }
+    }
+
+    private fun addMoveToChain(m: Move) {
+
+        if (Players.pChain.firstMove == null) {
+            Players.pChain.firstMove = m
+        } else if (Players.pChain.secondMove == null) {
+            Players.pChain.secondMove = m
+        } else {
+            Players.pChain.thirdMove = m
+        }
+
+        
+
     }
 
     private fun moveResult(status: String) {
