@@ -3,30 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/teal_50"
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/titleName"
         android:layout_width="match_parent"
-        android:layout_height="349dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="382dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/cf_title_name"
-        tools:srcCompat="@drawable/cf_title_name" />
+        android:layout_height="300dp"
+        android:layout_above="@+id/startGame"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/app_name"
+        android:rotationX="-15"
+        app:srcCompat="@drawable/cf_title_name" />
 
     <Button
         android:id="@+id/startGame"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/titleName"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="153dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="178dp"
-        android:text="@string/moveTwo" />
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/start_game"
+        android:textColor="@color/teal_200"
+        android:textSize="24sp" />
 
 </RelativeLayout>

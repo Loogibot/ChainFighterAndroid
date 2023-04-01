@@ -1,74 +1,106 @@
 package com.loogibot.chainfighter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.loogibot.chainfighter.databinding.ActivityMainBinding
+import com.loogibot.chainfighter.databinding.EndgamepageBinding
+import com.loogibot.chainfighter.databinding.TitlewindowBinding
+import com.loogibot.chainfighter.moves.MoveSource.M.m
+import com.loogibot.chainfighter.player.Players
+import com.loogibot.chainfighter.ui.drawMoves
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
-        val startButton: Button = findViewById(R.id.startGame)
-        startButton.setOnClickListener{setContentView(R.layout.activity_main)}
+        val tBinding: TitlewindowBinding = TitlewindowBinding.inflate(layoutInflater)
+        setContentView(tBinding.root)
+        // switch activity layout for this implementation
+        // there's (probably) a better way by making the title window its own activity,
+        // but this is fine fow now
 
-        val playerButtonOne: Button = findViewById(R.id.moveOne)
-        playerButtonOne.setOnClickListener {moveChoice(1)}
-
-        val playerButtonTwo: Button = findViewById(R.id.moveTwo)
-        playerButtonTwo.setOnClickListener {moveChoice(2)}
+        tBinding.startGame.setOnClickListener {
+            setContentView(binding.root)
+            gameStart()
+        } // starts game
     }
 
-    private fun moveChoice(movePos: Int) {
+    private fun gameStart() {
 
-        val opponentMove = MoveAvailable(3)
-        val opponentChoice = opponentMove.moveCycle()
-        val opponentImage: ImageView = findViewById(R.id.opponentChoice)
+        // pass around elements from MainActivity
+        val uIObjectsList: List<Any> = listOf(
+            binding.playerView.moveResult,
+            binding.opponentView.moveDetails,
+            binding.playerView.playerHPBar,
+            binding.opponentView.opponentHPBar,
+            binding.playerView.plyrHpLabel,
+            binding.opponentView.oppHpLabel,
+            binding.opponentView.opponentChoiceImg,
+            binding.playerView.playerChoiceImg,
+            getString(R.string.cancel)
+        )
 
-        var playerMove = MoveAvailable(movePos)
-        var playerChoice = playerMove.moveCycle()
-
-        val playerImage: ImageView = findViewById(R.id.playerChoice)
-
-        val drawPlayerMove = when (playerChoice.name) {
-            "kick" -> R.drawable.player_kick
-            "punch" -> R.drawable.player_punch
-            "dodge" -> R.drawable.player_dodge
-            "grab" -> R.drawable.player_grab
-            else -> R.drawable.player_shield
+        if (Players.turnManager == 0) {
+            Players.playerHealth = 200
+            Players.opponentHealth = 200
         }
 
-        playerImage.setImageResource(drawPlayerMove)
-        opponentChoice
+        // button operation
+        binding.moveButtonView.kickButton.setOnClickListener {
+            drawMoves(m.kick, uIObjectsList)
+            moveResult(drawMoves(m.kick, uIObjectsList))
+        }
+        binding.moveButtonView.punchButton.setOnClickListener {
+            drawMoves(m.punch, uIObjectsList)
+            moveResult(drawMoves(m.punch, uIObjectsList))
+        }
+        binding.moveButtonView.grabButton.setOnClickListener {
+            drawMoves(m.grab, uIObjectsList)
+            moveResult(drawMoves(m.grab, uIObjectsList))
+        }
+        binding.moveButtonView.dodgeButton.setOnClickListener {
+            drawMoves(m.dodge, uIObjectsList)
+            moveResult(drawMoves(m.dodge, uIObjectsList))
+        }
+        binding.moveButtonView.shieldButton.setOnClickListener {
+            drawMoves(m.shield, uIObjectsList)
+            moveResult(drawMoves(m.shield, uIObjectsList))
+        }
 
     }
-}
 
-data class Move(val name: String, val damage: Int, val firstAdv: String, val secondAdv: String) {
-}
+    private fun moveResult(status: String) {
 
-class MoveAvailable(private val movePos: Int) {
+        Players.turnManager++
 
-    val kick = Move("kick",25, "punch", "shield")
-    val grab = Move("grab",5, "kick", "shield")
-    val dodge = Move("dodge",0, "kick", "grab")
-    val shield = Move("shield",5, "punch", "dodge")
-    val punch = Move("punch",15, "grab", "dodge")
-
-    val allMoves = listOf(kick,grab,dodge,shield,punch)
-
-    fun moveCompare(player: String, opponent: String) {
-        if (player == opponent) {
-            return
+        if (Players.playerHealth <= 0) {
+            binding.playerView.moveResult.text = R.string.plHP0.toString()
+            gameEnd(status)
+        }
+        if (Players.opponentHealth <= 0) {
+            binding.playerView.moveResult.text = R.string.opHP0.toString()
+            gameEnd(status)
         }
     }
 
-    fun moveCycle(): Move {
-        return when (movePos) {
-        1 -> allMoves.random()
-        2 -> allMoves.random()
-        else -> allMoves.random()
-            }
+    private fun gameEnd(final: String) {
+        val eBinding: EndgamepageBinding = EndgamepageBinding.inflate(layoutInflater)
+        setContentView(eBinding.root)
+
+        when (final) {
+            Players.player -> eBinding.finalResult.text = getString(R.string.you_won)
+            Players.opponent -> eBinding.finalResult.text = getString(R.string.opponent_won)
+        }
+        eBinding.toTitlescreen.setOnClickListener {
+            recreate()
+            Players.playerHealth = 200
+            Players.opponentHealth = 200
+        }
     }
 }

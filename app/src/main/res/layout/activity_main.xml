@@ -1,158 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
- <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal_50"
+    android:padding="5dp"
     tools:context=".MainActivity">
 
-   <ImageView
-       android:id="@+id/playerChoice"
-       android:layout_width="215dp"
-       android:layout_height="225dp"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="@+id/plyrHpLabel"
-       app:layout_constraintHorizontal_bias="0.952"
-       app:layout_constraintStart_toEndOf="@+id/playerMove"
-       app:layout_constraintTop_toBottomOf="@+id/moveResult"
-       app:layout_constraintVertical_bias="0.0"
-       app:srcCompat="@drawable/player_punch"
-       tools:srcCompat="@drawable/player_grab"
-       android:contentDescription="@string/player_move" />
+    <!-- input -->
 
-    <Button
-        android:id="@+id/moveTwo"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/opponent_view"
+        layout="@layout/opponent_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/moveTwo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/moveOne"
-        app:layout_constraintHorizontal_bias="0.287"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerHP"
-        app:layout_constraintVertical_bias="0.253"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
-    <Button
-        android:id="@+id/moveOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/moveOne"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@id/player_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerHP"
-        app:layout_constraintVertical_bias="0.253" />
-
-    <TextView
-        android:id="@+id/opponentMove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toTopOf="@+id/moveResult"
-        app:layout_constraintEnd_toEndOf="@+id/moveOne"
-        app:layout_constraintHorizontal_bias="0.977"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/opponentChoice"
-        app:layout_constraintTop_toBottomOf="@+id/opponentHP"
-        app:layout_constraintVertical_bias="0.118" />
-
-     <TextView
-        android:id="@+id/oppHpLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/opponent_hp"
-        app:layout_constraintBottom_toTopOf="@+id/opponentChoice"
-        app:layout_constraintEnd_toStartOf="@+id/opponentHP"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/opponentChoice"
-        app:layout_constraintTop_toTopOf="@+id/opponentHP"
-        app:layout_constraintVertical_bias="0.003" />
-
-    <ProgressBar
-        android:id="@+id/playerHP"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/moveTwo"
-        app:layout_constraintTop_toBottomOf="@+id/playerChoice"
-        app:layout_constraintVertical_bias="0.159" />
-
-    <ProgressBar
-        android:id="@+id/opponentHP"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/opponentChoice"
-        app:layout_constraintEnd_toEndOf="@+id/moveOne"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/moveTwo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
-
-    <TextView
-        android:id="@+id/moveResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.474" />
+        app:layout_constraintVertical_bias="0.0" />
 
- <ImageView
-     android:id="@+id/opponentChoice"
-     android:layout_width="256dp"
-     android:layout_height="258dp"
-     android:layout_marginTop="96dp"
-     app:layout_constraintBottom_toTopOf="@+id/moveResult"
-     app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintHorizontal_bias="0.0"
-     app:layout_constraintStart_toStartOf="@+id/moveTwo"
-     app:layout_constraintTop_toTopOf="parent"
-     app:layout_constraintVertical_bias="0.0"
-     tools:srcCompat="@drawable/opponent_dodge"
-     android:contentDescription="TODO" />
-
-    <TextView
-        android:id="@+id/playerMove"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/player_view"
+        layout="@layout/player_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="171dp"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toTopOf="@+id/playerHP"
-        app:layout_constraintHorizontal_bias="0.281"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/playerHP"
-        app:layout_constraintTop_toBottomOf="@+id/moveResult"
-        app:layout_constraintVertical_bias="0.83" />
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@id/move_button_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/plyrHpLabel"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/move_button_view"
+        layout="@layout/move_buttons"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="171dp"
-        android:text="@string/player_hp"
-        app:layout_constraintBottom_toBottomOf="@+id/playerHP"
-        app:layout_constraintEnd_toEndOf="@+id/moveOne"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/playerHP"
-        app:layout_constraintTop_toBottomOf="@+id/moveResult"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
