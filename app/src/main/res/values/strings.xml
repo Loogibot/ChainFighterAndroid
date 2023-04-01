@@ -23,13 +23,21 @@
     <string name="player_hp" >PLAYER HP IS 200</string>
     <string name="opponent_hp" >OPPONENT HP IS 200</string>
 
-    <string name="player_move" >YOUR MOVE IS</string>
-    <string name="opponent_move" >OPPONENT MOVE IS </string>
+    <string name="player_chain" >YOUR CHAIN OF MOVES ARE </string>
+    <string name="opponent_chain" >OPPONENT CHAIN OF MOVES ARE </string>
 
     <string name="kick" >KICK</string>
     <string name="punch" >PUNCH</string>
     <string name="grab" >GRAB</string>
     <string name="dodge" >DODGE</string>
     <string name="shield" >SHIELD</string>
+
+    <string name="player_s_first_move">PLAYER\'S FIRST MOVE</string>
+    <string name="player_s_second_move">PLAYER\'S SECOND MOVE</string>
+    <string name="player_s_third_move">PLAYER\'S THIRD MOVE</string>
+
+    <string name="opponent_s_first_move">OPPONENT\'S FIRST MOVE</string>
+    <string name="opponent_s_second_move">OPPONENT\'S SECOND MOVE</string>
+    <string name="opponent_s_third_move">OPPONENT\'S THIRD MOVE</string>
 
 </resources>

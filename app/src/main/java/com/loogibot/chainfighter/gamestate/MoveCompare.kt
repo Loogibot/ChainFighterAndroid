@@ -13,7 +13,7 @@ fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>): String 
     val opponentHPBar = uiObj[3] as ProgressBar
     val playerHP = uiObj[4] as TextView
     val opponentHP = uiObj[5] as TextView
-    val cancel = uiObj[8] as String
+    val cancel = uiObj.last() as String
     var winner = "NO ONE YET"
 
     if (playerMove.name != opponentMove.name) {

@@ -1,11 +1,11 @@
 package com.loogibot.chainfighter
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndgamepageBinding
 import com.loogibot.chainfighter.databinding.TitlewindowBinding
+import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
@@ -34,44 +34,71 @@ open class MainActivity : AppCompatActivity() {
     private fun gameStart() {
 
         // pass around elements from MainActivity
-        val uIObjectsList: List<Any> = listOf(
-            binding.playerView.moveResult,
-            binding.opponentView.moveDetails,
-            binding.playerView.playerHPBar,
-            binding.opponentView.opponentHPBar,
-            binding.playerView.plyrHpLabel,
-            binding.opponentView.oppHpLabel,
-            binding.opponentView.opponentChoiceImg,
-            binding.playerView.playerChoiceImg,
-            getString(R.string.cancel)
-        )
 
         if (Players.turnManager == 0) {
             Players.playerHealth = 200
             Players.opponentHealth = 200
         }
+        // create chain for player
+
 
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
-            drawMoves(m.kick, uIObjectsList)
-            moveResult(drawMoves(m.kick, uIObjectsList))
+            addMoveToChain(m.kick)
         }
         binding.moveButtonView.punchButton.setOnClickListener {
-            drawMoves(m.punch, uIObjectsList)
-            moveResult(drawMoves(m.punch, uIObjectsList))
+            addMoveToChain(m.punch)
         }
         binding.moveButtonView.grabButton.setOnClickListener {
-            drawMoves(m.grab, uIObjectsList)
-            moveResult(drawMoves(m.grab, uIObjectsList))
+            addMoveToChain(m.grab)
         }
         binding.moveButtonView.dodgeButton.setOnClickListener {
-            drawMoves(m.dodge, uIObjectsList)
-            moveResult(drawMoves(m.dodge, uIObjectsList))
+            addMoveToChain(m.dodge)
         }
         binding.moveButtonView.shieldButton.setOnClickListener {
-            drawMoves(m.shield, uIObjectsList)
-            moveResult(drawMoves(m.shield, uIObjectsList))
+            addMoveToChain(m.shield)
         }
+    }
+
+    private fun addMoveToChain(mv: Move) {
+
+        if (Players.pChain?.firstMove == null) {
+            Players.pChain?.firstMove = mv
+        } else if (Players.pChain?.secondMove == null) {
+            Players.pChain?.secondMove = mv
+        } else {
+            Players.pChain?.thirdMove = mv
+        }
+
+        val uIObjectsList: List<Any> = listOf(
+            binding.playerView.moveResult,
+            binding.opponentView.moveDetails,
+
+            binding.playerView.playerHPBar,
+            binding.opponentView.opponentHPBar,
+
+            binding.playerView.plyrHpLabel,
+            binding.opponentView.oppHpLabel,
+
+            binding.opponentView.OFirstMoveImg,//6
+            binding.opponentView.OSecondMoveImg,
+            binding.opponentView.OSecondMoveImg,
+            binding.opponentView.OFirstMoveTitle,
+            binding.opponentView.OSecondMoveTitle,
+            binding.opponentView.OThirdMoveTitle,
+
+            binding.playerView.PFirstMoveImg,//12
+            binding.playerView.PSecondMoveImg,
+            binding.playerView.PThirdMoveImg,
+            binding.playerView.PFirstMoveTitle,
+            binding.playerView.PSecondMoveTitle,
+            binding.playerView.PThirdMoveTitle,
+
+            getString(R.string.cancel)//18
+        )
+
+        drawMoves(Players.pChain, uIObjectsList)
+        moveResult(drawMoves(Players.pChain, uIObjectsList))
 
     }
 

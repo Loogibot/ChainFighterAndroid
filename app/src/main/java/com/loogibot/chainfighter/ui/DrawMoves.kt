@@ -1,13 +1,13 @@
 package com.loogibot.chainfighter.ui
 
 import android.widget.ImageView
-import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.gamestate.randomMove
+import com.loogibot.chainfighter.player.Chain
 
 // called in gameStart from MainActivity
 fun drawMoves(
-    playerChoice: Move,
+    playerChain: Chain?,
     uiObj: List<Any>
 ): String {
     // draws moves when choice is made
