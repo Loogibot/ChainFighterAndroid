@@ -5,5 +5,6 @@ data class Move(
     val damage: Int,
     val firstAdv: String,
     val secondAdv: String,
-    val moveImg: Int
+    val moveImg: Int,
+    val cost: Int
 )
