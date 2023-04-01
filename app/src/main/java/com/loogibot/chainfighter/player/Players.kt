@@ -8,8 +8,8 @@ open class Players {
         const val playerHPLabel = "PLAYER HP IS "
         const val isWeakToText = " IS WEAK TO "
 
-        lateinit var pChain: Chain
-        lateinit var oChain: Chain
+        var pChain: Chain? = null
+        var oChain: Chain? = null
 
         var playerHealth = 200
         var opponentHealth = 200

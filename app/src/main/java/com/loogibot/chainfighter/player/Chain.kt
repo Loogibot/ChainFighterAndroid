@@ -9,4 +9,5 @@ class Chain {
     var thirdMove: Move? = null
 
     val totalDamage = firstMove?.damage!! + secondMove?.damage!! + thirdMove?.damage!!
+
 }
