@@ -11,12 +11,23 @@ fun drawMoves(
     uiObj: List<Any>
 ): String {
     // draws moves when choice is made
-    val opponentChoice = randomMove()
-    val opponentImage: ImageView = uiObj[6] as ImageView
-    val playerImage: ImageView = uiObj[7] as ImageView
+    val opponentChain = randomMove()
 
-    playerImage.setImageResource(playerChoice.moveImg)
-    opponentImage.setImageResource(opponentChoice.moveImg)
+    val oFirstMove: ImageView = uiObj[6] as ImageView
+    val oSecondMove: ImageView = uiObj[7] as ImageView
+    val oThirdMove: ImageView = uiObj[8] as ImageView
 
-    return moveCompare(playerChoice, opponentChoice, uiObj)
+    val pFirstMoveImage: ImageView = uiObj[12] as ImageView
+    val pSecondMoveImage: ImageView = uiObj[13] as ImageView
+    val pThirdMoveImage: ImageView = uiObj[14] as ImageView
+
+    pFirstMoveImage.setImageResource(playerChain?.firstMove!!.moveImg)
+    pSecondMoveImage.setImageResource(playerChain.secondMove!!.moveImg)
+    pThirdMoveImage.setImageResource(playerChain.thirdMove!!.moveImg)
+
+    oFirstMove.setImageResource(opponentChain.firstMove!!.moveImg)
+    oSecondMove.setImageResource(opponentChain.secondMove!!.moveImg)
+    oThirdMove.setImageResource(opponentChain.thirdMove!!.moveImg)
+
+    return moveCompare(playerChain, opponentChain, uiObj)
 }

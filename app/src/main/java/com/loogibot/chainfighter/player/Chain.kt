@@ -10,4 +10,6 @@ class Chain {
 
     val totalDamage = firstMove?.damage!! + secondMove?.damage!! + thirdMove?.damage!!
 
+    val chainArray = arrayListOf<Move?>(firstMove,secondMove,thirdMove)
+
 }
