@@ -1,11 +1,12 @@
 package com.loogibot.chainfighter.gamestate
 
+import android.text.TextUtils.indexOf
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.loogibot.chainfighter.moves.Move
+import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 
-fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>): String {
+fun moveCompare(playerChain: Chain, opponentChain: Chain, uiObj: List<Any>): String {
 
     val result = uiObj[0] as TextView
     val moveDetail = uiObj[1] as TextView
@@ -15,43 +16,36 @@ fun moveCompare(playerMove: Move, opponentMove: Move, uiObj: List<Any>): String 
     val opponentHP = uiObj[5] as TextView
     val cancel = uiObj.last() as String
     var winner = "NO ONE YET"
+    var i = 0
 
-    if (playerMove.name != opponentMove.name) {
-        // if player is advantageous
-        if (playerMove.name == opponentMove.firstAdv || playerMove.name == opponentMove.secondAdv) {
-            // result will display who, in this case opponent, took how much damage
-            "${Players.opponent} TOOK ${playerMove.damage} DAMAGE!".also { result.text = it }
-            // move detail describes which move is weak to another or cancel in case of a draw
-            (opponentMove.name + Players.isWeakToText + playerMove.name).also {
-                moveDetail.text = it
-            }
-            // damage is applied
-            Players.opponentHealth -= playerMove.damage
-            (Players.opponentHPLabel + Players.opponentHealth.toString()).also {
-                opponentHP.text = it
-            }
-            opponentHPBar.progress = Players.opponentHealth
+    playerChain.chainArray.forEach {
+        if (it != opponentChain.chainArray[i]) {
+            if (it!!.name == opponentChain.chainArray[i]!!.firstAdv || it.name == opponentChain.chainArray[i]!!.secondAdv) {
+                // result will display who, in this case opponent, took how much damage
+                result.text = "${Players.opponent} TOOK ${playerChain.totalDamage} DAMAGE!"
+                // move detail describes which move is weak to another or cancel in case of a draw
+                moveDetail.text = "${opponentChain.chainArray[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
+                // damage is applied
+                Players.opponentHealth -= it.damage
+                opponentHP.text = "${Players.opponentHPLabel} + ${Players.opponentHealth}"
+                opponentHPBar.progress = Players.opponentHealth
 
+            } else if (opponentChain.chainArray[i]!!.name == it.firstAdv || opponentChain.chainArray[i]!!.name == it.secondAdv) {
+                // result will display who, in this case opponent, took how much damage
+                result.text = "${Players.player} TOOK ${opponentChain.totalDamage} DAMAGE!"
+                // move detail describes which move is weak to another or cancel in case of a draw
+                moveDetail.text = "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainArray[i]!!.name}"
+                // damage is applied
+                Players.playerHealth -= opponentChain.chainArray[i]!!.damage
+                playerHP.text = "${Players.playerHPLabel} + ${Players.playerHealth}"
+                playerHPBar.progress = Players.playerHealth
+            }
+        }  else {
+            result.text = cancel
         }
-        // if opponent is advantageous
-        else if (opponentMove.name == playerMove.firstAdv || opponentMove.name == playerMove.secondAdv) {
-            // result will display who, in this case opponent, took how much damage
-            "${Players.player} TOOK ${opponentMove.damage} DAMAGE!".also { result.text = it }
-            // move detail describes which move is weak to another or cancel in case of a draw
-            (playerMove.name + Players.isWeakToText + opponentMove.name).also {
-                moveDetail.text = it
-            }
-            // damage is applied
-            Players.playerHealth -= opponentMove.damage
-            (Players.playerHPLabel + Players.playerHealth.toString()).also {
-                playerHP.text = it
-            }
-            playerHPBar.progress = Players.playerHealth
-
-        }
-    } else {
-        result.text = cancel
+        i++
     }
+
     if (Players.opponentHealth <= 0) winner = Players.player
     else if (Players.playerHealth <= 0) winner = Players.opponent
     return winner
