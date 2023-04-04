@@ -7,8 +7,10 @@ import com.loogibot.chainfighter.databinding.EndgamepageBinding
 import com.loogibot.chainfighter.databinding.TitlewindowBinding
 import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.MoveSource.M.m
+import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
+import kotlinx.coroutines.awaitAll
 
 open class MainActivity : AppCompatActivity() {
 
@@ -62,12 +64,15 @@ open class MainActivity : AppCompatActivity() {
 
     private fun addMoveToChain(mv: Move) {
 
-        if (Players.pChain?.firstMove == null) {
-            Players.pChain?.firstMove = mv
-        } else if (Players.pChain?.secondMove == null) {
-            Players.pChain?.secondMove = mv
+        Players.pChain = Chain()
+        Players.oChain = Chain()
+
+        if (Players.pChain.firstMove == null) {
+            Players.pChain.firstMove = mv
+        } else if (Players.pChain.secondMove == null) {
+            Players.pChain.secondMove = mv
         } else {
-            Players.pChain?.thirdMove = mv
+            Players.pChain.thirdMove = mv
         }
 
         val uIObjectsList: List<Any> = listOf(
@@ -98,7 +103,11 @@ open class MainActivity : AppCompatActivity() {
         )
 
         drawMoves(Players.pChain, uIObjectsList)
-        moveResult(drawMoves(Players.pChain, uIObjectsList))
+
+        when (Players.pChain.thirdMove != null) {
+            true -> moveResult(drawMoves(Players.pChain, uIObjectsList))
+            else -> {}
+        }
 
     }
 

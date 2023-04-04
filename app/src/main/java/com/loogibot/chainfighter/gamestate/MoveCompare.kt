@@ -1,6 +1,5 @@
 package com.loogibot.chainfighter.gamestate
 
-import android.text.TextUtils.indexOf
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.loogibot.chainfighter.player.Chain
