@@ -21,17 +21,19 @@ fun drawMoves(
     val pSecondMoveImage: ImageView = uiObj[13] as ImageView
     val pThirdMoveImage: ImageView = uiObj[14] as ImageView
 
-    oFirstMoveImage.setImageResource(opponentChain.firstMove!!.moveImg)
-    oSecondMoveImage.setImageResource(opponentChain.secondMove!!.moveImg)
-    oThirdMoveImage.setImageResource(opponentChain.thirdMove!!.moveImg)
-
-    pFirstMoveImage.setImageResource(playerChain.firstMove!!.moveImg)
     if (playerChain.firstMove != null) {
-        pSecondMoveImage.setImageResource(playerChain.secondMove!!.moveImg)
+        pFirstMoveImage.setImageResource(playerChain.firstMove!!.moveImg)
+        oFirstMoveImage.setImageResource(opponentChain.firstMove!!.moveImg)
     }
-    if (playerChain.secondMove != null) {
+    if (opponentChain.firstMove != null) {
+        pSecondMoveImage.setImageResource(playerChain.secondMove!!.moveImg)
+        oSecondMoveImage.setImageResource(opponentChain.secondMove!!.moveImg)
+    }
+    if (opponentChain.secondMove != null) {
         pThirdMoveImage.setImageResource(playerChain.thirdMove!!.moveImg)
+        oThirdMoveImage.setImageResource(opponentChain.thirdMove!!.moveImg)
     }
 
     return moveCompare(playerChain, opponentChain, uiObj)
+
 }

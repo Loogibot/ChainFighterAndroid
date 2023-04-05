@@ -104,11 +104,10 @@ open class MainActivity : AppCompatActivity() {
 
         drawMoves(Players.pChain, uIObjectsList)
 
-        when (Players.pChain.thirdMove != null) {
-            true -> moveResult(drawMoves(Players.pChain, uIObjectsList))
-            else -> {}
-        }
-
+//        when (Players.pChain.thirdMove != null) {
+//            true -> moveResult(drawMoves(Players.pChain, uIObjectsList))
+//            else -> {}
+//        }
     }
 
     private fun moveResult(status: String) {
