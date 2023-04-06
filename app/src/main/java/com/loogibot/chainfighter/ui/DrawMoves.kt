@@ -25,14 +25,14 @@ fun drawMoves(
         pFirstMoveImage.setImageResource(playerChain.firstMove!!.moveImg)
         oFirstMoveImage.setImageResource(opponentChain.firstMove!!.moveImg)
     }
-    if (opponentChain.firstMove != null) {
-        pSecondMoveImage.setImageResource(playerChain.secondMove!!.moveImg)
-        oSecondMoveImage.setImageResource(opponentChain.secondMove!!.moveImg)
-    }
-    if (opponentChain.secondMove != null) {
-        pThirdMoveImage.setImageResource(playerChain.thirdMove!!.moveImg)
-        oThirdMoveImage.setImageResource(opponentChain.thirdMove!!.moveImg)
-    }
+//    if (opponentChain.firstMove != null) {
+//        pSecondMoveImage.setImageResource(playerChain.secondMove.moveImg)
+//        oSecondMoveImage.setImageResource(opponentChain.secondMove.moveImg)
+//    }
+//    if (opponentChain.secondMove != null) {
+//        pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
+//        oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
+//    }
 
     return moveCompare(playerChain, opponentChain, uiObj)
 
