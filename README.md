@@ -14,8 +14,8 @@ Android
 
 ![image](https://user-images.githubusercontent.com/94766364/234395176-060b2132-367f-4df5-8ca3-5c63b0d8ce29.png)
 
-===============================================================================================================
+___________________________________________________________________________________________
 
 The Android variant of the game is still under development to implement the titular chain mechanice, but a (somewhat) 
-playable prototype is available in the SOC2 branch.
+playable prototype is available in the SoC2 branch -> https://github.com/Loogibot/ChainFighterAndroid/tree/SoC2
 
