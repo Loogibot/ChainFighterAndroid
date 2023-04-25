@@ -7,5 +7,5 @@ class Chain {
     var secondMove: Move? = null
     var thirdMove: Move? = null
     var totalDamage = 0
-    var chainArray = arrayListOf<Move>()
+    var chainArray = arrayListOf<Move>(firstMove, secondMove, thirdMove)
 }
