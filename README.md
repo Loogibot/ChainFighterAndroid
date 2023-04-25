@@ -1,4 +1,4 @@
 # ChainFighterAndroid
-android kotlin version of chain fighter game
+Android and Kotlin version of ChainFighter game
 created by Loogibot
-based on the python tkinter version of the game
+based on a Python and Tkinter version of the game
