@@ -10,17 +10,12 @@ import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
-import kotlinx.coroutines.awaitAll
 
 open class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         val tBinding: TitlewindowBinding = TitlewindowBinding.inflate(layoutInflater)
         setContentView(tBinding.root)
         // switch activity layout for this implementation
@@ -34,15 +29,10 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun gameStart() {
-
-        // pass around elements from MainActivity
-
         if (Players.turnManager == 0) {
             Players.playerHealth = 200
             Players.opponentHealth = 200
         }
-        // create chain for player
-
 
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
@@ -66,14 +56,11 @@ open class MainActivity : AppCompatActivity() {
 
         Players.pChain = Chain()
         Players.oChain = Chain()
+        // pass around elements from MainActivity
 
-        if (Players.pChain.firstMove == null) {
-            Players.pChain.firstMove = mv
-        } else if (Players.pChain.secondMove == null) {
-            Players.pChain.secondMove = mv
-        } else {
-            Players.pChain.thirdMove = mv
-        }
+        Players.pChain.firstMove = mv
+        Players.pChain.secondMove = mv
+        Players.pChain.thirdMove = mv
 
         val uIObjectsList: List<Any> = listOf(
             binding.playerView.moveResult,
@@ -87,7 +74,7 @@ open class MainActivity : AppCompatActivity() {
 
             binding.opponentView.OFirstMoveImg,//6
             binding.opponentView.OSecondMoveImg,
-            binding.opponentView.OSecondMoveImg,
+            binding.opponentView.OThirdMoveImg,
             binding.opponentView.OFirstMoveTitle,
             binding.opponentView.OSecondMoveTitle,
             binding.opponentView.OThirdMoveTitle,
@@ -111,7 +98,6 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun moveResult(status: String) {
-
         Players.turnManager++
 
         if (Players.playerHealth <= 0) {
