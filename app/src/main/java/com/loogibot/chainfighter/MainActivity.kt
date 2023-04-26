@@ -57,8 +57,10 @@ open class MainActivity : AppCompatActivity() {
         Players.pChain = Chain()
         Players.oChain = Chain()
         // pass around elements from MainActivity
-        Players.pChain.firstMove = mv
 
+        Players.pChain.firstMove = mv
+        Players.pChain.secondMove = mv
+        Players.pChain.thirdMove = mv
 
         val uIObjectsList: List<Any> = listOf(
             binding.playerView.moveResult,
@@ -72,7 +74,7 @@ open class MainActivity : AppCompatActivity() {
 
             binding.opponentView.OFirstMoveImg,//6
             binding.opponentView.OSecondMoveImg,
-            binding.opponentView.OSecondMoveImg,
+            binding.opponentView.OThirdMoveImg,
             binding.opponentView.OFirstMoveTitle,
             binding.opponentView.OSecondMoveTitle,
             binding.opponentView.OThirdMoveTitle,

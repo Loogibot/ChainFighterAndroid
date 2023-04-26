@@ -17,25 +17,25 @@ fun moveCompare(playerChain: Chain, opponentChain: Chain, uiObj: List<Any>): Str
     var winner = "NO ONE YET"
     var i = 0
 
-    playerChain.chainArray.forEach {
-        if (it != opponentChain.chainArray[i]) {
-            if (it!!.name == opponentChain.chainArray[i]!!.firstAdv || it.name == opponentChain.chainArray[i]!!.secondAdv) {
+    playerChain.chainList.forEach {
+        if (it != opponentChain.chainList[i]) {
+            if (it!!.name == opponentChain.chainList[i]!!.firstAdv || it.name == opponentChain.chainList[i]!!.secondAdv) {
                 // result will display who, in this case opponent, took how much damage
                 result.text = "${Players.opponent} TOOK ${playerChain.totalDamage} DAMAGE!"
                 // move detail describes which move is weak to another or cancel in case of a draw
-                moveDetail.text = "${opponentChain.chainArray[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
+                moveDetail.text = "${opponentChain.chainList[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
                 // damage is applied
                 Players.opponentHealth -= it.damage
                 opponentHP.text = "${Players.opponentHPLabel} + ${Players.opponentHealth}"
                 opponentHPBar.progress = Players.opponentHealth
 
-            } else if (opponentChain.chainArray[i]!!.name == it.firstAdv || opponentChain.chainArray[i]!!.name == it.secondAdv) {
+            } else if (opponentChain.chainList[i]!!.name == it.firstAdv || opponentChain.chainList[i]!!.name == it.secondAdv) {
                 // result will display who, in this case opponent, took how much damage
                 result.text = "${Players.player} TOOK ${opponentChain.totalDamage} DAMAGE!"
                 // move detail describes which move is weak to another or cancel in case of a draw
-                moveDetail.text = "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainArray[i]!!.name}"
+                moveDetail.text = "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainList[i]!!.name}"
                 // damage is applied
-                Players.playerHealth -= opponentChain.chainArray[i]!!.damage
+                Players.playerHealth -= opponentChain.chainList[i]!!.damage
                 playerHP.text = "${Players.playerHPLabel} + ${Players.playerHealth}"
                 playerHPBar.progress = Players.playerHealth
             }
