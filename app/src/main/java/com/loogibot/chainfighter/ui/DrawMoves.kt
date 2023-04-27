@@ -4,11 +4,12 @@ import android.widget.ImageView
 import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.player.Chain
+
 // called in gameStart from MainActivity
 fun drawMoves(
     playerChain: Chain,
     uiObj: List<Any>
-): String {
+) {
     // draws moves when choice is made
     val opponentChain = randomMove()
 
@@ -20,16 +21,47 @@ fun drawMoves(
     val pSecondMoveImage: ImageView = uiObj[13] as ImageView
     val pThirdMoveImage: ImageView = uiObj[14] as ImageView
 
+    if (pFirstMoveImage.drawable == null) {
+        firstMoveInChain(oFirstMoveImage, pFirstMoveImage, playerChain, opponentChain)
+    } else if (pSecondMoveImage.drawable == null) {
+        secondMoveInChain(oSecondMoveImage, pSecondMoveImage, playerChain, opponentChain)
+    } else {
+        thirdMoveInChain(oThirdMoveImage, pThirdMoveImage, playerChain, opponentChain, uiObj)
+    }
+
+}
+
+fun firstMoveInChain(
+    oFirstMoveImage: ImageView,
+    pFirstMoveImage: ImageView,
+    playerChain: Chain,
+    opponentChain: Chain
+) {
     pFirstMoveImage.setImageResource(playerChain.firstMove.moveImg)
     oFirstMoveImage.setImageResource(opponentChain.firstMove.moveImg)
+}
 
+fun secondMoveInChain(
+    oSecondMoveImage: ImageView,
+    pSecondMoveImage: ImageView,
+    playerChain: Chain,
+    opponentChain: Chain
+) {
     pSecondMoveImage.setImageResource(playerChain.secondMove.moveImg)
     oSecondMoveImage.setImageResource(opponentChain.secondMove.moveImg)
+}
 
+fun thirdMoveInChain(
+    oThirdMoveImage: ImageView,
+    pThirdMoveImage: ImageView,
+    playerChain: Chain,
+    opponentChain: Chain,
+    uiObj: List<Any>
+): String {
     pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
 
-    playerChain.chainPosition++
 
+    return "CHAIN FILLED"
     return moveCompare(playerChain, opponentChain, uiObj)
 }

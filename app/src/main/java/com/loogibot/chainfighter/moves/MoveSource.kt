@@ -4,7 +4,6 @@ import com.loogibot.chainfighter.R.string.*
 import com.loogibot.chainfighter.R.drawable.*
 
 open class MoveSource{
-
     companion object M {
         val m = MoveData()
     }
