@@ -23,7 +23,8 @@ fun moveCompare(playerChain: Chain, opponentChain: Chain, uiObj: List<Any>): Str
                 // result will display who, in this case opponent, took how much damage
                 result.text = "${Players.opponent} TOOK ${playerChain.totalDamage} DAMAGE!"
                 // move detail describes which move is weak to another or cancel in case of a draw
-                moveDetail.text = "${opponentChain.chainList[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
+                moveDetail.text =
+                    "${opponentChain.chainList[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
                 // damage is applied
                 Players.opponentHealth -= it.damage
                 opponentHP.text = "${Players.opponentHPLabel} + ${Players.opponentHealth}"
@@ -33,13 +34,14 @@ fun moveCompare(playerChain: Chain, opponentChain: Chain, uiObj: List<Any>): Str
                 // result will display who, in this case opponent, took how much damage
                 result.text = "${Players.player} TOOK ${opponentChain.totalDamage} DAMAGE!"
                 // move detail describes which move is weak to another or cancel in case of a draw
-                moveDetail.text = "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainList[i]!!.name}"
+                moveDetail.text =
+                    "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainList[i]!!.name}"
                 // damage is applied
                 Players.playerHealth -= opponentChain.chainList[i]!!.damage
                 playerHP.text = "${Players.playerHPLabel} + ${Players.playerHealth}"
                 playerHPBar.progress = Players.playerHealth
             }
-        }  else {
+        } else {
             result.text = cancel
         }
         i++

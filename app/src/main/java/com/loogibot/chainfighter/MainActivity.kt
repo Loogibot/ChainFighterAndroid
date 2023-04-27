@@ -58,9 +58,7 @@ open class MainActivity : AppCompatActivity() {
         Players.oChain = Chain()
         // pass around elements from MainActivity
 
-        Players.pChain.firstMove = mv
-        Players.pChain.secondMove = mv
-        Players.pChain.thirdMove = mv
+        Players.pChain.chainManager(mv)
 
         val uIObjectsList: List<Any> = listOf(
             binding.playerView.moveResult,

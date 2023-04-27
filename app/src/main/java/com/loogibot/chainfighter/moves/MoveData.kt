@@ -9,5 +9,5 @@ class MoveData : MoveSource() {
     val shield = Move(shieldStr, 5, punchStr, dodgeStr, shieldImg, 0)
     val punch = Move(punchStr, 15, grabStr, dodgeStr, punchImg, 2)
 
-    val none = Move("none", 0, "none", "none", 0, 0)
+    // val none = Move("none", 0, "none", "none", 0, 0)
 }
