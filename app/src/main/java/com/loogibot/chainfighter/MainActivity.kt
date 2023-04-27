@@ -13,6 +13,7 @@ import com.loogibot.chainfighter.ui.drawMoves
 
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -25,6 +26,8 @@ open class MainActivity : AppCompatActivity() {
         tBinding.startGame.setOnClickListener {
             setContentView(binding.root)
             gameStart()
+            Players.pChain = Chain()
+            Players.oChain = Chain()
         } // starts game
     }
 
@@ -53,13 +56,9 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun addMoveToChain(mv: Move) {
-
-        Players.pChain = Chain()
-        Players.oChain = Chain()
-        // pass around elements from MainActivity
-
         Players.pChain.chainManager(mv)
 
+        // pass around elements from MainActivity
         val uIObjectsList: List<Any> = listOf(
             binding.playerView.moveResult,
             binding.opponentView.moveDetails,
