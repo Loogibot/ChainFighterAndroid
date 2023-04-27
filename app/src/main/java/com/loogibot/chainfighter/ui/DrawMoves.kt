@@ -28,7 +28,7 @@ fun drawMoves(
     } else {
         thirdMoveInChain(oThirdMoveImage, pThirdMoveImage, playerChain, opponentChain, uiObj)
     }
-
+    playerChain.chainPosition++
 }
 
 fun firstMoveInChain(
