@@ -17,21 +17,19 @@ class Chain {
         chainList.add(chainPosition, m)
 
         firstMove = chainList.first()
-        secondMove = chainList[chainPosition]
+        secondMove =
+            chainList[if (chainList.lastIndex == 2) 1 else chainList.lastIndex]
         thirdMove = chainList[chainList.lastIndex]
-
-        when (chainPosition) {
-            1 -> secondMove = chainList[1]
-            2 -> thirdMove = chainList[2]
-        }
 
         Log.v(TAG, firstMove.name + " is the first move in the chain")
         Log.v(TAG, secondMove.name + " is the second move in the chain")
         Log.v(TAG, thirdMove.name + " is the third move in the chain")
 
         Log.v(TAG, chainList.size.toString() + " is the size of the chain")
+        Log.v(TAG, chainList.lastIndex.toString() + " is the last index of the chain")
+        Log.v(TAG, chainPosition.toString() + " is the position of the chain")
+
         Log.v(TAG, chainList.toString() + " is the chain")
 
-        Log.v(TAG, chainPosition.toString() + " is the chain position")
     }
 }
