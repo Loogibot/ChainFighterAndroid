@@ -1,17 +1,18 @@
 package com.loogibot.chainfighter.ui
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import android.widget.ImageView
 import com.loogibot.chainfighter.gamestate.moveCompare
-import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.player.Chain
 
 // called in gameStart from MainActivity
 fun drawMoves(
     playerChain: Chain,
+    opponentChain: Chain,
     uiObj: List<Any>
 ) {
     // draws moves when choice is made
-    val opponentChain = randomMove()
 
     val oFirstMoveImage: ImageView = uiObj[6] as ImageView
     val oSecondMoveImage: ImageView = uiObj[7] as ImageView
@@ -28,7 +29,7 @@ fun drawMoves(
     } else {
         thirdMoveInChain(oThirdMoveImage, pThirdMoveImage, playerChain, opponentChain, uiObj)
     }
-    playerChain.chainPosition++
+
 }
 
 fun firstMoveInChain(
@@ -61,7 +62,8 @@ fun thirdMoveInChain(
     pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
 
+    Log.v(TAG, "${opponentChain.moveSetStr} is the opponent's chain")
+    Log.v(TAG, "${playerChain.moveSetStr} is the player's chain")
 
-    return "CHAIN FILLED"
     return moveCompare(playerChain, opponentChain, uiObj)
 }

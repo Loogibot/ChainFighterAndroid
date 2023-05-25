@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndgamepageBinding
 import com.loogibot.chainfighter.databinding.TitlewindowBinding
+import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Chain
@@ -19,9 +20,6 @@ open class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val tBinding: TitlewindowBinding = TitlewindowBinding.inflate(layoutInflater)
         setContentView(tBinding.root)
-        // switch activity layout for this implementation
-        // there's (probably) a better way by making the title window its own activity,
-        // but this is fine fow now
 
         tBinding.startGame.setOnClickListener {
             setContentView(binding.root)
@@ -36,6 +34,7 @@ open class MainActivity : AppCompatActivity() {
             Players.playerHealth = 200
             Players.opponentHealth = 200
         }
+
 
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
@@ -57,6 +56,7 @@ open class MainActivity : AppCompatActivity() {
 
     private fun addMoveToChain(mv: Move) {
         Players.pChain.chainManager(mv)
+        Players.oChain.chainManager(randomMove())
 
         // pass around elements from MainActivity
         val uIObjectsList: List<Any> = listOf(
@@ -85,8 +85,7 @@ open class MainActivity : AppCompatActivity() {
 
             getString(R.string.cancel)//18
         )
-
-        drawMoves(Players.pChain, uIObjectsList)
+        drawMoves(Players.pChain, Players.oChain, uIObjectsList)
 
 //        when (Players.pChain.thirdMove != null) {
 //            true -> moveResult(drawMoves(Players.pChain, uIObjectsList))

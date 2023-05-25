@@ -19,7 +19,7 @@ fun moveCompare(playerChain: Chain, opponentChain: Chain, uiObj: List<Any>): Str
 
     playerChain.chainList.forEach {
         if (it != opponentChain.chainList[i]) {
-            if (it!!.name == opponentChain.chainList[i]!!.firstAdv || it.name == opponentChain.chainList[i]!!.secondAdv) {
+            if (it.name == opponentChain.chainList[i].firstAdv || it.name == opponentChain.chainList[i].secondAdv) {
                 // result will display who, in this case opponent, took how much damage
                 result.text = "${Players.opponent} TOOK ${playerChain.totalDamage} DAMAGE!"
                 // move detail describes which move is weak to another or cancel in case of a draw
@@ -30,7 +30,7 @@ fun moveCompare(playerChain: Chain, opponentChain: Chain, uiObj: List<Any>): Str
                 opponentHP.text = "${Players.opponentHPLabel} + ${Players.opponentHealth}"
                 opponentHPBar.progress = Players.opponentHealth
 
-            } else if (opponentChain.chainList[i]!!.name == it.firstAdv || opponentChain.chainList[i]!!.name == it.secondAdv) {
+            } else if (opponentChain.chainList[i].name == it.firstAdv || opponentChain.chainList[i].name == it.secondAdv) {
                 // result will display who, in this case opponent, took how much damage
                 result.text = "${Players.player} TOOK ${opponentChain.totalDamage} DAMAGE!"
                 // move detail describes which move is weak to another or cancel in case of a draw
