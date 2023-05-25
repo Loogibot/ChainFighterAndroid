@@ -83,7 +83,11 @@ open class MainActivity : AppCompatActivity() {
             binding.playerView.PSecondMoveTitle,
             binding.playerView.PThirdMoveTitle,
 
-            getString(R.string.cancel)//18
+            binding.moveResults.FirstMoveImgResult,//18
+            binding.moveResults.SecondMoveImgResult,
+            binding.moveResults.ThirdMoveImgResult,
+
+            getString(R.string.cancel)//21
         )
         drawMoves(Players.pChain, Players.oChain, uIObjectsList)
 
