@@ -14,7 +14,6 @@ import com.loogibot.chainfighter.ui.drawMoves
 
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -34,7 +33,6 @@ open class MainActivity : AppCompatActivity() {
             Players.playerHealth = 200
             Players.opponentHealth = 200
         }
-
 
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
@@ -90,11 +88,6 @@ open class MainActivity : AppCompatActivity() {
             getString(R.string.cancel)//21
         )
         drawMoves(Players.pChain, Players.oChain, uIObjectsList)
-
-//        when (Players.pChain.thirdMove != null) {
-//            true -> moveResult(drawMoves(Players.pChain, uIObjectsList))
-//            else -> {}
-//        }
     }
 
     private fun moveResult(status: String) {

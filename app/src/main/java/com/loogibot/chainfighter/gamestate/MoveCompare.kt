@@ -1,66 +1,56 @@
 package com.loogibot.chainfighter.gamestate
 
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import com.loogibot.chainfighter.R
-import com.loogibot.chainfighter.player.Chain
-import com.loogibot.chainfighter.player.Players
+import com.loogibot.chainfighter.moves.Move
+import com.loogibot.chainfighter.ui.MoveResult.Results.cancelResult
+import com.loogibot.chainfighter.ui.MoveResult.Results.neutralResult
+import com.loogibot.chainfighter.ui.MoveResult.Results.opponentMoveWinResult
+import com.loogibot.chainfighter.ui.MoveResult.Results.playerMoveWinResult
+fun moveCompare(playerMove: Move, opponentMove: Move): Int {
 
-fun moveCompare(playerChain: Chain, opponentChain: Chain, uiObj: List<Any>): String {
+//    val result = uiObj[0] as TextView
+//    val moveDetail = uiObj[1] as TextView
 
-    val result = uiObj[0] as TextView
-    val moveDetail = uiObj[1] as TextView
-    val playerHPBar = uiObj[2] as ProgressBar
-    val opponentHPBar = uiObj[3] as ProgressBar
-    val playerHP = uiObj[4] as TextView
-    val opponentHP = uiObj[5] as TextView
-    val cancel = uiObj.last() as String
-    val firstMoveComparisonResult = uiObj[18] as ImageView
-    val SecondMoveComparisonResult = uiObj[19] as ImageView
-    val ThirdMoveComparisonResult = uiObj[20] as ImageView
+//    val playerHPBar = uiObj[2] as ProgressBar
+//    val opponentHPBar = uiObj[3] as ProgressBar
+//    val playerHP = uiObj[4] as TextView
+//    val opponentHP = uiObj[5] as TextView
 
-    var winner = "NO ONE YET"
-    var i = 0
+//    val cancel = uiObj.last() as String
 
-    playerChain.chainList.forEach {
-        if (it != opponentChain.chainList[i]) {
-            //player move is successful
-            if (it.name == opponentChain.chainList[i].firstAdv || it.name == opponentChain.chainList[i].secondAdv) {
-                // result will display who, in this case opponent, took how much damage
-                result.text = "${Players.opponent} TOOK ${playerChain.totalDamage} DAMAGE!"
-                // move detail describes which move is weak to another or cancel in case of a draw
-                moveDetail.text =
-                    "${opponentChain.chainList[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
-                // damage is applied
-                Players.opponentHealth -= it.damage
-                opponentHP.text = "${Players.opponentHPLabel} + ${Players.opponentHealth}"
-                opponentHPBar.progress = Players.opponentHealth
+//    var winner = "NO ONE YET"
+//    var i = 0
+    var result = neutralResult
 
-                //update results image
-                firstMoveComparisonResult.setImageResource(R.drawable.player_move_win)
+    if (playerMove != opponentMove) {
+        //player move is successful
+        if (playerMove.name == opponentMove.firstAdv || playerMove.name == opponentMove.secondAdv) {
+            // result will display who, in this case opponent, took how much damage
+            result = playerMoveWinResult
+            // move detail describes which move is weak to another or cancel in case of a draw
+//            moveDetail.text =
+//                "${opponentChain.chainList[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
+//            // damage is applied
+//            Players.opponentHealth -= it.damage
+//            opponentHP.text = "${Players.opponentHPLabel} + ${Players.opponentHealth}"
+//            opponentHPBar.progress = Players.opponentHealth
 
-            } else if (opponentChain.chainList[i].name == it.firstAdv || opponentChain.chainList[i].name == it.secondAdv) {
-                // result will display who, in this case opponent, took how much damage
-                result.text = "${Players.player} TOOK ${opponentChain.totalDamage} DAMAGE!"
-                // move detail describes which move is weak to another or cancel in case of a draw
-                moveDetail.text =
-                    "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainList[i]!!.name}"
-                // damage is applied
-                Players.playerHealth -= opponentChain.chainList[i]!!.damage
-                playerHP.text = "${Players.playerHPLabel} + ${Players.playerHealth}"
-                playerHPBar.progress = Players.playerHealth
-                //update results image
-                firstMoveComparisonResult.setImageResource(R.drawable.opponent_move_win)
-            }
-        } else {
-            firstMoveComparisonResult.setImageResource(R.drawable.cancel_image)
-            result.text = cancel
+            //update results image
+
+        } else if (opponentMove.name == playerMove.firstAdv || opponentMove.name == playerMove.secondAdv) {
+            // result will display who, in this case opponent, took how much damage
+            result = opponentMoveWinResult
+//            // move detail describes which move is weak to another or cancel in case of a draw
+//            moveDetail.text =
+//                "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainList[i]!!.name}"
+//            // damage is applied
+//            Players.playerHealth -= opponentChain.chainList[i]!!.damage
+//            playerHP.text = "${Players.playerHPLabel} + ${Players.playerHealth}"
+//            playerHPBar.progress = Players.playerHealth
+            //update results image
+
         }
-        i++
+    } else {
+        return cancelResult
     }
-
-    if (Players.opponentHealth <= 0) winner = Players.player
-    else if (Players.playerHealth <= 0) winner = Players.opponent
-    return winner
+    return result
 }

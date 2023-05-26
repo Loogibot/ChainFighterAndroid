@@ -1,6 +1,5 @@
 package com.loogibot.chainfighter.moves
 
-import com.loogibot.chainfighter.R.string.*
 import com.loogibot.chainfighter.R.drawable.*
 
 open class MoveSource{
@@ -19,5 +18,4 @@ open class MoveSource{
     val grabImg = grab_image
     val dodgeImg = dodge_image
     val shieldImg = shield_image
-
 }
