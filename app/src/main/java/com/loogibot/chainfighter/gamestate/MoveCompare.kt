@@ -1,11 +1,9 @@
 package com.loogibot.chainfighter.gamestate
 
 import com.loogibot.chainfighter.moves.Move
-import com.loogibot.chainfighter.ui.MoveResult.Results.cancelResult
-import com.loogibot.chainfighter.ui.MoveResult.Results.neutralResult
-import com.loogibot.chainfighter.ui.MoveResult.Results.opponentMoveWinResult
-import com.loogibot.chainfighter.ui.MoveResult.Results.playerMoveWinResult
-fun moveCompare(playerMove: Move, opponentMove: Move): Int {
+import com.loogibot.chainfighter.ui.MoveResult
+
+fun moveCompare(playerMove: Move, opponentMove: Move): MoveResult.Results.ChainResult {
 
 //    val result = uiObj[0] as TextView
 //    val moveDetail = uiObj[1] as TextView
@@ -19,13 +17,13 @@ fun moveCompare(playerMove: Move, opponentMove: Move): Int {
 
 //    var winner = "NO ONE YET"
 //    var i = 0
-    var result = neutralResult
+    var result = MoveResult.neutral
 
     if (playerMove != opponentMove) {
         //player move is successful
         if (playerMove.name == opponentMove.firstAdv || playerMove.name == opponentMove.secondAdv) {
             // result will display who, in this case opponent, took how much damage
-            result = playerMoveWinResult
+            result = MoveResult.playerWin
             // move detail describes which move is weak to another or cancel in case of a draw
 //            moveDetail.text =
 //                "${opponentChain.chainList[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
@@ -38,7 +36,7 @@ fun moveCompare(playerMove: Move, opponentMove: Move): Int {
 
         } else if (opponentMove.name == playerMove.firstAdv || opponentMove.name == playerMove.secondAdv) {
             // result will display who, in this case opponent, took how much damage
-            result = opponentMoveWinResult
+            result = MoveResult.opponentWin
 //            // move detail describes which move is weak to another or cancel in case of a draw
 //            moveDetail.text =
 //                "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainList[i]!!.name}"
@@ -47,10 +45,9 @@ fun moveCompare(playerMove: Move, opponentMove: Move): Int {
 //            playerHP.text = "${Players.playerHPLabel} + ${Players.playerHealth}"
 //            playerHPBar.progress = Players.playerHealth
             //update results image
-
         }
     } else {
-        return cancelResult
+        return MoveResult.cancel
     }
     return result
 }

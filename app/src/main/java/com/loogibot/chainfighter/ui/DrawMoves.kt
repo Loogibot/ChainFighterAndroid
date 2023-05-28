@@ -3,11 +3,12 @@ package com.loogibot.chainfighter.ui
 import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.ImageView
+import com.loogibot.chainfighter.gamestate.chainCompareResult
 import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.player.Chain
 
 // called in gameStart from MainActivity
-var results: Int = 0
+var results: ArrayList<String> = arrayListOf()
 fun drawMoves(
     playerChain: Chain, opponentChain: Chain, uiObj: List<Any>
 ) {
@@ -55,8 +56,8 @@ fun firstMoveInChain(
     oFirstMoveImage.setImageResource(opponentChain.firstMove.moveImg)
     val firstResult = moveCompare(playerChain.firstMove, opponentChain.firstMove)
 
-    results += firstResult
-    firstMoveComparisonResult.setImageResource(firstResult)
+    results.add(firstResult.resultString)
+    firstMoveComparisonResult.setImageResource(firstResult.resultImage)
 }
 
 fun secondMoveInChain(
@@ -69,8 +70,8 @@ fun secondMoveInChain(
     pSecondMoveImage.setImageResource(playerChain.secondMove.moveImg)
     oSecondMoveImage.setImageResource(opponentChain.secondMove.moveImg)
     val secondResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
-    results += secondResult
-    secondMoveComparisonResult.setImageResource(secondResult)
+    results.add(secondResult.resultString)
+    secondMoveComparisonResult.setImageResource(secondResult.resultImage)
 }
 
 fun thirdMoveInChain(
@@ -84,11 +85,12 @@ fun thirdMoveInChain(
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
     val thirdResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
 
-    results += thirdResult
-    thirdMoveComparisonResult.setImageResource(thirdResult)
+    results.add(thirdResult.resultString)
+    thirdMoveComparisonResult.setImageResource(thirdResult.resultImage)
 
     Log.v(TAG, "$results are the chain comparison results")
-
     Log.v(TAG, "${opponentChain.moveSetStr} is the opponent's chain")
     Log.v(TAG, "${playerChain.moveSetStr} is the player's chain")
+
+    chainCompareResult(results)
 }
