@@ -7,10 +7,9 @@ import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.player.Chain
 
 // called in gameStart from MainActivity
+var results: Int = 0
 fun drawMoves(
-    playerChain: Chain,
-    opponentChain: Chain,
-    uiObj: List<Any>
+    playerChain: Chain, opponentChain: Chain, uiObj: List<Any>
 ) {
     // draws moves when choice is made
 
@@ -28,11 +27,7 @@ fun drawMoves(
 
     if (pFirstMoveImage.drawable == null) {
         firstMoveInChain(
-            oFirstMoveImage,
-            pFirstMoveImage,
-            playerChain,
-            opponentChain,
-            firstMoveComparisonResult
+            oFirstMoveImage, pFirstMoveImage, playerChain, opponentChain, firstMoveComparisonResult
         )
     } else if (pSecondMoveImage.drawable == null) {
         secondMoveInChain(
@@ -44,14 +39,11 @@ fun drawMoves(
         )
     } else {
         thirdMoveInChain(
-            oThirdMoveImage,
-            pThirdMoveImage,
-            playerChain,
-            opponentChain,
-            thirdMoveComparisonResult
+            oThirdMoveImage, pThirdMoveImage, playerChain, opponentChain, thirdMoveComparisonResult
         )
     }
 }
+
 fun firstMoveInChain(
     oFirstMoveImage: ImageView,
     pFirstMoveImage: ImageView,
@@ -61,13 +53,10 @@ fun firstMoveInChain(
 ) {
     pFirstMoveImage.setImageResource(playerChain.firstMove.moveImg)
     oFirstMoveImage.setImageResource(opponentChain.firstMove.moveImg)
+    val firstResult = moveCompare(playerChain.firstMove, opponentChain.firstMove)
 
-    firstMoveComparisonResult.setImageResource(
-        moveCompare(
-            playerChain.firstMove,
-            opponentChain.firstMove
-        )
-    )
+    results += firstResult
+    firstMoveComparisonResult.setImageResource(firstResult)
 }
 
 fun secondMoveInChain(
@@ -79,13 +68,9 @@ fun secondMoveInChain(
 ) {
     pSecondMoveImage.setImageResource(playerChain.secondMove.moveImg)
     oSecondMoveImage.setImageResource(opponentChain.secondMove.moveImg)
-
-    secondMoveComparisonResult.setImageResource(
-        moveCompare(
-            playerChain.secondMove,
-            opponentChain.secondMove
-        )
-    )
+    val secondResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
+    results += secondResult
+    secondMoveComparisonResult.setImageResource(secondResult)
 }
 
 fun thirdMoveInChain(
@@ -97,15 +82,12 @@ fun thirdMoveInChain(
 ) {
     pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
+    val thirdResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
 
-    thirdMoveComparisonResult.setImageResource(
-        moveCompare(
-            playerChain.thirdMove,
-            opponentChain.thirdMove
-        )
-    )
+    results += thirdResult
+    thirdMoveComparisonResult.setImageResource(thirdResult)
 
-//    Log.v(TAG, "${} are the chain comparison results")
+    Log.v(TAG, "$results are the chain comparison results")
 
     Log.v(TAG, "${opponentChain.moveSetStr} is the opponent's chain")
     Log.v(TAG, "${playerChain.moveSetStr} is the player's chain")
