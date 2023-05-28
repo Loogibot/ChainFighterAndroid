@@ -92,6 +92,5 @@ fun thirdMoveInChain(
     Log.v(TAG, "$results are the chain comparison results")
     Log.v(TAG, "${opponentChain.moveSetStr} is the opponent's chain")
     Log.v(TAG, "${playerChain.moveSetStr} is the player's chain")
-
     Log.v(TAG, "${chainCompareResult(results)} is the final result")
 }

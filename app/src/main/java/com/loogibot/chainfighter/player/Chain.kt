@@ -20,6 +20,7 @@ class Chain {
             chainList[if (chainList.lastIndex == 2) 1 else chainList.lastIndex]
         thirdMove = chainList[chainList.lastIndex]
         moveSetStr += chainList[chainList.lastIndex].name + " "
+        chainCost += chainList[chainList.lastIndex].cost
 
 //        Log.v(TAG, firstMove.name + " is the first move in the chain")
 //        Log.v(TAG, secondMove.name + " is the second move in the chain")
