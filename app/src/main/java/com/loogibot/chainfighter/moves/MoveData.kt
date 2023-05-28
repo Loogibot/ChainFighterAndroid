@@ -5,8 +5,8 @@ package com.loogibot.chainfighter.moves
 class MoveData : MoveSource() {
     // (name of the move,
     // how much damage it can cause,
-    // the first move it has an advantage over,
-    // the second move it has an advantage over,
+    // the first move weak to the named move,
+    // the second move weak to the named move,
     // how much is costs to use the named move)
 
     val kick = Move(kickStr, 25, punchStr, shieldStr, kickImg, 2)

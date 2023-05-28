@@ -53,6 +53,12 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun addMoveToChain(mv: Move) {
+
+        if (Players.pChain.chainCost == 2) {
+            binding.moveButtonView.kickButton.isEnabled = false
+            binding.moveButtonView.kickButton.setBackgroundColor(resources.getColor(R.color.teal_200))
+        }
+
         Players.pChain.chainManager(mv)
         Players.oChain.chainManager(randomMove())
 
