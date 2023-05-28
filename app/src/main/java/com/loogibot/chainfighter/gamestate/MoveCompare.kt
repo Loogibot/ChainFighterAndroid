@@ -5,46 +5,13 @@ import com.loogibot.chainfighter.ui.MoveResult
 
 fun moveCompare(playerMove: Move, opponentMove: Move): MoveResult.Results.ChainResult {
 
-//    val result = uiObj[0] as TextView
-//    val moveDetail = uiObj[1] as TextView
-
-//    val playerHPBar = uiObj[2] as ProgressBar
-//    val opponentHPBar = uiObj[3] as ProgressBar
-//    val playerHP = uiObj[4] as TextView
-//    val opponentHP = uiObj[5] as TextView
-
-//    val cancel = uiObj.last() as String
-
-//    var winner = "NO ONE YET"
-//    var i = 0
     var result = MoveResult.neutral
-
     if (playerMove != opponentMove) {
-        //player move is successful
+        //opponent move is successful
         if (playerMove.name == opponentMove.firstAdv || playerMove.name == opponentMove.secondAdv) {
-            // result will display who, in this case opponent, took how much damage
-            result = MoveResult.playerWin
-            // move detail describes which move is weak to another or cancel in case of a draw
-//            moveDetail.text =
-//                "${opponentChain.chainList[i]!!.name} + ${Players.isWeakToText} + ${it.name}"
-//            // damage is applied
-//            Players.opponentHealth -= it.damage
-//            opponentHP.text = "${Players.opponentHPLabel} + ${Players.opponentHealth}"
-//            opponentHPBar.progress = Players.opponentHealth
-
-            //update results image
-
-        } else if (opponentMove.name == playerMove.firstAdv || opponentMove.name == playerMove.secondAdv) {
-            // result will display who, in this case opponent, took how much damage
             result = MoveResult.opponentWin
-//            // move detail describes which move is weak to another or cancel in case of a draw
-//            moveDetail.text =
-//                "${it.name} + ${Players.isWeakToText} + ${opponentChain.chainList[i]!!.name}"
-//            // damage is applied
-//            Players.playerHealth -= opponentChain.chainList[i]!!.damage
-//            playerHP.text = "${Players.playerHPLabel} + ${Players.playerHealth}"
-//            playerHPBar.progress = Players.playerHealth
-            //update results image
+        } else if (opponentMove.name == playerMove.firstAdv || opponentMove.name == playerMove.secondAdv) {
+            result = MoveResult.playerWin
         }
     } else {
         return MoveResult.cancel

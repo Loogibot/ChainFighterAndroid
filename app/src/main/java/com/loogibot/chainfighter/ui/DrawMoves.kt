@@ -70,6 +70,7 @@ fun secondMoveInChain(
     pSecondMoveImage.setImageResource(playerChain.secondMove.moveImg)
     oSecondMoveImage.setImageResource(opponentChain.secondMove.moveImg)
     val secondResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
+
     results.add(secondResult.resultString)
     secondMoveComparisonResult.setImageResource(secondResult.resultImage)
 }
@@ -83,7 +84,7 @@ fun thirdMoveInChain(
 ) {
     pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
-    val thirdResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
+    val thirdResult = moveCompare(playerChain.thirdMove, opponentChain.thirdMove)
 
     results.add(thirdResult.resultString)
     thirdMoveComparisonResult.setImageResource(thirdResult.resultImage)
