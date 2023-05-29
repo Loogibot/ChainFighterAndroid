@@ -9,4 +9,15 @@
     <color name="teal_700">#FF097786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- from layout -->
+    <color name="hi_blue">#a9d8ff</color>
+    <color name="flo_blue">#0069af</color>
+    <color name="flo_green">#00b44b</color>
+    <color name="hi_green">#00f900</color>
+    <color name="hi_yellow">#fffc00</color>
+    <color name="flo_orange">#ff8517</color>
+    <color name="flo_red">#ef0c4d</color>
+    <color name="hi_pink">#d9aeff</color>
+
 </resources>
