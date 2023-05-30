@@ -39,5 +39,8 @@
     <string name="opponent_s_first_move">OPPONENT\'S FIRST MOVE</string>
     <string name="opponent_s_second_move">OPPONENT\'S SECOND MOVE</string>
     <string name="opponent_s_third_move">OPPONENT\'S THIRD MOVE</string>
+    <string name="first_moves_comparison_results">FIRST MOVES COMPARISON RESULTS</string>
+    <string name="second_moves_comparison_results">SECOND MOVES COMPARISON RESULTS</string>
+    <string name="third_moves_comparison_results">THIRD MOVES COMPARISON RESULTS</string>
 
 </resources>

@@ -35,7 +35,6 @@ open class MainActivity : AppCompatActivity() {
             Players.playerHealth = 200
             Players.opponentHealth = 200
         }
-
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
             addMoveToChain(m.kick)
@@ -64,7 +63,6 @@ open class MainActivity : AppCompatActivity() {
             4 -> binding.moveButtonView.punchButton.visibility = View.GONE
             5 -> binding.moveButtonView.grabButton.visibility = View.GONE
         }
-
 
         // pass around elements from MainActivity
         val uIObjectsList: List<Any> = listOf(
@@ -95,7 +93,11 @@ open class MainActivity : AppCompatActivity() {
             binding.moveResults.SecondMoveImgResult,
             binding.moveResults.ThirdMoveImgResult,
 
-            getString(R.string.cancel)//21
+            binding.moveResults.firstResult,//21
+            binding.moveResults.secondResult,
+            binding.moveResults.thirdResult,
+
+            getString(R.string.cancel)//24
         )
         drawMoves(Players.pChain, Players.oChain, uIObjectsList)
     }

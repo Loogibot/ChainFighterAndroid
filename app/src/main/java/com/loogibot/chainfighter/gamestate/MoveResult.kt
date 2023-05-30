@@ -1,4 +1,4 @@
-package com.loogibot.chainfighter.ui
+package com.loogibot.chainfighter.gamestate
 
 import com.loogibot.chainfighter.R.drawable.cancel_image
 import com.loogibot.chainfighter.R.drawable.neutral_result
@@ -10,8 +10,8 @@ class MoveResult {
         data class ChainResult(val resultImage: Int, val resultString: String)
 
         val neutral = ChainResult(neutral_result, "NEUTRAL")
-        val cancel = ChainResult(cancel_image, "CANCEL")
-        val playerWin = ChainResult(player_move_win, "PLAYER_WIN")
-        val opponentWin = ChainResult(opponent_move_win, "OPPONENT_WIN")
+        val cancel = ChainResult(cancel_image, "MOVES CANCEL EACH OTHER!")
+        val playerWin = ChainResult(player_move_win, "PLAYER MOVE IS EFFECTIVE!")
+        val opponentWin = ChainResult(opponent_move_win, "OPPONENT MOVE IS EFFECTIVE!")
     }
 }

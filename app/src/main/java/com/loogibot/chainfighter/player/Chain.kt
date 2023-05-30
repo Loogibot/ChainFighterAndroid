@@ -9,7 +9,7 @@ class Chain {
 
     var chainCost = 0
     var totalDamage = 0
-    var chainList = mutableListOf<Move>()
+    private var chainList = mutableListOf<Move>()
     var moveSetStr = ""
 
     fun chainManager(m: Move) {
