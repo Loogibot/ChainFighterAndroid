@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp">
 
     <ProgressBar
         android:id="@+id/opponentHPBar"
@@ -120,16 +121,16 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/opponentMove"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/opponent_chain"
-        android:textColor="@color/flo_blue"
-        android:textSize="15sp" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/opponentMove"-->
+    <!--        android:layout_width="200dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_row="1"-->
+    <!--        android:layout_column="0"-->
+    <!--        android:fontFamily="@font/aclonica"-->
+    <!--        android:text="@string/opponent_chain"-->
+    <!--        android:textColor="@color/flo_blue"-->
+    <!--        android:textSize="15sp" />-->
 
     <TextView
         android:id="@+id/move_details"
@@ -137,10 +138,10 @@
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="0"
-        android:layout_gravity="end"
+        android:layout_gravity="center"
         android:fontFamily="@font/aclonica"
-        android:gravity="end"
-        android:text="@string/move_detail"
+        android:gravity="center"
+        android:text="@string/opponent_chain"
         android:textColor="@color/flo_blue"
         android:textSize="16sp" />
 

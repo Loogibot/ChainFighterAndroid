@@ -1,34 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="3dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/FirstMoveImgResult"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_weight="1"
-        android:background="@drawable/flo_blue_back"
-        android:contentDescription="FIRST MOVES COMPARISON RESULTS" />
+    <TextView
+        android:id="@+id/final_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="@string/result"
+        android:textColor="@color/flo_blue"
+        android:textSize="16sp" />
 
-    <ImageView
-        android:id="@+id/SecondMoveImgResult"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_weight="1"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
-        android:background="@drawable/flo_blue_back_2"
-        android:contentDescription="SECOND MOVES COMPARISON RESULTS" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp">
 
-    <ImageView
-        android:id="@+id/ThirdMoveImgResult"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_weight="1"
-        android:background="@drawable/flo_blue_back_3"
-        android:contentDescription="THIRD MOVES COMPARISON RESULTS" />
+        <ImageView
+            android:id="@+id/FirstMoveImgResult"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/flo_blue_back"
+            android:contentDescription="FIRST MOVES COMPARISON RESULTS" />
 
+        <ImageView
+            android:id="@+id/SecondMoveImgResult"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/flo_blue_back_2"
+            android:contentDescription="SECOND MOVES COMPARISON RESULTS" />
 
+        <ImageView
+            android:id="@+id/ThirdMoveImgResult"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/flo_blue_back_3"
+            android:contentDescription="THIRD MOVES COMPARISON RESULTS" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp">
+
+        <TextView
+            android:id="@+id/first_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="@string/result"
+            android:textColor="@color/flo_blue"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/second_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="@string/result"
+            android:textColor="@color/flo_blue"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/third_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="@string/result"
+            android:textColor="@color/flo_blue"
+            android:textSize="12sp" />
+    </LinearLayout>
 </LinearLayout>

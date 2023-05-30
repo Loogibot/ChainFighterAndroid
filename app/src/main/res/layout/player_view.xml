@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp">
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/moveResult"-->
+    <!--        android:layout_width="200dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_row="0"-->
+    <!--        android:layout_column="0"-->
+    <!--        android:layout_gravity="start"-->
+    <!--        android:fontFamily="@font/aclonica"-->
+    <!--        android:padding="3dp"-->
+    <!--        android:text="@string/result"-->
+    <!--        android:textColor="@color/flo_blue"-->
+    <!--        android:textSize="16sp" />-->
 
     <TextView
-        android:id="@+id/moveResult"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:layout_gravity="start"
-        android:fontFamily="@font/aclonica"
-        android:padding="3dp"
-        android:text="@string/result"
-        android:textColor="@color/flo_blue"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/playerChain"
+        android:id="@+id/playerChainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="0"
         android:layout_column="0"
-        android:layout_gravity="end"
+        android:layout_gravity="center"
         android:fontFamily="@font/aclonica"
+        android:gravity="center"
         android:padding="3dp"
         android:text="@string/player_chain"
-        android:textColor="@color/flo_blue" />
+        android:textColor="@color/flo_blue"
+        android:textSize="16sp" />
 
     <!-- move images -->
     <LinearLayout

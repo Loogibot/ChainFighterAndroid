@@ -9,15 +9,19 @@
 
     <ImageView
         android:id="@+id/titleName"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/startGame"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:contentDescription="@string/app_name"
-        android:rotationX="-15"
-        app:srcCompat="@drawable/cf_title_name" />
+        android:rotationX="-10"
+        app:srcCompat="@drawable/chain_fighter_title" />
+
+    <!-- rotation
+            android:rotationX="-10"
+    -->
 
     <Button
         android:id="@+id/startGame"
