@@ -6,6 +6,7 @@ import android.widget.ImageView
 import com.loogibot.chainfighter.gamestate.chainCompareResult
 import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.player.Chain
+import com.loogibot.chainfighter.player.Players
 
 // called in gameStart from MainActivity
 var results: ArrayList<String> = arrayListOf()
@@ -25,6 +26,7 @@ fun drawMoves(
     val firstMoveComparisonResult = uiObj[18] as ImageView
     val secondMoveComparisonResult = uiObj[19] as ImageView
     val thirdMoveComparisonResult = uiObj[20] as ImageView
+
 
     if (pFirstMoveImage.drawable == null) {
         firstMoveInChain(

@@ -4,19 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/teal_50">
 
-    <Button
-        android:id="@+id/to_titlescreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="170dp"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/to_titlescreen"
-        android:textColor="@color/teal_200" />
 
     <TextView
         android:id="@+id/final_result"
@@ -33,7 +20,21 @@
         android:fontFamily="@font/aclonica"
         android:text="SOMEONE WON!"
         android:textAlignment="center"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/flo_red"
         android:textSize="36sp" />
 
+    <Button
+        android:id="@+id/to_titlescreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="170dp"
+        android:background="@drawable/flo_blue_wide_box"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/to_titlescreen"
+        android:textColor="@color/hi_green" />
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.loogibot.chainfighter
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndgamepageBinding
@@ -29,6 +30,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun gameStart() {
+
         if (Players.turnManager == 0) {
             Players.playerHealth = 200
             Players.opponentHealth = 200
@@ -54,13 +56,15 @@ open class MainActivity : AppCompatActivity() {
 
     private fun addMoveToChain(mv: Move) {
 
-        if (Players.pChain.chainCost == 2) {
-            binding.moveButtonView.kickButton.isEnabled = false
-            binding.moveButtonView.kickButton.setBackgroundColor(resources.getColor(R.color.teal_200))
-        }
-
         Players.pChain.chainManager(mv)
         Players.oChain.chainManager(randomMove())
+
+        when (Players.pChain.chainCost) {
+            3 -> binding.moveButtonView.kickButton.visibility = View.GONE
+            4 -> binding.moveButtonView.punchButton.visibility = View.GONE
+            5 -> binding.moveButtonView.grabButton.visibility = View.GONE
+        }
+
 
         // pass around elements from MainActivity
         val uIObjectsList: List<Any> = listOf(
