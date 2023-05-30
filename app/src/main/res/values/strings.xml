@@ -23,8 +23,8 @@
     <string name="player_hp" >PLAYER HP IS 200</string>
     <string name="opponent_hp" >OPPONENT HP IS 200</string>
 
-    <string name="player_chain" >YOUR CHAIN OF MOVES ARE </string>
-    <string name="opponent_chain" >OPPONENT CHAIN OF MOVES ARE </string>
+    <string name="player_chain" >PLAYER CHAIN </string>
+    <string name="opponent_chain" >OPPONENT CHAIN </string>
 
     <string name="kick" >KICK</string>
     <string name="punch" >PUNCH</string>
