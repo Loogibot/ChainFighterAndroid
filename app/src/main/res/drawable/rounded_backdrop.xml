@@ -6,14 +6,14 @@
     <item>
         <shape>
             <gradient
-                android:angle="90"
-                android:endColor="@color/flo_green"
-                android:startColor="@color/hi_blue"
+                android:angle="100"
+                android:endColor="@color/hi_pink"
+                android:startColor="@color/flo_blue"
                 android:useLevel="false" />
-            <corners android:radius="20dp" />
+            <corners android:radius="12dp" />
             <stroke
                 android:width="3dp"
-                android:color="@color/hi_blue" />
+                android:color="@color/flo_blue" />
         </shape>
     </item>
 

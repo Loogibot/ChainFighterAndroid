@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="3dp"
-    android:background="@color/flo_green">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/moveResult"
@@ -30,99 +28,99 @@
         android:text="@string/player_chain"
         android:textColor="@color/flo_blue" />
 
+    <!-- move images -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_row="1"
-        android:layout_column="0">
+        android:layout_column="0"
+        android:layout_marginBottom="3dp">
 
         <ImageView
             android:id="@+id/PFirstMoveImg"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:background="@color/hi_green"
+            android:background="@drawable/hi_green_back"
             android:contentDescription="@string/player_chain"
             android:maxHeight="200dp"
-            android:minHeight="70dp" />
+            android:minHeight="70dp"
+            android:paddingTop="60dp" />
 
         <ImageView
             android:id="@+id/PSecondMoveImg"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:layout_gravity="center"
+            android:layout_gravity="end"
             android:layout_weight="1"
-            android:background="@color/hi_green"
+            android:background="@drawable/yellow_back"
             android:contentDescription="@string/player_chain"
             android:maxHeight="200dp"
-            android:minHeight="70dp" />
+            android:minHeight="70dp"
+            android:paddingTop="60dp" />
 
         <ImageView
             android:id="@+id/PThirdMoveImg"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_gravity="end"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:background="@color/hi_green"
+            android:background="@drawable/red_back"
             android:contentDescription="@string/player_chain"
             android:maxHeight="200dp"
-            android:minHeight="70dp" />
+            android:minHeight="70dp"
+            android:paddingTop="60dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="0"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/flo_blue_back"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/PFirstMoveTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="@color/flo_blue"
+            android:background="@drawable/box_1"
             android:fontFamily="@font/aclonica"
-            android:padding="3dp"
+            android:gravity="center"
+            android:padding="6dp"
             android:text="@string/player_s_first_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/hi_yellow" />
 
         <TextView
             android:id="@+id/PSecondMoveTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="@color/flo_blue"
+            android:background="@drawable/box_2"
             android:fontFamily="@font/aclonica"
-            android:padding="3dp"
+            android:gravity="center"
+            android:padding="6dp"
             android:text="@string/player_s_second_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/hi_yellow" />
 
         <TextView
             android:id="@+id/PThirdMoveTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="@color/flo_blue"
+            android:background="@drawable/box_3"
             android:fontFamily="@font/aclonica"
-            android:padding="3dp"
+            android:gravity="center"
+            android:padding="6dp"
             android:text="@string/player_s_third_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/hi_yellow" />
     </LinearLayout>
-
 
     <ProgressBar
         android:id="@+id/playerHPBar"
@@ -131,7 +129,7 @@
         android:layout_height="40dp"
         android:layout_row="2"
         android:layout_column="0"
-        android:background="@color/hi_yellow"
+        android:background="@drawable/flo_green_back"
         android:max="200" />
 
     <TextView
@@ -143,6 +141,6 @@
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/aclonica"
         android:text="@string/player_hp"
-        android:textColor="@color/flo_green" />
+        android:textColor="@color/flo_blue" />
 
 </GridLayout>

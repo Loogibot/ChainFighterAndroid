@@ -9,6 +9,8 @@
     tools:context=".MainActivity">
 
     <!-- opponent view -->
+    <!-- results view -->
+
     <include
         android:id="@+id/opponent_view"
         layout="@layout/opponent_view"
@@ -17,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!-- results view -->
+
     <include
         android:id="@+id/move_results"
         layout="@layout/move_results"
@@ -34,7 +36,6 @@
         layout="@layout/player_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         app:layout_constraintBottom_toTopOf="@id/move_button_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +46,7 @@
         android:id="@+id/move_button_view"
         layout="@layout/move_buttons"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
