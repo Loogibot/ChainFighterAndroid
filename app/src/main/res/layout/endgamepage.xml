@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_50">
-
+    android:background="@color/background_color">
 
     <TextView
         android:id="@+id/final_result"
@@ -18,9 +17,9 @@
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="294dp"
         android:fontFamily="@font/aclonica"
-        android:text="SOMEONE WON!"
+        android:text="@string/someone_won"
         android:textAlignment="center"
-        android:textColor="@color/flo_red"
+        android:textColor="@color/flo_blue"
         android:textSize="36sp" />
 
     <Button
@@ -36,5 +35,6 @@
         android:background="@drawable/flo_blue_wide_box"
         android:fontFamily="@font/aclonica"
         android:text="@string/to_titlescreen"
-        android:textColor="@color/hi_green" />
+        android:textColor="@color/button_text_color"
+        android:textSize="24sp" />
 </RelativeLayout>

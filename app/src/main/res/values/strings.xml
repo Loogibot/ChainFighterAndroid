@@ -42,5 +42,6 @@
     <string name="first_moves_comparison_results">FIRST MOVES COMPARISON RESULTS</string>
     <string name="second_moves_comparison_results">SECOND MOVES COMPARISON RESULTS</string>
     <string name="third_moves_comparison_results">THIRD MOVES COMPARISON RESULTS</string>
+    <string name="someone_won">SOMEONE WON!</string>
 
 </resources>
