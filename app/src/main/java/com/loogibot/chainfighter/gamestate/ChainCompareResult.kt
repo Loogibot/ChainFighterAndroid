@@ -1,7 +1,5 @@
 package com.loogibot.chainfighter.gamestate
 
-import com.loogibot.chainfighter.ui.MoveResult
-
 fun chainCompareResult(resultsList: ArrayList<String>): String {
     resultsList.removeAll(listOf(MoveResult.cancel.resultString).toSet())
 

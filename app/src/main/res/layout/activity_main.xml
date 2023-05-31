@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hi_blue"
+    android:background="@color/background_color"
     android:padding="3dp"
     tools:context=".MainActivity">
 
     <!-- opponent view -->
-    <!-- results view -->
-
     <include
         android:id="@+id/opponent_view"
         layout="@layout/opponent_view"
@@ -20,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- results view -->
     <include
         android:id="@+id/move_results"
         layout="@layout/move_results"
@@ -32,6 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opponent_view" />
+
     <!-- player view -->
     <include
         android:id="@+id/player_view"
@@ -44,11 +44,12 @@
         app:layout_constraintTop_toBottomOf="@+id/opponent_view"
         app:layout_constraintVertical_bias="0.9" />
 
+    <!-- buttons view -->
     <include
         android:id="@+id/move_button_view"
         layout="@layout/move_buttons"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

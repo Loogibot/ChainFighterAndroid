@@ -1,7 +1,6 @@
 package com.loogibot.chainfighter.gamestate
 
 import com.loogibot.chainfighter.moves.Move
-import com.loogibot.chainfighter.ui.MoveResult
 
 fun moveCompare(playerMove: Move, opponentMove: Move): MoveResult.Results.ChainResult {
 

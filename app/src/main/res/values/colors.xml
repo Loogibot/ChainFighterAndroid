@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="light_coral">#E6687B</color>
-    <color name="coral_ish">#AF4F5E</color>
-    <color name="odd_gray">#AFD5D5</color>
-    <color name="teal_400">#FF02B1A9</color>
-    <color name="teal_200">#FF01DAC5</color>
-    <color name="teal_50">#FFBFF3F2</color>
-    <color name="teal_700">#FF097786</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
@@ -20,4 +14,7 @@
     <color name="flo_red">#ef0c4d</color>
     <color name="hi_pink">#d9aeff</color>
 
+    <!-- day/night -->
+    <color name="background_color">?attr/backgroundColor</color>
+    <color name="button_text_color">?attr/colorPrimary</color>
 </resources>
