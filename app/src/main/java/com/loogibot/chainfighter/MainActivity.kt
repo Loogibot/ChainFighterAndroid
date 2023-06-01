@@ -67,7 +67,7 @@ open class MainActivity : AppCompatActivity() {
 
         // pass around elements from MainActivity
         val uIObjectsList: List<Any> = listOf(
-            binding.moveResults.finalResult,
+            binding.moveResults,
             binding.opponentView.moveDetails,
 
             binding.playerView.playerHPBar,
@@ -107,11 +107,11 @@ open class MainActivity : AppCompatActivity() {
         Players.turnManager++
 
         if (Players.playerHealth <= 0) {
-            binding.moveResults.finalResult.text = R.string.plHP0.toString()
+//            binding.moveResults.finalResult.text = R.string.plHP0.toString()
             gameEnd(status)
         }
         if (Players.opponentHealth <= 0) {
-            binding.moveResults.finalResult.text = R.string.opHP0.toString()
+//            binding.moveResults.finalResult.text = R.string.opHP0.toString()
             gameEnd(status)
         }
     }

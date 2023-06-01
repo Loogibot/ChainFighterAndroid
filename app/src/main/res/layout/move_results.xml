@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="110dp"
     android:layout_margin="3dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/final_result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/aclonica"
-        android:gravity="center"
-        android:text="@string/result"
-        android:textColor="@color/flo_blue"
-        android:textSize="20sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/final_result"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:fontFamily="@font/aclonica"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/result"-->
+<!--        android:textColor="@color/flo_blue"-->
+<!--        android:textSize="20sp" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="80dp">
 
         <ImageView
             android:id="@+id/FirstMoveImgResult"
@@ -49,42 +49,39 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="30dp">
 
         <TextView
             android:id="@+id/first_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center_horizontal"
             android:text="@string/result"
-            android:textColor="@color/flo_blue"
+            android:textColor="@color/text_color_light"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/second_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center_horizontal"
             android:text="@string/result"
-            android:textColor="@color/flo_blue"
+            android:textColor="@color/text_color_light"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/third_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center_horizontal"
             android:text="@string/result"
-            android:textColor="@color/flo_blue"
+            android:textColor="@color/text_color_light"
             android:textSize="16sp" />
     </LinearLayout>
 </LinearLayout>

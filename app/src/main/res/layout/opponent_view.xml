@@ -14,6 +14,7 @@
         android:background="@drawable/flo_green_back"
         android:max="200" />
 
+    <!-- move images -->
     <TextView
         android:id="@+id/oppHpLabel"
         android:layout_width="wrap_content"
@@ -22,12 +23,11 @@
         android:layout_column="0"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/aclonica"
-        android:textSize="20sp"
         android:padding="3dp"
         android:text="@string/opponent_hp"
-        android:textColor="@color/text_color" />
+        android:textColor="@color/text_color"
+        android:textSize="20sp" />
 
-    <!-- move images -->
     <LinearLayout
         android:id="@+id/OChainImages"
         android:layout_width="match_parent"
@@ -94,7 +94,7 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_first_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/text_color" />
 
         <TextView
             android:id="@+id/OSecondMoveTitle"
@@ -106,7 +106,7 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_second_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/text_color" />
 
         <TextView
             android:id="@+id/OThirdMoveTitle"
@@ -118,20 +118,9 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_third_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/text_color" />
 
     </LinearLayout>
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/opponentMove"-->
-    <!--        android:layout_width="200dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_row="1"-->
-    <!--        android:layout_column="0"-->
-    <!--        android:fontFamily="@font/aclonica"-->
-    <!--        android:text="@string/opponent_chain"-->
-    <!--        android:textColor="@color/flo_blue"-->
-    <!--        android:textSize="15sp" />-->
 
     <TextView
         android:id="@+id/move_details"
@@ -143,7 +132,7 @@
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="@string/opponent_chain"
-        android:textColor="@color/flo_blue"
+        android:textColor="@color/text_color_light"
         android:textSize="16sp" />
 
 </GridLayout>

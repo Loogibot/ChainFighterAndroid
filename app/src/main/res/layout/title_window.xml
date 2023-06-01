@@ -24,7 +24,8 @@
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"
             android:rotationX="-10"
-            app:srcCompat="@drawable/chain_fighter_title" />
+            app:srcCompat="@drawable/chain_fighter_title"
+            app:tint="@color/image_tint" />
 
         <Button
             android:id="@+id/startGame"

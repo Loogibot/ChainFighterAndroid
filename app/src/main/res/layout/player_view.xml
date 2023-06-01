@@ -15,7 +15,7 @@
         android:gravity="center"
         android:padding="3dp"
         android:text="@string/player_chain"
-        android:textColor="@color/flo_blue"
+        android:textColor="@color/text_color_light"
         android:textSize="16sp" />
 
     <!-- move images -->

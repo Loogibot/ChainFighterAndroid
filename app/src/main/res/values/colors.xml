@@ -17,5 +17,9 @@
     <color name="background_color">#a9d8ff</color>
     <color name="button_text_color">#0069af</color>
     <color name="text_color">#0069af</color>
+    <color name="text_color_alt">#a9d8ff</color>
+    <color name="text_color_light">#0069af</color>
+    <color name="button_tint" />
+    <color name="image_tint" />
 
 </resources>
