@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp"
-    android:background="@drawable/red_back_2"
-    android:gravity="center"
-    android:padding="3dp">
+    android:layout_gravity="top|center"
+    android:gravity="top">
 
     <Button
         android:id="@+id/punchButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:layout_weight="1"
         android:background="@drawable/small_box_1"
@@ -18,12 +17,13 @@
         android:padding="5dp"
         android:text="@string/punch"
         android:textColor="@color/button_text_color"
-        android:textSize="12sp" />
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/kickButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:layout_weight="1"
         android:background="@drawable/small_box_2"
@@ -31,12 +31,13 @@
         android:padding="5dp"
         android:text="@string/kick"
         android:textColor="@color/button_text_color"
-        android:textSize="12sp" />
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/dodgeButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:layout_weight="1"
         android:background="@drawable/small_box_3"
@@ -44,12 +45,13 @@
         android:padding="5dp"
         android:text="@string/dodge"
         android:textColor="@color/button_text_color"
-        android:textSize="12sp" />
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/grabButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:layout_weight="1"
         android:background="@drawable/small_box_4"
@@ -57,12 +59,13 @@
         android:padding="5dp"
         android:text="@string/grab"
         android:textColor="@color/button_text_color"
-        android:textSize="12sp" />
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/shieldButton"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:layout_weight="1"
         android:background="@drawable/small_box_5"
@@ -70,5 +73,5 @@
         android:padding="5dp"
         android:text="@string/shield"
         android:textColor="@color/button_text_color"
-        android:textSize="12sp" />
+        android:textSize="16sp" />
 </LinearLayout>

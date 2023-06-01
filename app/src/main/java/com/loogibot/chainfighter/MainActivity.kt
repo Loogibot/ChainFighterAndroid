@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
-import com.loogibot.chainfighter.databinding.EndgamepageBinding
-import com.loogibot.chainfighter.databinding.TitlewindowBinding
+import com.loogibot.chainfighter.databinding.EndGameBinding
+import com.loogibot.chainfighter.databinding.TitleWindowBinding
 import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.MoveSource.M.m
@@ -17,8 +17,8 @@ open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val tBinding: TitleWindowBinding = TitleWindowBinding.inflate(layoutInflater)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val tBinding: TitlewindowBinding = TitlewindowBinding.inflate(layoutInflater)
         setContentView(tBinding.root)
 
         tBinding.startGame.setOnClickListener {
@@ -116,7 +116,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun gameEnd(final: String) {
-        val eBinding: EndgamepageBinding = EndgamepageBinding.inflate(layoutInflater)
+        val eBinding: EndGameBinding = EndGameBinding.inflate(layoutInflater)
         setContentView(eBinding.root)
 
         when (final) {
