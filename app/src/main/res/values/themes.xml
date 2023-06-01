@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.ChainFighter" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="Theme.ChainFighter" parent="Theme.AppCompat.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/flo_blue</item>
         <item name="colorPrimaryVariant">@color/flo_blue</item>

@@ -13,9 +13,9 @@
     <color name="flo_red">#ef0c4d</color>
     <color name="hi_pink">#d9aeff</color>
 
-    <!-- day/night -->
-    <color name="background_color">?attr/backgroundColor</color>
-    <color name="button_text_color">?attr/colorPrimary</color>
-    <color name="text_color">?attr/colorPrimaryVariant</color>
+    <!-- day -->
+    <color name="background_color">#a9d8ff</color>
+    <color name="button_text_color">#0069af</color>
+    <color name="text_color">#0069af</color>
 
 </resources>

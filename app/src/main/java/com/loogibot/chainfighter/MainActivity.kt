@@ -15,9 +15,10 @@ import com.loogibot.chainfighter.ui.drawMoves
 
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var tBinding: TitleWindowBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tBinding: TitleWindowBinding = TitleWindowBinding.inflate(layoutInflater)
+        var tBinding: TitleWindowBinding = TitleWindowBinding.inflate(layoutInflater)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(tBinding.root)
 
