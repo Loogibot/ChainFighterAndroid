@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import com.loogibot.chainfighter.gamestate.ResultFragment
 import com.loogibot.chainfighter.gamestate.chainCompareResult
 import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.player.Chain
@@ -30,6 +31,8 @@ fun drawMoves(
     val firstResultText = uiObj[21] as TextView
     val secondResultText = uiObj[22] as TextView
     val thirdResultText = uiObj[23] as TextView
+
+//    val resultTextFragment = uiObj[0] as TextView
 
     if (pFirstMoveImage.drawable == null) {
         firstMoveInChain(
@@ -109,6 +112,8 @@ fun thirdMoveInChain(
 
     results.add(thirdResult.resultString)
     thirdMoveComparisonResult.setImageResource(thirdResult.resultImage)
+
+    ResultFragment.newInstance(chainCompareResult(results))
 
     Log.v(TAG, "$results are the chain comparison results")
     Log.v(TAG, "${opponentChain.moveSetStr} is the opponent's chain")

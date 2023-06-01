@@ -16,9 +16,11 @@ import com.loogibot.chainfighter.ui.drawMoves
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var tBinding: TitleWindowBinding
+
+    //    private lateinit var fRBinding: FragmentResultBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var tBinding: TitleWindowBinding = TitleWindowBinding.inflate(layoutInflater)
+        tBinding = TitleWindowBinding.inflate(layoutInflater)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(tBinding.root)
 
@@ -101,6 +103,7 @@ open class MainActivity : AppCompatActivity() {
             getString(R.string.cancel)//24
         )
         drawMoves(Players.pChain, Players.oChain, uIObjectsList)
+
     }
 
     private fun moveResult(status: String) {

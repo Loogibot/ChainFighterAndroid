@@ -19,6 +19,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- opponent view -->
+
+        <!-- results view -->
         <include
             android:id="@+id/opponent_view"
             layout="@layout/opponent_view"
@@ -26,7 +28,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/move_results" />
 
-        <!-- results view -->
         <include
             android:id="@+id/move_results"
             layout="@layout/move_results"
