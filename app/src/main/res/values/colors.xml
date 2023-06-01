@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
@@ -14,7 +13,13 @@
     <color name="flo_red">#ef0c4d</color>
     <color name="hi_pink">#d9aeff</color>
 
-    <!-- day/night -->
-    <color name="background_color">?attr/backgroundColor</color>
-    <color name="button_text_color">?attr/colorPrimary</color>
+    <!-- day -->
+    <color name="background_color">#a9d8ff</color>
+    <color name="button_text_color">#0069af</color>
+    <color name="text_color">#0069af</color>
+    <color name="text_color_alt">#a9d8ff</color>
+    <color name="text_color_light">#0069af</color>
+    <color name="button_tint" />
+    <color name="image_tint" />
+
 </resources>

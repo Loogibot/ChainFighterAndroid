@@ -8,12 +8,13 @@
         android:id="@+id/opponentHPBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_row="0"
         android:layout_column="0"
         android:background="@drawable/flo_green_back"
         android:max="200" />
 
+    <!-- move images -->
     <TextView
         android:id="@+id/oppHpLabel"
         android:layout_width="wrap_content"
@@ -24,11 +25,11 @@
         android:fontFamily="@font/aclonica"
         android:padding="3dp"
         android:text="@string/opponent_hp"
-        android:textColor="@color/flo_blue" />
+        android:textColor="@color/text_color"
+        android:textSize="20sp" />
 
-    <!-- move images -->
     <LinearLayout
-        android:id="@+id/PChainImages"
+        android:id="@+id/OChainImages"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_row="2"
@@ -37,7 +38,7 @@
         <ImageView
             android:id="@+id/OFirstMoveImg"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="match_parent"
             android:layout_gravity="end"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
@@ -50,7 +51,7 @@
         <ImageView
             android:id="@+id/OSecondMoveImg"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="match_parent"
             android:layout_gravity="end"
             android:layout_weight="1"
             android:background="@drawable/yellow_box"
@@ -62,7 +63,7 @@
         <ImageView
             android:id="@+id/OThirdMoveImg"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="match_parent"
             android:layout_gravity="end"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
@@ -93,7 +94,7 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_first_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/text_color" />
 
         <TextView
             android:id="@+id/OSecondMoveTitle"
@@ -105,7 +106,7 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_second_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/text_color" />
 
         <TextView
             android:id="@+id/OThirdMoveTitle"
@@ -117,20 +118,9 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_third_move"
-            android:textColor="@color/hi_blue" />
+            android:textColor="@color/text_color" />
 
     </LinearLayout>
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/opponentMove"-->
-    <!--        android:layout_width="200dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_row="1"-->
-    <!--        android:layout_column="0"-->
-    <!--        android:fontFamily="@font/aclonica"-->
-    <!--        android:text="@string/opponent_chain"-->
-    <!--        android:textColor="@color/flo_blue"-->
-    <!--        android:textSize="15sp" />-->
 
     <TextView
         android:id="@+id/move_details"
@@ -142,7 +132,7 @@
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="@string/opponent_chain"
-        android:textColor="@color/flo_blue"
+        android:textColor="@color/text_color_light"
         android:textSize="16sp" />
 
 </GridLayout>
