@@ -2,22 +2,24 @@ package com.loogibot.chainfighter
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndGameBinding
 import com.loogibot.chainfighter.databinding.TitleWindowBinding
+import com.loogibot.chainfighter.gamestate.chainCompareResult
 import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
+import com.loogibot.chainfighter.ui.results
 
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var tBinding: TitleWindowBinding
 
-    //    private lateinit var fRBinding: FragmentResultBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         tBinding = TitleWindowBinding.inflate(layoutInflater)
@@ -61,6 +63,9 @@ open class MainActivity : AppCompatActivity() {
         Players.pChain.chainManager(mv)
         Players.oChain.chainManager(randomMove())
 
+        val builder = AlertDialog.Builder(this)
+
+
         when (Players.pChain.chainCost) {
             3 -> binding.moveButtonView.kickButton.visibility = View.GONE
             4 -> binding.moveButtonView.punchButton.visibility = View.GONE
@@ -69,7 +74,7 @@ open class MainActivity : AppCompatActivity() {
 
         // pass around elements from MainActivity
         val uIObjectsList: List<Any> = listOf(
-            binding.moveResults,
+            builder,
             binding.opponentView.moveDetails,
 
             binding.playerView.playerHPBar,

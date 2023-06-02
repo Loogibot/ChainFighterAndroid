@@ -4,10 +4,11 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import com.loogibot.chainfighter.gamestate.ResultFragment
+import androidx.appcompat.app.AlertDialog
 import com.loogibot.chainfighter.gamestate.chainCompareResult
 import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.player.Chain
+import com.loogibot.chainfighter.player.Players
 
 // called in gameStart from MainActivity
 var results: ArrayList<String> = arrayListOf()
@@ -31,6 +32,8 @@ fun drawMoves(
     val firstResultText = uiObj[21] as TextView
     val secondResultText = uiObj[22] as TextView
     val thirdResultText = uiObj[23] as TextView
+
+    val builder = uiObj[0] as AlertDialog.Builder
 
 //    val resultTextFragment = uiObj[0] as TextView
 
@@ -58,7 +61,8 @@ fun drawMoves(
             playerChain,
             opponentChain,
             thirdMoveComparisonResult,
-            thirdResultText
+            thirdResultText,
+            builder
         )
     }
 }
@@ -103,7 +107,8 @@ fun thirdMoveInChain(
     playerChain: Chain,
     opponentChain: Chain,
     thirdMoveComparisonResult: ImageView,
-    thirdResultText: TextView
+    thirdResultText: TextView,
+    builder: AlertDialog.Builder
 ) {
     pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
@@ -113,10 +118,26 @@ fun thirdMoveInChain(
     results.add(thirdResult.resultString)
     thirdMoveComparisonResult.setImageResource(thirdResult.resultImage)
 
-    ResultFragment.newInstance(chainCompareResult(results))
+    builder.setMessage(chainCompareResult(results))
+    val alertDialog: AlertDialog = builder.create()
+    // Set other dialog properties
+    alertDialog.setCancelable(true)
+    alertDialog.show()
 
     Log.v(TAG, "$results are the chain comparison results")
     Log.v(TAG, "${opponentChain.moveSetStr} is the opponent's chain")
     Log.v(TAG, "${playerChain.moveSetStr} is the player's chain")
     Log.v(TAG, "${chainCompareResult(results)} is the final result")
+
+    clearAllMoves()
+    clearAllResults()
+}
+
+fun clearAllMoves() {
+    Players.pChain.chainList.clear()
+    Players.oChain.chainList.clear()
+}
+
+fun clearAllResults() {
+    results.clear()
 }

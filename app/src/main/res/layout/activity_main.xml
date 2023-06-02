@@ -49,4 +49,10 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/final_result_fragment_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:name="com.loogibot.chainfighter.gamestate.ResultFragment" />-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
