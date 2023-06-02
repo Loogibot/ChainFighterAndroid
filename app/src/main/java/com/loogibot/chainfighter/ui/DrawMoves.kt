@@ -1,13 +1,15 @@
 package com.loogibot.chainfighter.ui
 
 import android.content.ContentValues.TAG
+import android.os.CountDownTimer
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import com.loogibot.chainfighter.gamestate.ResultFragment
+import androidx.appcompat.app.AlertDialog
 import com.loogibot.chainfighter.gamestate.chainCompareResult
 import com.loogibot.chainfighter.gamestate.moveCompare
 import com.loogibot.chainfighter.player.Chain
+import com.loogibot.chainfighter.player.Players
 
 // called in gameStart from MainActivity
 var results: ArrayList<String> = arrayListOf()
@@ -32,6 +34,8 @@ fun drawMoves(
     val secondResultText = uiObj[22] as TextView
     val thirdResultText = uiObj[23] as TextView
 
+    val builder = uiObj[0] as AlertDialog.Builder
+
 //    val resultTextFragment = uiObj[0] as TextView
 
     if (pFirstMoveImage.drawable == null) {
@@ -49,7 +53,8 @@ fun drawMoves(
             pSecondMoveImage,
             playerChain,
             opponentChain,
-            secondMoveComparisonResult, secondResultText
+            secondMoveComparisonResult,
+            secondResultText
         )
     } else {
         thirdMoveInChain(
@@ -60,6 +65,7 @@ fun drawMoves(
             thirdMoveComparisonResult,
             thirdResultText
         )
+        moveEnd(builder, uiObj)
     }
 }
 
@@ -113,10 +119,67 @@ fun thirdMoveInChain(
     results.add(thirdResult.resultString)
     thirdMoveComparisonResult.setImageResource(thirdResult.resultImage)
 
-    ResultFragment.newInstance(chainCompareResult(results))
-
     Log.v(TAG, "$results are the chain comparison results")
     Log.v(TAG, "${opponentChain.moveSetStr} is the opponent's chain")
     Log.v(TAG, "${playerChain.moveSetStr} is the player's chain")
     Log.v(TAG, "${chainCompareResult(results)} is the final result")
+}
+
+fun moveEnd(builder: AlertDialog.Builder, uiObj: List<Any>) {
+
+    builder.setMessage(chainCompareResult(results))
+    val alertDialog: AlertDialog = builder.create()
+    // Set other dialog properties
+
+    object : CountDownTimer(800, 100) {
+
+        // Callback function, fired on regular interval
+        override fun onTick(millisUntilFinished: Long) {
+            alertDialog.setCancelable(true)
+            alertDialog.show()
+        }
+
+        // Callback function, fired
+        // when the time is up
+        override fun onFinish() {
+            alertDialog.cancel()
+            clearAllMovesAndResults(uiObj)
+        }
+    }.start()
+}
+
+fun clearAllMovesAndResults(uiObj: List<Any>) {
+
+    val oFirstMoveImage: ImageView = uiObj[6] as ImageView
+    val oSecondMoveImage: ImageView = uiObj[7] as ImageView
+    val oThirdMoveImage: ImageView = uiObj[8] as ImageView
+
+    val pFirstMoveImage: ImageView = uiObj[12] as ImageView
+    val pSecondMoveImage: ImageView = uiObj[13] as ImageView
+    val pThirdMoveImage: ImageView = uiObj[14] as ImageView
+
+    val firstMoveComparisonResult = uiObj[18] as ImageView
+    val secondMoveComparisonResult = uiObj[19] as ImageView
+    val thirdMoveComparisonResult = uiObj[20] as ImageView
+
+    val firstResultText = uiObj[21] as TextView
+    val secondResultText = uiObj[22] as TextView
+    val thirdResultText = uiObj[23] as TextView
+
+    oFirstMoveImage.setImageResource(0)
+    oSecondMoveImage.setImageResource(0)
+    oThirdMoveImage.setImageResource(0)
+    pFirstMoveImage.setImageResource(0)
+    pSecondMoveImage.setImageResource(0)
+    pThirdMoveImage.setImageResource(0)
+    firstMoveComparisonResult.setImageResource(0)
+    secondMoveComparisonResult.setImageResource(0)
+    thirdMoveComparisonResult.setImageResource(0)
+    firstResultText.text = ""
+    secondResultText.text = ""
+    thirdResultText.text = ""
+
+    Players.pChain.chainList.clear()
+    Players.oChain.chainList.clear()
+    results.clear()
 }
