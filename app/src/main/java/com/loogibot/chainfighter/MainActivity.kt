@@ -86,6 +86,7 @@ open class MainActivity : AppCompatActivity() {
             binding.opponentView.OFirstMoveImg,//6
             binding.opponentView.OSecondMoveImg,
             binding.opponentView.OThirdMoveImg,
+
             binding.opponentView.OFirstMoveTitle,
             binding.opponentView.OSecondMoveTitle,
             binding.opponentView.OThirdMoveTitle,
@@ -93,6 +94,7 @@ open class MainActivity : AppCompatActivity() {
             binding.playerView.PFirstMoveImg,//12
             binding.playerView.PSecondMoveImg,
             binding.playerView.PThirdMoveImg,
+
             binding.playerView.PFirstMoveTitle,
             binding.playerView.PSecondMoveTitle,
             binding.playerView.PThirdMoveTitle,
