@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.os.CountDownTimer
 import android.util.Log
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.loogibot.chainfighter.gamestate.chainCompareResult
@@ -13,10 +14,13 @@ import com.loogibot.chainfighter.player.Players
 
 // called in gameStart from MainActivity
 var results: ArrayList<String> = arrayListOf()
+var damageApplied = 0
 fun drawMoves(
     playerChain: Chain, opponentChain: Chain, uiObj: List<Any>
 ) {
-    // draws moves when choice is made
+    // HP progress bars
+    val playerHPBar = uiObj[2] as ProgressBar
+    val opponentHPBar = uiObj[3] as ProgressBar
 
     // opponent ui set
     val oFirstMoveImage: ImageView = uiObj[6] as ImageView
@@ -55,7 +59,8 @@ fun drawMoves(
             opponentChain,
             firstMoveComparisonResult,
             firstResultText,
-            pFirstMoveTextView, oFirstMoveTextView
+            pFirstMoveTextView,
+            oFirstMoveTextView
         )
     } else if (pSecondMoveImage.drawable == null) {
         secondMoveInChain(
@@ -65,7 +70,8 @@ fun drawMoves(
             opponentChain,
             secondMoveComparisonResult,
             secondResultText,
-            pSecondMoveTextView, oSecondMoveTextView
+            pSecondMoveTextView,
+            oSecondMoveTextView
         )
     } else {
         thirdMoveInChain(
@@ -75,7 +81,10 @@ fun drawMoves(
             opponentChain,
             thirdMoveComparisonResult,
             thirdResultText,
-            pThirdMoveTextView, oThirdMoveTextView
+            pThirdMoveTextView,
+            oThirdMoveTextView,
+            playerHPBar,
+            opponentHPBar
         )
         object : CountDownTimer(800, 100) {
 
@@ -108,16 +117,13 @@ fun firstMoveInChain(
     firstResultText.text = firstResult.resultString
 
     pFirstMoveTextView.text =
-        playerChain.firstMove.name + " with " + playerChain.firstMove.cost + " cost, and " + playerChain.firstMove.damage + " damage "
+        playerChain.firstMove.name + " costs " + playerChain.firstMove.cost + ", deals " + playerChain.firstMove.damage + " damage "
 
     oFirstMoveTextView.text =
-        opponentChain.firstMove.name + " with " + opponentChain.firstMove.cost + " cost, and " + opponentChain.firstMove.damage + " damage "
+        opponentChain.firstMove.name + " costs " + opponentChain.firstMove.cost + ", deals " + opponentChain.firstMove.damage + " damage "
 
     results.add(firstResult.resultString)
     firstMoveComparisonResult.setImageResource(firstResult.resultImage)
-
-    Log.v(TAG, "${Players.pChain.chainCost} is the players.chain cost")
-    Log.v(TAG, "${playerChain.chainCost} is the playerChain cost")
 }
 
 fun secondMoveInChain(
@@ -136,16 +142,13 @@ fun secondMoveInChain(
     secondResultText.text = secondResult.resultString
 
     pSecondMoveTextView.text =
-        playerChain.secondMove.name + " with " + playerChain.secondMove.cost + " cost, and " + playerChain.secondMove.damage + " damage "
+        playerChain.secondMove.name + " costs " + playerChain.secondMove.cost + ", deals " + playerChain.secondMove.damage + " damage "
 
     oSecondMoveTextView.text =
-        opponentChain.firstMove.name + " with " + opponentChain.firstMove.cost + " cost, and " + opponentChain.firstMove.damage + " damage "
+        opponentChain.secondMove.name + " costs " + opponentChain.secondMove.cost + ", deals " + opponentChain.secondMove.damage + " damage "
 
     results.add(secondResult.resultString)
     secondMoveComparisonResult.setImageResource(secondResult.resultImage)
-
-    Log.v(TAG, "${Players.pChain.chainCost} is the players.chain cost")
-    Log.v(TAG, "${playerChain.chainCost} is the playerChain cost")
 }
 
 fun thirdMoveInChain(
@@ -156,31 +159,45 @@ fun thirdMoveInChain(
     thirdMoveComparisonResult: ImageView,
     thirdResultText: TextView,
     pThirdMoveTextView: TextView,
-    oThirdMoveTextView: TextView
+    oThirdMoveTextView: TextView,
+    playerHPBar: ProgressBar,
+    opponentHPBar: ProgressBar
 ) {
     pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
+
     val thirdResult = moveCompare(playerChain.thirdMove, opponentChain.thirdMove)
     thirdResultText.text = thirdResult.resultString
 
     pThirdMoveTextView.text =
-        playerChain.thirdMove.name + " with " + playerChain.thirdMove.cost + " cost, and " + playerChain.thirdMove.damage + " damage "
+        playerChain.thirdMove.name + " costs " + playerChain.thirdMove.cost + ", deals " + playerChain.thirdMove.damage + " damage "
 
     oThirdMoveTextView.text =
-        opponentChain.firstMove.name + " with " + opponentChain.firstMove.cost + " cost, and " + opponentChain.firstMove.damage + " damage "
+        opponentChain.thirdMove.name + " costs " + opponentChain.thirdMove.cost + ", deals " + opponentChain.thirdMove.damage + " damage "
 
     results.add(thirdResult.resultString)
     thirdMoveComparisonResult.setImageResource(thirdResult.resultImage)
-    playerChain.chainCost = 0
 
-    Log.v(TAG, " -------------------------------------------- ")
+    playerChain.totalDamage -= thirdResult.resultDamage
+    opponentChain.totalDamage -= thirdResult.resultDamage
+
+    playerHPBar.progress -= playerChain.totalDamage
+    opponentHPBar.progress -= opponentChain.totalDamage
+
+    Log.v(TAG, " ")
+    Log.v(TAG, "+------------------------------------------------+")
     Log.v(TAG, "$results are the chain comparison results")
     Log.v(TAG, "${opponentChain.moveSetStr} is the opponent's chain")
     Log.v(TAG, "${playerChain.moveSetStr} is the player's chain")
-    Log.v(TAG, "${chainCompareResult(results)} is the final result")
-    Log.v(TAG, "${Players.pChain.chainCost} is the players.chain cost")
+    Log.v(TAG, "${chainCompareResult(results).resultChainString} is the final result")
+    Log.v(TAG, "${chainCompareResult(results).resultDamage} is the final damage")
+    Log.v(TAG, " ")
     Log.v(TAG, "${playerChain.chainCost} is the playerChain cost")
-    Log.v(TAG, " -------------------------------------------- ")
+    Log.v(TAG, " ")
+    Log.v(TAG, "${playerHPBar.progress} is the player's hp")
+    Log.v(TAG, "${opponentHPBar.progress} is the opponent's hp")
+    Log.v(TAG, "+------------------------------------------------+")
+    Log.v(TAG, " ")
 
     playerChain.chainCost = 0
     opponentChain.chainCost = 0
@@ -189,7 +206,7 @@ fun thirdMoveInChain(
 fun moveEnd(builder: AlertDialog.Builder, uiObj: List<Any>) {
 
 //    builder.setView(R.layout.fragment_result)
-    builder.setMessage(chainCompareResult(results))
+    builder.setMessage(chainCompareResult(results).resultChainString)
     val alertDialog: AlertDialog = builder.create()
     // Set other dialog properties
 

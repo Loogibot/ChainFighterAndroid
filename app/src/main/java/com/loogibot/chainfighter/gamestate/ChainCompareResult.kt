@@ -1,17 +1,17 @@
 package com.loogibot.chainfighter.gamestate
 
-fun chainCompareResult(resultsList: ArrayList<String>): String {
+fun chainCompareResult(resultsList: ArrayList<String>): MoveResult.Results.ChainResult {
     resultsList.removeAll(listOf(MoveResult.cancel.resultString).toSet())
 
-    val finalResult: String =
+    val finalResult: MoveResult.Results.ChainResult =
         if (resultsList.count { it == MoveResult.opponentWin.resultString } == resultsList.count { it == MoveResult.playerWin.resultString }) {
-            MoveResult.cancel.resultChainString
+            MoveResult.cancel
         } else if (resultsList.count { it == MoveResult.playerWin.resultString } > resultsList.count { it == MoveResult.opponentWin.resultString }) {
-            MoveResult.playerWin.resultChainString
+            MoveResult.playerWin
         } else if (resultsList.count { it == MoveResult.opponentWin.resultString } > resultsList.count { it == MoveResult.playerWin.resultString }) {
-            MoveResult.opponentWin.resultChainString
+            MoveResult.opponentWin
         } else {
-            MoveResult.cancel.resultChainString
+            MoveResult.cancel
         }
     return finalResult
 }
