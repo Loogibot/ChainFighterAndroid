@@ -92,7 +92,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_first_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />
@@ -105,7 +105,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_second_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />
@@ -118,7 +118,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_third_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />

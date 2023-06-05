@@ -1,5 +1,7 @@
 package com.loogibot.chainfighter.player
 
+import android.content.ContentValues
+import android.util.Log
 import com.loogibot.chainfighter.moves.Move
 
 class Chain {
@@ -16,18 +18,27 @@ class Chain {
         chainList.add(m)
 
         firstMove = chainList.first()
-        secondMove =
-            chainList[if (chainList.lastIndex == 2) 1 else chainList.lastIndex]
+        secondMove = chainList[if (chainList.lastIndex == 2) 1 else chainList.lastIndex]
         thirdMove = chainList[chainList.lastIndex]
+
         moveSetStr += chainList[chainList.lastIndex].name + " "
         chainCost += chainList[chainList.lastIndex].cost
 
-//        Log.v(TAG, firstMove.name + " is the first move in the chain")
-//        Log.v(TAG, secondMove.name + " is the second move in the chain")
-//        Log.v(TAG, thirdMove.name + " is the third move in the chain")
-//        Log.v(TAG, chainList.size.toString() + " is the size of the chain")
-//        Log.v(TAG, chainList.lastIndex.toString() + " is the last index of the chain")
-//        Log.v(TAG, chainList.toString() + " is the chain")
+//        totalDamage = firstMove.damage + secondMove.damage + thirdMove.damage
+        chainList.forEach {
+            totalDamage += it.damage
+        }
 
+        Log.v(ContentValues.TAG, " ")
+        Log.v(ContentValues.TAG, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        Log.v(ContentValues.TAG, Players.player)
+        Log.v(
+            ContentValues.TAG, "first move ${firstMove.name} deals ${firstMove.damage} damage"
+        )
+        Log.v(ContentValues.TAG, "second move ${secondMove.name} deals ${secondMove.damage} damage")
+        Log.v(ContentValues.TAG, "third move ${thirdMove.name} deals ${thirdMove.damage} damage")
+        Log.v(ContentValues.TAG, "$totalDamage is the the chain's total damage")
+        Log.v(ContentValues.TAG, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        Log.v(ContentValues.TAG, " ")
     }
 }

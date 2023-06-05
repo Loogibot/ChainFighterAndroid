@@ -24,7 +24,7 @@ open class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         tBinding = TitleWindowBinding.inflate(layoutInflater)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        rFBinding = FragmentResultBinding.inflate(layoutInflater)
+//        rFBinding = FragmentResultBinding.inflate(layoutInflater)
         setContentView(tBinding.root)
 
         tBinding.startGame.setOnClickListener {
@@ -113,21 +113,18 @@ open class MainActivity : AppCompatActivity() {
             binding.moveResults.thirdResult,
 
             getString(R.string.cancel),//24
-            rFBinding.finalResult
+//            rFBinding.finalResult
         )
         drawMoves(Players.pChain, Players.oChain, uIObjectsList)
-
     }
 
     private fun moveResult(status: String) {
         Players.turnManager++
 
         if (Players.playerHealth <= 0) {
-//            binding.moveResults.finalResult.text = R.string.plHP0.toString()
             gameEnd(status)
         }
         if (Players.opponentHealth <= 0) {
-//            binding.moveResults.finalResult.text = R.string.opHP0.toString()
             gameEnd(status)
         }
     }
