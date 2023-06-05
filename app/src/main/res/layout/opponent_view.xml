@@ -94,7 +94,8 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_first_move"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/OSecondMoveTitle"
@@ -106,7 +107,8 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_second_move"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/OThirdMoveTitle"
@@ -118,7 +120,8 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/opponent_s_third_move"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

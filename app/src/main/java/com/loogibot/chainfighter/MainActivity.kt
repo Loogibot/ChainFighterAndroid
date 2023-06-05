@@ -6,24 +6,25 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndGameBinding
+import com.loogibot.chainfighter.databinding.FragmentResultBinding
 import com.loogibot.chainfighter.databinding.TitleWindowBinding
-import com.loogibot.chainfighter.gamestate.chainCompareResult
 import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
-import com.loogibot.chainfighter.ui.results
 
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var tBinding: TitleWindowBinding
+    private lateinit var rFBinding: FragmentResultBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         tBinding = TitleWindowBinding.inflate(layoutInflater)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        rFBinding = FragmentResultBinding.inflate(layoutInflater)
         setContentView(tBinding.root)
 
         tBinding.startGame.setOnClickListener {
@@ -63,13 +64,17 @@ open class MainActivity : AppCompatActivity() {
         Players.pChain.chainManager(mv)
         Players.oChain.chainManager(randomMove())
 
-        val builder = AlertDialog.Builder(this)
-
+        val builder =
+            AlertDialog.Builder(this)
 
         when (Players.pChain.chainCost) {
-            3 -> binding.moveButtonView.kickButton.visibility = View.GONE
-            4 -> binding.moveButtonView.punchButton.visibility = View.GONE
-            5 -> binding.moveButtonView.grabButton.visibility = View.GONE
+            0 -> binding.moveButtonView.kickButton.visibility = View.GONE
+            1 -> binding.moveButtonView.punchButton.visibility = View.GONE
+            2 -> binding.moveButtonView.grabButton.visibility = View.GONE
+
+            3 -> binding.moveButtonView.kickButton.visibility = View.VISIBLE
+            4 -> binding.moveButtonView.punchButton.visibility = View.VISIBLE
+            5 -> binding.moveButtonView.grabButton.visibility = View.VISIBLE
         }
 
         // pass around elements from MainActivity
@@ -87,7 +92,7 @@ open class MainActivity : AppCompatActivity() {
             binding.opponentView.OSecondMoveImg,
             binding.opponentView.OThirdMoveImg,
 
-            binding.opponentView.OFirstMoveTitle,
+            binding.opponentView.OFirstMoveTitle,//9
             binding.opponentView.OSecondMoveTitle,
             binding.opponentView.OThirdMoveTitle,
 
@@ -95,7 +100,7 @@ open class MainActivity : AppCompatActivity() {
             binding.playerView.PSecondMoveImg,
             binding.playerView.PThirdMoveImg,
 
-            binding.playerView.PFirstMoveTitle,
+            binding.playerView.PFirstMoveTitle,//15
             binding.playerView.PSecondMoveTitle,
             binding.playerView.PThirdMoveTitle,
 
@@ -107,7 +112,8 @@ open class MainActivity : AppCompatActivity() {
             binding.moveResults.secondResult,
             binding.moveResults.thirdResult,
 
-            getString(R.string.cancel)//24
+            getString(R.string.cancel),//24
+            rFBinding.finalResult
         )
         drawMoves(Players.pChain, Players.oChain, uIObjectsList)
 
