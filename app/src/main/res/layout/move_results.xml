@@ -5,17 +5,6 @@
     android:layout_margin="3dp"
     android:orientation="vertical">
 
-<!--    <TextView-->
-<!--        android:id="@+id/final_result"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:fontFamily="@font/aclonica"-->
-<!--        android:gravity="center"-->
-<!--        android:text="@string/result"-->
-<!--        android:textColor="@color/flo_blue"-->
-<!--        android:textSize="20sp" />-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp">
@@ -84,4 +73,5 @@
             android:textColor="@color/text_color_light"
             android:textSize="16sp" />
     </LinearLayout>
+
 </LinearLayout>

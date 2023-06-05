@@ -83,7 +83,8 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/player_s_first_move"
-            android:textColor="@color/hi_yellow" />
+            android:textColor="@color/hi_yellow"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/PSecondMoveTitle"
@@ -96,7 +97,8 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/player_s_second_move"
-            android:textColor="@color/hi_yellow" />
+            android:textColor="@color/hi_yellow"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/PThirdMoveTitle"
@@ -109,7 +111,8 @@
             android:gravity="center"
             android:padding="6dp"
             android:text="@string/player_s_third_move"
-            android:textColor="@color/hi_yellow" />
+            android:textColor="@color/hi_yellow"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <ProgressBar

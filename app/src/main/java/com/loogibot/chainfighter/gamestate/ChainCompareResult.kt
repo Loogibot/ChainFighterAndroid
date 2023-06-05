@@ -5,13 +5,13 @@ fun chainCompareResult(resultsList: ArrayList<String>): String {
 
     val finalResult: String =
         if (resultsList.count { it == MoveResult.opponentWin.resultString } == resultsList.count { it == MoveResult.playerWin.resultString }) {
-            MoveResult.cancel.resultString
-        } else if (resultsList.count { it == MoveResult.playerWin.resultString } >= 1) {
-            MoveResult.playerWin.resultString
-        } else if (resultsList.count { it == MoveResult.opponentWin.resultString } >= 1) {
-            MoveResult.opponentWin.resultString
+            MoveResult.cancel.resultChainString
+        } else if (resultsList.count { it == MoveResult.playerWin.resultString } > resultsList.count { it == MoveResult.opponentWin.resultString }) {
+            MoveResult.playerWin.resultChainString
+        } else if (resultsList.count { it == MoveResult.opponentWin.resultString } > resultsList.count { it == MoveResult.playerWin.resultString }) {
+            MoveResult.opponentWin.resultChainString
         } else {
-            MoveResult.cancel.resultString
+            MoveResult.cancel.resultChainString
         }
     return finalResult
 }

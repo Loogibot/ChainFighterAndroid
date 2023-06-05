@@ -11,7 +11,18 @@
         <item name="colorSecondaryVariant">@color/flo_orange</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/flo_blue</item>
+        <item name="android:statusBarColor">@color/flo_blue</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- on below line creating a theme for our Alert Dialog -->
+    <style name="AlertDialogCustom" parent="@style/Theme.AppCompat.DayNight.Dialog.Alert">
+        <!-- on below line adding text color for our text in alert dialog -->
+        <item name="android:textColor">@color/hi_pink</item>
+        <!-- on below line adding typeface for alert dialog text -->
+        <item name="android:typeface">monospace</item>
+        <!-- on below line setting text size for text -->
+        <item name="android:textSize">100sp</item>
+    </style>
+
 </resources>
