@@ -20,8 +20,8 @@
     <string name="plHP0">YOUR HP IS 0! YOU LOSE!</string>
     <string name="opHP0">OPPONENT HP IS 0! YOU WIN!</string>
 
-    <string name="player_hp">PLAYER HP IS 200</string>
-    <string name="opponent_hp">OPPONENT HP IS 200</string>
+    <string name="player_hp">PLAYER HP: 200</string>
+    <string name="opponent_hp">OPPONENT HP: 200</string>
 
     <string name="player_chain">PLAYER CHAIN </string>
     <string name="opponent_chain">OPPONENT CHAIN </string>
