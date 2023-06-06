@@ -85,8 +85,8 @@ open class MainActivity : AppCompatActivity() {
             binding.playerView.playerHPBar,
             binding.opponentView.opponentHPBar,
 
-            binding.playerView.plyrHpLabel,
-            binding.opponentView.oppHpLabel,
+            binding.playerView.playerHPText,//4
+            binding.opponentView.opponentHPText,
 
             binding.opponentView.OFirstMoveImg,//6
             binding.opponentView.OSecondMoveImg,
