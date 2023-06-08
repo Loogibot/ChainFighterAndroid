@@ -3,10 +3,12 @@ package com.loogibot.chainfighter.ui
 import android.content.ContentValues.TAG
 import android.os.CountDownTimer
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import com.loogibot.chainfighter.databinding.FinalResultBinding
+import com.loogibot.chainfighter.databinding.MoveResultsBinding
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.opponentWin
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.playerWin
 import com.loogibot.chainfighter.gamestate.chainCompareResult
@@ -16,10 +18,12 @@ import com.loogibot.chainfighter.player.Players
 
 // called in gameStart from MainActivity
 var results: ArrayList<String> = arrayListOf()
-var damageApplied = 0
 fun drawMoves(
     playerChain: Chain, opponentChain: Chain, uiObj: List<Any>
 ) {
+    // chain cost text
+    val playerChainCostText = uiObj[25] as TextView
+    val opponentChainCostText = uiObj[26] as TextView
     // HP progress bars
     val playerHPBar = uiObj[2] as ProgressBar
     val opponentHPBar = uiObj[3] as ProgressBar
@@ -54,7 +58,10 @@ fun drawMoves(
     val secondResultText = uiObj[22] as TextView
     val thirdResultText = uiObj[23] as TextView
 
-    val builder = uiObj[0] as AlertDialog.Builder
+    //final result
+    val finalResult = uiObj[27] as FinalResultBinding
+
+    val moveResults = uiObj[0] as MoveResultsBinding
 
     if (pFirstMoveImage.drawable == null) {
         firstMoveInChain(
@@ -65,7 +72,9 @@ fun drawMoves(
             firstMoveComparisonResult,
             firstResultText,
             pFirstMoveTextView,
-            oFirstMoveTextView
+            oFirstMoveTextView,
+            playerChainCostText,
+            opponentChainCostText
         )
     } else if (pSecondMoveImage.drawable == null) {
         secondMoveInChain(
@@ -76,7 +85,9 @@ fun drawMoves(
             secondMoveComparisonResult,
             secondResultText,
             pSecondMoveTextView,
-            oSecondMoveTextView
+            oSecondMoveTextView,
+            playerChainCostText,
+            opponentChainCostText
         )
     } else {
         thirdMoveInChain(
@@ -90,8 +101,8 @@ fun drawMoves(
             oThirdMoveTextView,
             playerHPBar,
             opponentHPBar,
-            playerHPText,
-            opponentHPText
+            playerChainCostText,
+            opponentChainCostText
         )
         object : CountDownTimer(1000, 100) {
 
@@ -100,15 +111,17 @@ fun drawMoves(
                 // pause
                 "PLAYER HP: ${Players.playerHealth}".also { playerHPText.text = it }
                 "OPPONENT HP: ${Players.opponentHealth}".also { opponentHPText.text = it }
+                moveEnd(finalResult, moveResults, uiObj)
             }
 
             // Callback function, fired when the time is up
             override fun onFinish() {
                 playerHPBar.progress = Players.playerHealth
                 opponentHPBar.progress = Players.opponentHealth
-                moveEnd(builder, uiObj)
             }
         }.start()
+        playerChain.chainCost = 0
+        opponentChain.chainCost = 0
     }
 }
 
@@ -120,12 +133,17 @@ fun firstMoveInChain(
     firstMoveComparisonResult: ImageView,
     firstResultText: TextView,
     pFirstMoveTextView: TextView,
-    oFirstMoveTextView: TextView
+    oFirstMoveTextView: TextView,
+    playerChainCostText: TextView,
+    opponentChainCostText: TextView
 ) {
     pFirstMoveImage.setImageResource(playerChain.firstMove.moveImg)
     oFirstMoveImage.setImageResource(opponentChain.firstMove.moveImg)
     val firstResult = moveCompare(playerChain.firstMove, opponentChain.firstMove)
     firstResultText.text = firstResult.resultString
+
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
 
     "${playerChain.firstMove.name} costs ${playerChain.firstMove.cost}, deals ${playerChain.firstMove.damage} damage ".also {
         pFirstMoveTextView.text = it
@@ -147,12 +165,17 @@ fun secondMoveInChain(
     secondMoveComparisonResult: ImageView,
     secondResultText: TextView,
     pSecondMoveTextView: TextView,
-    oSecondMoveTextView: TextView
+    oSecondMoveTextView: TextView,
+    playerChainCostText: TextView,
+    opponentChainCostText: TextView
 ) {
     pSecondMoveImage.setImageResource(playerChain.secondMove.moveImg)
     oSecondMoveImage.setImageResource(opponentChain.secondMove.moveImg)
     val secondResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
     secondResultText.text = secondResult.resultString
+
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
 
     (playerChain.secondMove.name + " costs " + playerChain.secondMove.cost + ", deals " + playerChain.secondMove.damage + " damage ").also {
         pSecondMoveTextView.text = it
@@ -177,14 +200,17 @@ fun thirdMoveInChain(
     oThirdMoveTextView: TextView,
     playerHPBar: ProgressBar,
     opponentHPBar: ProgressBar,
-    playerHPText: TextView,
-    opponentHPText: TextView
+    playerChainCostText: TextView,
+    opponentChainCostText: TextView
 ) {
     pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
 
     val thirdResult = moveCompare(playerChain.thirdMove, opponentChain.thirdMove)
     thirdResultText.text = thirdResult.resultString
+
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
 
     (playerChain.thirdMove.name + " costs " + playerChain.thirdMove.cost + ", deals " + playerChain.thirdMove.damage + " damage ").also {
         pThirdMoveTextView.text = it
@@ -213,28 +239,23 @@ fun thirdMoveInChain(
     Log.v(TAG, "${opponentHPBar.progress} is the opponent's hp")
     Log.v(TAG, "+----------------------------------------+")
 
-    playerChain.chainCost = 0
-    opponentChain.chainCost = 0
 }
 
-fun moveEnd(builder: AlertDialog.Builder, uiObj: List<Any>) {
-
-//    builder.setView(R.layout.fragment_result)
-    builder.setMessage(chainCompareResult(results).resultChainString)
-    val alertDialog: AlertDialog = builder.create()
-    // Set other dialog properties
+fun moveEnd(finalResult: FinalResultBinding, moveResults: MoveResultsBinding, uiObj: List<Any>) {
 
     object : CountDownTimer(800, 100) {
 
         // Callback function, fired on regular interval
         override fun onTick(millisUntilFinished: Long) {
-            alertDialog.setCancelable(true)
-            alertDialog.show()
+            moveResults.moveResultsSet.visibility = View.GONE
+            finalResult.finalResultText.text = chainCompareResult(results).resultChainString
+            finalResult.root.visibility = View.VISIBLE
         }
 
         // Callback function, fired when the time is up
         override fun onFinish() {
-            alertDialog.cancel()
+            moveResults.moveResultsSet.visibility = View.VISIBLE
+            finalResult.root.visibility = View.GONE
             clearAllMovesAndResults(uiObj)
         }
     }.start()

@@ -5,7 +5,7 @@
     android:layout_margin="3dp">
 
     <TextView
-        android:id="@+id/playerChainText"
+        android:id="@+id/player_chain_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="0"

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/small_box_2"
-    android:padding="26dp"
-    tools:context=".gamestate.ResultFragment">
+    android:background="@drawable/red_back_2"
+    android:padding="26dp">
 
     <TextView
-        android:id="@+id/final_result"
+        android:id="@+id/final_result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -19,4 +17,4 @@
         android:textColor="@color/text_color_light"
         android:textSize="40sp" />
 
-</FrameLayout>
+</RelativeLayout>

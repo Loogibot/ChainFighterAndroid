@@ -20,7 +20,9 @@ class Chain {
         firstMove = chainList.first()
         secondMove = chainList[if (chainList.lastIndex == 2) 1 else chainList.lastIndex]
         thirdMove = chainList[chainList.lastIndex]
+
         moveSetStr += chainList[chainList.lastIndex].name + " "
+        chainCost += chainList[chainList.lastIndex].cost
 
         if (chainList.size == 3) {
             chainCost = chainCostCalc(chainList)
