@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndGameBinding
 import com.loogibot.chainfighter.databinding.TitleWindowBinding
+import com.loogibot.chainfighter.gamestate.MoveResult
 import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.moves.Move
 import com.loogibot.chainfighter.moves.MoveSource.M.m
@@ -117,7 +118,8 @@ open class MainActivity : AppCompatActivity() {
             binding.opponentView.opponentChainCost,
             binding.moveResults.finalResult//27
         )
-        drawMoves(Players.pChain, Players.oChain, uIObjectsList)
+
+        moveResult(drawMoves(Players.pChain, Players.oChain, uIObjectsList))
     }
 
     private fun makeAllMovesVisible() {
@@ -126,7 +128,7 @@ open class MainActivity : AppCompatActivity() {
         binding.moveButtonView.grabButton.visibility = View.VISIBLE
     }
 
-    private fun moveResult(status: String) {
+    private fun moveResult(status: MoveResult.Results.ChainResult) {
         Players.turnManager++
 
         if (Players.playerHealth <= 0) {
@@ -137,13 +139,13 @@ open class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun gameEnd(final: String) {
+    private fun gameEnd(final : MoveResult.Results.ChainResult) {
         val eBinding: EndGameBinding = EndGameBinding.inflate(layoutInflater)
         setContentView(eBinding.root)
 
         when (final) {
-            Players.player -> eBinding.finalResult.text = getString(R.string.you_won)
-            Players.opponent -> eBinding.finalResult.text = getString(R.string.opponent_won)
+            MoveResult.playerWin -> eBinding.finalResult.text = getString(R.string.you_won)
+            MoveResult.opponentWin -> eBinding.finalResult.text = getString(R.string.opponent_won)
         }
         eBinding.toTitlescreen.setOnClickListener {
             recreate()
