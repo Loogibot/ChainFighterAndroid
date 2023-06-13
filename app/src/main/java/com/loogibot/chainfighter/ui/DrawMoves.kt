@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.loogibot.chainfighter.databinding.FinalResultBinding
 import com.loogibot.chainfighter.databinding.MoveResultsBinding
 import com.loogibot.chainfighter.gamestate.MoveResult
-import com.loogibot.chainfighter.gamestate.MoveResult.Results.neutral
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.opponentWin
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.playerWin
 import com.loogibot.chainfighter.gamestate.chainCompareResult
@@ -94,21 +93,21 @@ fun drawMoves(
         )
     } else {
         endResult =
-        thirdMoveInChain(
-            oThirdMoveImage,
-            pThirdMoveImage,
-            playerChain,
-            opponentChain,
-            thirdMoveComparisonResult,
-            thirdResultText,
-            pThirdMoveTextView,
-            oThirdMoveTextView,
-            playerHPBar,
-            opponentHPBar,
-            playerChainCostText,
-            opponentChainCostText
-        )
-        object : CountDownTimer(1000, 100) {
+            thirdMoveInChain(
+                oThirdMoveImage,
+                pThirdMoveImage,
+                playerChain,
+                opponentChain,
+                thirdMoveComparisonResult,
+                thirdResultText,
+                pThirdMoveTextView,
+                oThirdMoveTextView,
+                playerHPBar,
+                opponentHPBar,
+                playerChainCostText,
+                opponentChainCostText
+            )
+        object : CountDownTimer(1000, 200) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {

@@ -16,7 +16,7 @@
         android:background="@drawable/small_box_5"
         android:backgroundTintMode="src_in"
         android:fontFamily="@font/aclonica"
-        android:padding="5dp"
+        android:padding="3dp"
         android:text="@string/punch"
         android:textColor="@color/button_text_color"
         android:textSize="16sp" />
@@ -30,7 +30,7 @@
         android:layout_weight="1"
         android:background="@drawable/small_box_3"
         android:fontFamily="@font/aclonica"
-        android:padding="5dp"
+        android:padding="3dp"
         android:text="@string/kick"
         android:textColor="@color/button_text_color"
         android:textSize="16sp" />
@@ -44,7 +44,7 @@
         android:layout_weight="1"
         android:background="@drawable/small_box_4"
         android:fontFamily="@font/aclonica"
-        android:padding="5dp"
+        android:padding="3dp"
         android:text="@string/dodge"
         android:textColor="@color/button_text_color"
         android:textSize="16sp" />
@@ -59,7 +59,7 @@
         android:background="@drawable/small_box_1"
         android:backgroundTintMode="src_in"
         android:fontFamily="@font/aclonica"
-        android:padding="5dp"
+        android:padding="3dp"
         android:text="@string/grab"
         android:textColor="@color/button_text_color"
         android:textSize="16sp" />
@@ -73,7 +73,7 @@
         android:layout_weight="1"
         android:background="@drawable/small_box_2"
         android:fontFamily="@font/aclonica"
-        android:padding="5dp"
+        android:padding="3dp"
         android:text="@string/shield"
         android:textColor="@color/button_text_color"
         android:textSize="16sp" />
