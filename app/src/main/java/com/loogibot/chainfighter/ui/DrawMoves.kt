@@ -9,6 +9,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.loogibot.chainfighter.databinding.FinalResultBinding
 import com.loogibot.chainfighter.databinding.MoveResultsBinding
+import com.loogibot.chainfighter.gamestate.MoveResult
+import com.loogibot.chainfighter.gamestate.MoveResult.Results.neutral
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.opponentWin
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.playerWin
 import com.loogibot.chainfighter.gamestate.chainCompareResult
@@ -20,7 +22,8 @@ import com.loogibot.chainfighter.player.Players
 var results: ArrayList<String> = arrayListOf()
 fun drawMoves(
     playerChain: Chain, opponentChain: Chain, uiObj: List<Any>
-) {
+): MoveResult.Results.ChainResult {
+    var endResult: MoveResult.Results.ChainResult = MoveResult.neutral
     // chain cost text
     val playerChainCostText = uiObj[25] as TextView
     val opponentChainCostText = uiObj[26] as TextView
@@ -90,6 +93,7 @@ fun drawMoves(
             opponentChainCostText
         )
     } else {
+        endResult =
         thirdMoveInChain(
             oThirdMoveImage,
             pThirdMoveImage,
@@ -111,11 +115,11 @@ fun drawMoves(
                 // pause
                 "PLAYER HP: ${Players.playerHealth}".also { playerHPText.text = it }
                 "OPPONENT HP: ${Players.opponentHealth}".also { opponentHPText.text = it }
-                moveEnd(finalResult, moveResults, uiObj)
             }
 
             // Callback function, fired when the time is up
             override fun onFinish() {
+                moveEnd(finalResult, moveResults, uiObj)
                 playerHPBar.progress = Players.playerHealth
                 opponentHPBar.progress = Players.opponentHealth
             }
@@ -123,6 +127,7 @@ fun drawMoves(
         playerChain.chainCost = 0
         opponentChain.chainCost = 0
     }
+    return endResult
 }
 
 fun firstMoveInChain(
@@ -202,7 +207,7 @@ fun thirdMoveInChain(
     opponentHPBar: ProgressBar,
     playerChainCostText: TextView,
     opponentChainCostText: TextView
-) {
+): MoveResult.Results.ChainResult {
     pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
     oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
 
@@ -222,14 +227,15 @@ fun thirdMoveInChain(
 
     results.add(thirdResult.resultString)
     thirdMoveComparisonResult.setImageResource(thirdResult.resultImage)
+    val endResult: MoveResult.Results.ChainResult = chainCompareResult(results)
 
-    when (chainCompareResult(results)) {
+    when (endResult) {
         playerWin -> Players.opponentHealth -= playerChain.totalDamage
         opponentWin -> Players.playerHealth -= opponentChain.totalDamage
     }
 
     Log.v(TAG, "+----------------------------------------+")
-    Log.v(TAG, chainCompareResult(results).resultChainString)
+    Log.v(TAG, endResult.resultChainString)
     Log.v(TAG, "${playerChain.totalDamage} is the damage the player can deal")
     Log.v(TAG, "${opponentChain.totalDamage} is the damage the opponent can deal")
     Log.v(TAG, " ")
@@ -239,11 +245,12 @@ fun thirdMoveInChain(
     Log.v(TAG, "${opponentHPBar.progress} is the opponent's hp")
     Log.v(TAG, "+----------------------------------------+")
 
+    return endResult
 }
 
 fun moveEnd(finalResult: FinalResultBinding, moveResults: MoveResultsBinding, uiObj: List<Any>) {
 
-    object : CountDownTimer(800, 100) {
+    object : CountDownTimer(1000, 200) {
 
         // Callback function, fired on regular interval
         override fun onTick(millisUntilFinished: Long) {
