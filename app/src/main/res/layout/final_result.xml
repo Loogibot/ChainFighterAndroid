@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
-    android:background="@drawable/red_back_2"
-    android:padding="26dp">
+    android:layout_margin="6dp"
+    android:background="@drawable/red_back_2">
 
     <TextView
         android:id="@+id/final_result_text"
@@ -13,8 +14,12 @@
         android:layout_gravity="center"
         android:fontFamily="@font/aclonica"
         android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:text="@string/result"
         android:textColor="@color/text_color_light"
-        android:textSize="40sp" />
+        android:textSize="38sp" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

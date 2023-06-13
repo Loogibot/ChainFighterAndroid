@@ -4,47 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:background="@color/background_color"
-    android:padding="3dp"
+    android:padding="6dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- opponent view -->
+    <include
+        android:id="@+id/opponent_view"
+        layout="@layout/opponent_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
-        <!-- opponent view -->
-        <include
-            android:id="@+id/opponent_view"
-            layout="@layout/opponent_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/move_results" />
-        <!-- results view -->
-        <include
-            android:id="@+id/move_results"
-            layout="@layout/move_results"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <!-- results view -->
+    <include
+        android:id="@+id/move_results"
+        layout="@layout/move_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@id/player_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/opponent_view"
+        app:layout_constraintVertical_bias=".5" />
 
-        <!-- player view -->
-        <include
-            android:id="@+id/player_view"
-            layout="@layout/player_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <!-- player view -->
 
-        <!-- buttons view -->
-        <include
-            android:id="@+id/move_button_view"
-            layout="@layout/move_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+    <include
+        android:id="@+id/player_view"
+        layout="@layout/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@id/move_button_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opponent_view"
+        app:layout_constraintVertical_bias="1" />
+
+    <!-- buttons view -->
+    <include
+        android:id="@+id/move_button_view"
+        layout="@layout/move_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndGameBinding
@@ -69,9 +68,9 @@ open class MainActivity : AppCompatActivity() {
 //            AlertDialog.Builder(this, R.style.AlertDialogCustom)
 
         when (Players.pChain.chainCost) {
-            in 4..5 -> binding.moveButtonView.kickButton.visibility = View.GONE
-            in 5..6 -> binding.moveButtonView.punchButton.visibility = View.GONE
-            in 6..7 -> binding.moveButtonView.grabButton.visibility = View.GONE
+            in 3..4 -> binding.moveButtonView.kickButton.visibility = View.GONE
+            in 4..5 -> binding.moveButtonView.punchButton.visibility = View.GONE
+            in 5..6 -> binding.moveButtonView.grabButton.visibility = View.GONE
             in 0..3 -> makeAllMovesVisible()
         }
         Log.v(ContentValues.TAG, "##############################################")
@@ -139,7 +138,7 @@ open class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun gameEnd(final : MoveResult.Results.ChainResult) {
+    private fun gameEnd(final: MoveResult.Results.ChainResult) {
         val eBinding: EndGameBinding = EndGameBinding.inflate(layoutInflater)
         setContentView(eBinding.root)
 
