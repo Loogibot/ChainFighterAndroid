@@ -1,8 +1,7 @@
 package com.loogibot.chainfighter
 
-import android.content.ContentValues
 import android.os.Bundle
-import android.util.Log
+import android.os.CountDownTimer
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
@@ -65,13 +64,13 @@ open class MainActivity : AppCompatActivity() {
 
         when (Players.pChain.chainCost) {
             in 4..5 -> binding.moveButtonView.kickButton.visibility = View.GONE
-            in 4..6 -> binding.moveButtonView.punchButton.visibility = View.GONE
-            in 4..7 -> binding.moveButtonView.grabButton.visibility = View.GONE
-            in 0..3 -> makeAllMovesVisible()
+            in 5..6 -> binding.moveButtonView.grabButton.visibility = View.GONE
+            in 6..7 -> binding.moveButtonView.punchButton.visibility = View.GONE
         }
-        Log.v(ContentValues.TAG, "##############################################")
-        Log.v(ContentValues.TAG, "${Players.pChain.chainCost} is the player's chain cost")
-        Log.v(ContentValues.TAG, "##############################################")
+
+        when (Players.pChain.chainList.size) {
+            3 -> binding.moveButtonView.root.visibility = View.GONE
+        }
 
         // pass around elements from MainActivity
         val uIObjectsList: List<Any> = listOf(
@@ -111,27 +110,33 @@ open class MainActivity : AppCompatActivity() {
             getString(R.string.cancel),//24
             binding.playerView.playerChainCost,
             binding.opponentView.opponentChainCost,
-            binding.moveResults.finalResult//27
+            binding.moveResults.finalResult,//27
+            binding.moveButtonView
         )
 
         moveResult(drawMoves(Players.pChain, Players.oChain, uIObjectsList))
     }
 
-    private fun makeAllMovesVisible() {
-        binding.moveButtonView.kickButton.visibility = View.VISIBLE
-        binding.moveButtonView.punchButton.visibility = View.VISIBLE
-        binding.moveButtonView.grabButton.visibility = View.VISIBLE
-    }
-
     private fun moveResult(status: MoveResult.Results.ChainResult) {
         Players.turnManager++
 
-        if (Players.playerHealth <= 0) {
-            gameEnd(status)
-        }
-        if (Players.opponentHealth <= 0) {
-            gameEnd(status)
-        }
+        object : CountDownTimer(1000, 200) {
+
+            // Callback function, fired on regular interval
+            override fun onTick(millisUntilFinished: Long) {
+                // pause
+            }
+
+            // Callback function, fired when the time is up
+            override fun onFinish() {
+                if (Players.opponentHealth <= 0) {
+                    gameEnd(status)
+                }
+                if (Players.playerHealth <= 0) {
+                    gameEnd(status)
+                }
+            }
+        }.start()
     }
 
     private fun gameEnd(final: MoveResult.Results.ChainResult) {

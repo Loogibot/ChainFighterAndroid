@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="6dp">
+    android:layout_marginTop="6dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/move_results_set"
@@ -14,7 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:minHeight="60dp">
 
             <ImageView
                 android:id="@+id/FirstMoveImgResult"
@@ -45,7 +46,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="wrap_content"
+            android:minHeight="60dp">
 
             <TextView
                 android:id="@+id/first_result"
