@@ -10,7 +10,7 @@
         android:theme="@style/Theme.ChainFighter">
         <activity
             android:name=".MainActivity"
-            android:label="ch@*n f!g#+er"
+            android:label="CHAIN FIGHTER"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

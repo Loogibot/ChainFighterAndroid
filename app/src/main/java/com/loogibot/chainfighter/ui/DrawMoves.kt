@@ -62,7 +62,6 @@ fun drawMoves(
 
     //final result
     val finalResult = uiObj[27] as FinalResultBinding
-
     val moveResults = uiObj[0] as MoveResultsBinding
 
     if (pFirstMoveImage.drawable == null) {
