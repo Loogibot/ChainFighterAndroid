@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="6dp"
-    android:layout_margin="3dp">
+    android:layout_height="match_parent"
+    android:layout_margin="3dp"
+    android:paddingTop="3dp">
 
     <ProgressBar
         android:id="@+id/opponentHPBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_row="0"
         android:layout_column="0"
         android:background="@drawable/flo_green_back"
-        android:max="200"/>
+        android:max="200"
+        android:minHeight="40dp" />
 
     <!-- move images -->
     <TextView
@@ -86,7 +87,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_first_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />
@@ -99,7 +100,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_second_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />
@@ -112,11 +113,10 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_third_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />
-
     </LinearLayout>
 
     <TextView

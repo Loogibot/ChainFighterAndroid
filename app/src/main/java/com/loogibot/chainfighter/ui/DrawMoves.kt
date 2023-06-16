@@ -1,5 +1,6 @@
 package com.loogibot.chainfighter.ui
 
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.os.CountDownTimer
 import android.util.Log
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.loogibot.chainfighter.databinding.FinalResultBinding
+import com.loogibot.chainfighter.databinding.MoveButtonsBinding
 import com.loogibot.chainfighter.databinding.MoveResultsBinding
 import com.loogibot.chainfighter.gamestate.MoveResult
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.opponentWin
@@ -101,8 +103,6 @@ fun drawMoves(
                 thirdResultText,
                 pThirdMoveTextView,
                 oThirdMoveTextView,
-                playerHPBar,
-                opponentHPBar,
                 playerChainCostText,
                 opponentChainCostText
             )
@@ -145,8 +145,8 @@ fun firstMoveInChain(
     val firstResult = moveCompare(playerChain.firstMove, opponentChain.firstMove)
     firstResultText.text = firstResult.resultString
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/7".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/7".also { opponentChainCostText.text = it }
 
     "${playerChain.firstMove.name} costs ${playerChain.firstMove.cost}, deals ${playerChain.firstMove.damage} damage ".also {
         pFirstMoveTextView.text = it
@@ -177,8 +177,8 @@ fun secondMoveInChain(
     val secondResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
     secondResultText.text = secondResult.resultString
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/7".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/7".also { opponentChainCostText.text = it }
 
     (playerChain.secondMove.name + " costs " + playerChain.secondMove.cost + ", deals " + playerChain.secondMove.damage + " damage ").also {
         pSecondMoveTextView.text = it
@@ -201,8 +201,6 @@ fun thirdMoveInChain(
     thirdResultText: TextView,
     pThirdMoveTextView: TextView,
     oThirdMoveTextView: TextView,
-    playerHPBar: ProgressBar,
-    opponentHPBar: ProgressBar,
     playerChainCostText: TextView,
     opponentChainCostText: TextView
 ): MoveResult.Results.ChainResult {
@@ -212,8 +210,8 @@ fun thirdMoveInChain(
     val thirdResult = moveCompare(playerChain.thirdMove, opponentChain.thirdMove)
     thirdResultText.text = thirdResult.resultString
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/7".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/7".also { opponentChainCostText.text = it }
 
     (playerChain.thirdMove.name + " costs " + playerChain.thirdMove.cost + ", deals " + playerChain.thirdMove.damage + " damage ").also {
         pThirdMoveTextView.text = it
@@ -231,29 +229,28 @@ fun thirdMoveInChain(
         playerWin -> Players.opponentHealth -= playerChain.totalDamage
         opponentWin -> Players.playerHealth -= opponentChain.totalDamage
     }
-
-    Log.v(TAG, "+----------------------------------------+")
-    Log.v(TAG, endResult.resultChainString)
-    Log.v(TAG, "${playerChain.totalDamage} is the damage the player can deal")
-    Log.v(TAG, "${opponentChain.totalDamage} is the damage the opponent can deal")
-    Log.v(TAG, " ")
-    Log.v(TAG, "${playerChain.chainCost} is the playerChain cost")
-    Log.v(TAG, " ")
-    Log.v(TAG, "${playerHPBar.progress} is the player's hp")
-    Log.v(TAG, "${opponentHPBar.progress} is the opponent's hp")
-    Log.v(TAG, "+----------------------------------------+")
+    when (endResult) {
+        playerWin -> endResult.resultTotalDamage = playerChain.totalDamage
+        opponentWin -> endResult.resultTotalDamage = opponentChain.totalDamage
+    }
 
     return endResult
 }
 
 fun moveEnd(finalResult: FinalResultBinding, moveResults: MoveResultsBinding, uiObj: List<Any>) {
 
+    Log.v(ContentValues.TAG, "##############################################")
+    Log.v(TAG, "${chainCompareResult(results).resultTotalDamage} is the results total damage")
+    Log.v(ContentValues.TAG, "##############################################")
+
     object : CountDownTimer(1000, 200) {
 
         // Callback function, fired on regular interval
         override fun onTick(millisUntilFinished: Long) {
             moveResults.moveResultsSet.visibility = View.GONE
-            finalResult.finalResultText.text = chainCompareResult(results).resultChainString
+            (chainCompareResult(results).resultChainString + ", DEALING " + chainCompareResult(
+                results
+            ).resultTotalDamage + " DAMAGE!").also { finalResult.finalResultText.text = it }
             finalResult.root.visibility = View.VISIBLE
         }
 
@@ -292,6 +289,8 @@ fun clearAllMovesAndResults(uiObj: List<Any>) {
     val secondResultText = uiObj[22] as TextView
     val thirdResultText = uiObj[23] as TextView
 
+    val moveButtons = uiObj[28] as MoveButtonsBinding
+
     oFirstMoveImage.setImageResource(0)
     oSecondMoveImage.setImageResource(0)
     oThirdMoveImage.setImageResource(0)
@@ -316,6 +315,11 @@ fun clearAllMovesAndResults(uiObj: List<Any>) {
 
     Players.pChain.chainList.clear()
     Players.oChain.chainList.clear()
+
+    moveButtons.root.visibility = View.VISIBLE
+    moveButtons.kickButton.visibility = View.VISIBLE
+    moveButtons.punchButton.visibility = View.VISIBLE
+    moveButtons.grabButton.visibility = View.VISIBLE
 
     Players.pChain.moveSetStr = ""
     Players.oChain.moveSetStr = ""

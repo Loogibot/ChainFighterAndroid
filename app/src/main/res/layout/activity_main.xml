@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/background_color"
-    android:padding="6dp"
+    android:orientation="vertical"
+    android:padding="3dp"
     tools:context=".MainActivity">
 
     <!-- opponent view -->
@@ -13,34 +14,35 @@
         android:id="@+id/opponent_view"
         layout="@layout/opponent_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight=".8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- results view -->
     <include
         android:id="@+id/move_results"
         layout="@layout/move_results"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight=".3"
         app:layout_constraintBottom_toTopOf="@id/player_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/opponent_view"
-        app:layout_constraintVertical_bias=".1" />
+        app:layout_constraintTop_toBottomOf="@id/opponent_view" />
 
     <!-- player view -->
     <include
         android:id="@+id/player_view"
         layout="@layout/player_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight=".8"
         app:layout_constraintBottom_toTopOf="@id/move_button_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,10 +54,11 @@
         android:id="@+id/move_button_view"
         layout="@layout/move_buttons"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight=".15"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
