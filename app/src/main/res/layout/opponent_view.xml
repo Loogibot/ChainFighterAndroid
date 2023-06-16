@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="3dp"
-    android:paddingTop="6dp">
+    android:paddingTop="3dp">
 
     <ProgressBar
         android:id="@+id/opponentHPBar"
@@ -87,7 +87,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_first_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />
@@ -100,7 +100,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_second_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />
@@ -113,11 +113,10 @@
             android:layout_weight="1"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:padding="6dp"
+            android:padding="3dp"
             android:text="@string/opponent_s_third_move"
             android:textColor="@color/text_color"
             android:textSize="16sp" />
-
     </LinearLayout>
 
     <TextView

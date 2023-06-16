@@ -1,5 +1,6 @@
 package com.loogibot.chainfighter
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -18,6 +19,7 @@ import com.loogibot.chainfighter.ui.drawMoves
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var tBinding: TitleWindowBinding
+    private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,11 @@ open class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(tBinding.root)
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.nutty)
+        mediaPlayer.start()
+
         tBinding.startGame.setOnClickListener {
+            mediaPlayer.stop()
             setContentView(binding.root)
             gameStart()
             Players.pChain = Chain()
@@ -34,6 +40,9 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun gameStart() {
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.sixperiment)
+        mediaPlayer.start()
 
         if (Players.turnManager == 0) {
             Players.playerHealth = 200
@@ -62,10 +71,10 @@ open class MainActivity : AppCompatActivity() {
         Players.pChain.chainManager(mv)
         Players.oChain.chainManager(randomMove())
 
-        when (Players.pChain.chainCost) {
-            in 4..5 -> binding.moveButtonView.kickButton.visibility = View.GONE
-            in 5..6 -> binding.moveButtonView.grabButton.visibility = View.GONE
-            in 6..7 -> binding.moveButtonView.punchButton.visibility = View.GONE
+        when (7 - Players.pChain.chainCost) {
+            m.kick.cost -> binding.moveButtonView.kickButton.visibility = View.GONE
+            m.punch.cost -> binding.moveButtonView.punchButton.visibility = View.GONE
+            m.grab.cost -> binding.moveButtonView.grabButton.visibility = View.GONE
         }
 
         when (Players.pChain.chainList.size) {
@@ -118,7 +127,6 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun moveResult(status: MoveResult.Results.ChainResult) {
-        Players.turnManager++
 
         object : CountDownTimer(1000, 200) {
 
@@ -142,6 +150,9 @@ open class MainActivity : AppCompatActivity() {
     private fun gameEnd(final: MoveResult.Results.ChainResult) {
         val eBinding: EndGameBinding = EndGameBinding.inflate(layoutInflater)
         setContentView(eBinding.root)
+        mediaPlayer.stop()
+        mediaPlayer = MediaPlayer.create(this, R.raw.maxed_in)
+        mediaPlayer.start()
 
         when (final) {
             MoveResult.playerWin -> eBinding.finalResult.text = getString(R.string.you_won)
@@ -149,6 +160,7 @@ open class MainActivity : AppCompatActivity() {
         }
         eBinding.toTitlescreen.setOnClickListener {
             recreate()
+            mediaPlayer.stop()
             Players.playerHealth = 200
             Players.opponentHealth = 200
         }
