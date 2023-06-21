@@ -29,6 +29,7 @@ open class MainActivity : AppCompatActivity() {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.nutty)
         mediaPlayer.start()
+        mediaPlayer.isLooping = true
 
         tBinding.startGame.setOnClickListener {
             mediaPlayer.stop()
@@ -43,6 +44,7 @@ open class MainActivity : AppCompatActivity() {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.sixperiment)
         mediaPlayer.start()
+        mediaPlayer.isLooping = true
 
         if (Players.turnManager == 0) {
             Players.playerHealth = 200
@@ -50,18 +52,28 @@ open class MainActivity : AppCompatActivity() {
         }
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
+            mediaPlayer = MediaPlayer.create(this, m.kickSound)
+            mediaPlayer.start()
             addMoveToChain(m.kick)
         }
         binding.moveButtonView.punchButton.setOnClickListener {
+            mediaPlayer = MediaPlayer.create(this, m.punchSound)
+            mediaPlayer.start()
             addMoveToChain(m.punch)
         }
         binding.moveButtonView.grabButton.setOnClickListener {
+            mediaPlayer = MediaPlayer.create(this, m.grabSound)
+            mediaPlayer.start()
             addMoveToChain(m.grab)
         }
         binding.moveButtonView.dodgeButton.setOnClickListener {
+            mediaPlayer = MediaPlayer.create(this, m.dodgeSound)
+            mediaPlayer.start()
             addMoveToChain(m.dodge)
         }
         binding.moveButtonView.shieldButton.setOnClickListener {
+            mediaPlayer = MediaPlayer.create(this, m.shieldSound)
+            mediaPlayer.start()
             addMoveToChain(m.shield)
         }
     }
@@ -150,9 +162,11 @@ open class MainActivity : AppCompatActivity() {
     private fun gameEnd(final: MoveResult.Results.ChainResult) {
         val eBinding: EndGameBinding = EndGameBinding.inflate(layoutInflater)
         setContentView(eBinding.root)
+        mediaPlayer.isLooping = false
         mediaPlayer.stop()
         mediaPlayer = MediaPlayer.create(this, R.raw.maxed_in)
         mediaPlayer.start()
+        mediaPlayer.isLooping = true
 
         when (final) {
             MoveResult.playerWin -> eBinding.finalResult.text = getString(R.string.you_won)

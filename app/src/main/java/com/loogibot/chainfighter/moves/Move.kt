@@ -6,5 +6,6 @@ data class Move(
     val firstAdv: String,
     val secondAdv: String,
     val moveImg: Int,
-    val cost: Int
+    val cost: Int,
+    val fx_sound: Int
 )

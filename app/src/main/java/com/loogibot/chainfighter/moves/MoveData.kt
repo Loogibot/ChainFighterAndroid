@@ -9,10 +9,10 @@ class MoveData : MoveSource() {
     // the second move weak to the named move,
     // how much is costs to use the named move)
 
-    val kick = Move(kickStr, 25, punchStr, shieldStr, kickImg, 3)
-    val punch = Move(punchStr, 15, grabStr, dodgeStr, punchImg, 2)
-    val grab = Move(grabStr, 10, kickStr, shieldStr, grabImg, 1)
-    val dodge = Move(dodgeStr, 0, kickStr, grabStr, dodgeImg, 1)
-    val shield = Move(shieldStr, 5, punchStr, dodgeStr, shieldImg, 0)
+    val kick = Move(kickStr, 25, punchStr, shieldStr, kickImg, 3, kickSound)
+    val punch = Move(punchStr, 15, grabStr, dodgeStr, punchImg, 2, punchSound)
+    val grab = Move(grabStr, 10, kickStr, shieldStr, grabImg, 1, grabSound)
+    val dodge = Move(dodgeStr, 0, kickStr, grabStr, dodgeImg, 1, dodgeSound)
+    val shield = Move(shieldStr, 5, punchStr, dodgeStr, shieldImg, 0, shieldSound)
 
 }
