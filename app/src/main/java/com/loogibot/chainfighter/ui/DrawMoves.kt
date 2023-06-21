@@ -145,8 +145,8 @@ fun firstMoveInChain(
     val firstResult = moveCompare(playerChain.firstMove, opponentChain.firstMove)
     firstResultText.text = firstResult.resultString
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/7".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/7".also { opponentChainCostText.text = it }
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
 
     "${playerChain.firstMove.name} costs ${playerChain.firstMove.cost}, deals ${playerChain.firstMove.damage} damage ".also {
         pFirstMoveTextView.text = it
@@ -177,8 +177,8 @@ fun secondMoveInChain(
     val secondResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
     secondResultText.text = secondResult.resultString
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/7".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/7".also { opponentChainCostText.text = it }
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
 
     (playerChain.secondMove.name + " costs " + playerChain.secondMove.cost + ", deals " + playerChain.secondMove.damage + " damage ").also {
         pSecondMoveTextView.text = it
@@ -210,8 +210,8 @@ fun thirdMoveInChain(
     val thirdResult = moveCompare(playerChain.thirdMove, opponentChain.thirdMove)
     thirdResultText.text = thirdResult.resultString
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/7".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/7".also { opponentChainCostText.text = it }
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
 
     (playerChain.thirdMove.name + " costs " + playerChain.thirdMove.cost + ", deals " + playerChain.thirdMove.damage + " damage ").also {
         pThirdMoveTextView.text = it

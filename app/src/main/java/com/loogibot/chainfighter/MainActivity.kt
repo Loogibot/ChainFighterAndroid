@@ -16,10 +16,14 @@ import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
 
+
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var tBinding: TitleWindowBinding
     private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var soundFXPlayer: MediaPlayer
+
+//    private lateinit var soundPool: SoundPool
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +36,7 @@ open class MainActivity : AppCompatActivity() {
         mediaPlayer.isLooping = true
 
         tBinding.startGame.setOnClickListener {
-            mediaPlayer.stop()
+            mediaPlayer.release()
             setContentView(binding.root)
             gameStart()
             Players.pChain = Chain()
@@ -52,38 +56,28 @@ open class MainActivity : AppCompatActivity() {
         }
         // button operation
         binding.moveButtonView.kickButton.setOnClickListener {
-            mediaPlayer = MediaPlayer.create(this, m.kickSound)
-            mediaPlayer.start()
             addMoveToChain(m.kick)
         }
         binding.moveButtonView.punchButton.setOnClickListener {
-            mediaPlayer = MediaPlayer.create(this, m.punchSound)
-            mediaPlayer.start()
             addMoveToChain(m.punch)
         }
         binding.moveButtonView.grabButton.setOnClickListener {
-            mediaPlayer = MediaPlayer.create(this, m.grabSound)
-            mediaPlayer.start()
             addMoveToChain(m.grab)
         }
         binding.moveButtonView.dodgeButton.setOnClickListener {
-            mediaPlayer = MediaPlayer.create(this, m.dodgeSound)
-            mediaPlayer.start()
             addMoveToChain(m.dodge)
         }
         binding.moveButtonView.shieldButton.setOnClickListener {
-            mediaPlayer = MediaPlayer.create(this, m.shieldSound)
-            mediaPlayer.start()
             addMoveToChain(m.shield)
         }
     }
 
     private fun addMoveToChain(mv: Move) {
-
+        moveSound(mv)
         Players.pChain.chainManager(mv)
         Players.oChain.chainManager(randomMove())
 
-        when (7 - Players.pChain.chainCost) {
+        when (5 - Players.pChain.chainCost) {
             m.kick.cost -> binding.moveButtonView.kickButton.visibility = View.GONE
             m.punch.cost -> binding.moveButtonView.punchButton.visibility = View.GONE
             m.grab.cost -> binding.moveButtonView.grabButton.visibility = View.GONE
@@ -134,14 +128,13 @@ open class MainActivity : AppCompatActivity() {
             binding.moveResults.finalResult,//27
             binding.moveButtonView
         )
-
         moveResult(drawMoves(Players.pChain, Players.oChain, uIObjectsList))
     }
 
-    private fun moveResult(status: MoveResult.Results.ChainResult) {
-
-        object : CountDownTimer(1000, 200) {
-
+    private fun moveSound(sound: Move) {
+        soundFXPlayer = MediaPlayer.create(this, sound.fx_sound)
+        soundFXPlayer.start()
+        object : CountDownTimer(1000, 100) {
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
                 // pause
@@ -149,10 +142,37 @@ open class MainActivity : AppCompatActivity() {
 
             // Callback function, fired when the time is up
             override fun onFinish() {
-                if (Players.opponentHealth <= 0) {
-                    gameEnd(status)
-                }
-                if (Players.playerHealth <= 0) {
+                soundFXPlayer.release()
+            }
+        }.start()
+
+//        val audioAttributes = AudioAttributes.Builder()
+//            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+//            .setUsage(AudioAttributes.USAGE_GAME)
+//            .build()
+//
+//        soundPool = SoundPool.Builder()
+//            .setMaxStreams(5)
+//            .setAudioAttributes(audioAttributes)
+//            .build()
+//
+//        val id = soundPool.load(this, sound.fx_sound, 1)
+//        soundPool.play(id, 1F, 1F, 0, 0, 1F)
+//        soundPool.autoPause()
+
+    }
+
+    private fun moveResult(status: MoveResult.Results.ChainResult) {
+
+        object : CountDownTimer(1000, 200) {
+            // Callback function, fired on regular interval
+            override fun onTick(millisUntilFinished: Long) {
+                // pause
+            }
+
+            // Callback function, fired when the time is up
+            override fun onFinish() {
+                if (Players.opponentHealth <= 0 || Players.playerHealth <= 0) {
                     gameEnd(status)
                 }
             }
@@ -162,8 +182,10 @@ open class MainActivity : AppCompatActivity() {
     private fun gameEnd(final: MoveResult.Results.ChainResult) {
         val eBinding: EndGameBinding = EndGameBinding.inflate(layoutInflater)
         setContentView(eBinding.root)
+
         mediaPlayer.isLooping = false
-        mediaPlayer.stop()
+        mediaPlayer.release()
+
         mediaPlayer = MediaPlayer.create(this, R.raw.maxed_in)
         mediaPlayer.start()
         mediaPlayer.isLooping = true
