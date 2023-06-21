@@ -12,7 +12,7 @@ class MoveData : MoveSource() {
     val kick = Move(kickStr, 25, punchStr, shieldStr, kickImg, 3, kickSound)
     val punch = Move(punchStr, 15, grabStr, dodgeStr, punchImg, 2, punchSound)
     val grab = Move(grabStr, 10, kickStr, shieldStr, grabImg, 1, grabSound)
-    val dodge = Move(dodgeStr, 0, kickStr, grabStr, dodgeImg, 1, dodgeSound)
+    val dodge = Move(dodgeStr, 10, kickStr, grabStr, dodgeImg, 1, dodgeSound)
     val shield = Move(shieldStr, 5, punchStr, dodgeStr, shieldImg, 0, shieldSound)
 
 }
