@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hi_blue">
+    android:background="@color/background_color">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:fontFamily="@font/aclonica"
             android:text="@string/someone_won"
             android:textAlignment="center"
-            android:textColor="@color/flo_blue"
+            android:textColor="@color/button_text_color"
             android:textSize="60sp" />
 
         <Button
@@ -36,7 +36,7 @@
             android:fontFamily="@font/aclonica"
             android:padding="16dp"
             android:text="@string/to_titlescreen"
-            android:textColor="@color/flo_blue"
+            android:textColor="@color/button_text_color"
             android:textSize="30sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

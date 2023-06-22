@@ -1,16 +1,14 @@
 package com.loogibot.chainfighter.ui
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
 import com.loogibot.chainfighter.databinding.FinalResultBinding
 import com.loogibot.chainfighter.databinding.MoveButtonsBinding
 import com.loogibot.chainfighter.databinding.MoveResultsBinding
+import com.loogibot.chainfighter.databinding.OpponentViewBinding
+import com.loogibot.chainfighter.databinding.PlayerViewBinding
 import com.loogibot.chainfighter.gamestate.MoveResult
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.opponentWin
 import com.loogibot.chainfighter.gamestate.MoveResult.Results.playerWin
@@ -26,100 +24,39 @@ fun drawMoves(
 ): MoveResult.Results.ChainResult {
     var endResult: MoveResult.Results.ChainResult = MoveResult.neutral
     // chain cost text
-    val playerChainCostText = uiObj[25] as TextView
-    val opponentChainCostText = uiObj[26] as TextView
-    // HP progress bars
-    val playerHPBar = uiObj[2] as ProgressBar
-    val opponentHPBar = uiObj[3] as ProgressBar
-
-    val playerHPText = uiObj[4] as TextView
-    val opponentHPText = uiObj[5] as TextView
-
-    // opponent ui set
-    val oFirstMoveImage: ImageView = uiObj[6] as ImageView
-    val oSecondMoveImage: ImageView = uiObj[7] as ImageView
-    val oThirdMoveImage: ImageView = uiObj[8] as ImageView
-
-    val oFirstMoveTextView = uiObj[9] as TextView
-    val oSecondMoveTextView = uiObj[10] as TextView
-    val oThirdMoveTextView = uiObj[11] as TextView
-
-    // player ui set
-    val pFirstMoveImage: ImageView = uiObj[12] as ImageView
-    val pSecondMoveImage: ImageView = uiObj[13] as ImageView
-    val pThirdMoveImage: ImageView = uiObj[14] as ImageView
-
-    val pFirstMoveTextView = uiObj[15] as TextView
-    val pSecondMoveTextView = uiObj[16] as TextView
-    val pThirdMoveTextView = uiObj[17] as TextView
-
-    // comparison ui set
-    val firstMoveComparisonResult = uiObj[18] as ImageView
-    val secondMoveComparisonResult = uiObj[19] as ImageView
-    val thirdMoveComparisonResult = uiObj[20] as ImageView
-
-    val firstResultText = uiObj[21] as TextView
-    val secondResultText = uiObj[22] as TextView
-    val thirdResultText = uiObj[23] as TextView
-
-    //final result
-    val finalResult = uiObj[27] as FinalResultBinding
     val moveResults = uiObj[0] as MoveResultsBinding
+    val opponentView = uiObj[1] as OpponentViewBinding
+    val playerView = uiObj[2] as PlayerViewBinding
+    val moveButtonsView = uiObj[3] as MoveButtonsBinding
 
-    if (pFirstMoveImage.drawable == null) {
+    if (playerView.PFirstMoveImg.drawable == null) {
         firstMoveInChain(
-            oFirstMoveImage,
-            pFirstMoveImage,
-            playerChain,
-            opponentChain,
-            firstMoveComparisonResult,
-            firstResultText,
-            pFirstMoveTextView,
-            oFirstMoveTextView,
-            playerChainCostText,
-            opponentChainCostText
+            opponentView, playerView, playerChain, opponentChain, moveResults
         )
-    } else if (pSecondMoveImage.drawable == null) {
+    } else if (playerView.PSecondMoveImg.drawable == null) {
         secondMoveInChain(
-            oSecondMoveImage,
-            pSecondMoveImage,
-            playerChain,
-            opponentChain,
-            secondMoveComparisonResult,
-            secondResultText,
-            pSecondMoveTextView,
-            oSecondMoveTextView,
-            playerChainCostText,
-            opponentChainCostText
+            opponentView, playerView, playerChain, opponentChain, moveResults
         )
     } else {
-        endResult =
-            thirdMoveInChain(
-                oThirdMoveImage,
-                pThirdMoveImage,
-                playerChain,
-                opponentChain,
-                thirdMoveComparisonResult,
-                thirdResultText,
-                pThirdMoveTextView,
-                oThirdMoveTextView,
-                playerChainCostText,
-                opponentChainCostText
-            )
+        endResult = thirdMoveInChain(
+            opponentView, playerView, playerChain, opponentChain, moveResults
+        )
         object : CountDownTimer(1000, 200) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
                 // pause
-                "PLAYER HP: ${Players.playerHealth}".also { playerHPText.text = it }
-                "OPPONENT HP: ${Players.opponentHealth}".also { opponentHPText.text = it }
+                "PLAYER HP: ${Players.playerHealth}".also { playerView.playerHPText.text = it }
+                "OPPONENT HP: ${Players.opponentHealth}".also {
+                    opponentView.opponentHPText.text = it
+                }
             }
 
             // Callback function, fired when the time is up
             override fun onFinish() {
-                moveEnd(finalResult, moveResults, uiObj)
-                playerHPBar.progress = Players.playerHealth
-                opponentHPBar.progress = Players.opponentHealth
+                moveEnd(moveResults.finalResult, moveResults, uiObj)
+                playerView.playerHPBar.progress = Players.playerHealth
+                opponentView.opponentHPBar.progress = Players.opponentHealth
             }
         }.start()
         playerChain.chainCost = 0
@@ -129,100 +66,93 @@ fun drawMoves(
 }
 
 fun firstMoveInChain(
-    oFirstMoveImage: ImageView,
-    pFirstMoveImage: ImageView,
+    opponentView: OpponentViewBinding,
+    playerView: PlayerViewBinding,
     playerChain: Chain,
     opponentChain: Chain,
-    firstMoveComparisonResult: ImageView,
-    firstResultText: TextView,
-    pFirstMoveTextView: TextView,
-    oFirstMoveTextView: TextView,
-    playerChainCostText: TextView,
-    opponentChainCostText: TextView
+    moveResults: MoveResultsBinding
 ) {
-    pFirstMoveImage.setImageResource(playerChain.firstMove.moveImg)
-    oFirstMoveImage.setImageResource(opponentChain.firstMove.moveImg)
-    val firstResult = moveCompare(playerChain.firstMove, opponentChain.firstMove)
-    firstResultText.text = firstResult.resultString
+    playerView.PFirstMoveImg.setImageResource(playerChain.firstMove.moveImg)
+    opponentView.OFirstMoveImg.setImageResource(opponentChain.firstMove.moveImg)
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
+    val firstResult = moveCompare(playerChain.firstMove, opponentChain.firstMove)
+    moveResults.firstResult.text = firstResult.resultString
+
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerView.playerChainCost.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also {
+        opponentView.opponentChainCost.text = it
+    }
 
     "${playerChain.firstMove.name} costs ${playerChain.firstMove.cost}, deals ${playerChain.firstMove.damage} damage ".also {
-        pFirstMoveTextView.text = it
+        playerView.PFirstMoveTitle.text = it
     }
 
     "${opponentChain.firstMove.name} costs ${opponentChain.firstMove.cost}, deals ${opponentChain.firstMove.damage} damage ".also {
-        oFirstMoveTextView.text = it
+        opponentView.OFirstMoveTitle.text = it
     }
 
     results.add(firstResult.resultString)
-    firstMoveComparisonResult.setImageResource(firstResult.resultImage)
+    moveResults.FirstMoveImgResult.setImageResource(firstResult.resultImage)
 }
 
 fun secondMoveInChain(
-    oSecondMoveImage: ImageView,
-    pSecondMoveImage: ImageView,
+    opponentView: OpponentViewBinding,
+    playerView: PlayerViewBinding,
     playerChain: Chain,
     opponentChain: Chain,
-    secondMoveComparisonResult: ImageView,
-    secondResultText: TextView,
-    pSecondMoveTextView: TextView,
-    oSecondMoveTextView: TextView,
-    playerChainCostText: TextView,
-    opponentChainCostText: TextView
+    moveResults: MoveResultsBinding
 ) {
-    pSecondMoveImage.setImageResource(playerChain.secondMove.moveImg)
-    oSecondMoveImage.setImageResource(opponentChain.secondMove.moveImg)
-    val secondResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
-    secondResultText.text = secondResult.resultString
+    playerView.PSecondMoveImg.setImageResource(playerChain.secondMove.moveImg)
+    opponentView.OSecondMoveImg.setImageResource(opponentChain.secondMove.moveImg)
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
+    val secondResult = moveCompare(playerChain.secondMove, opponentChain.secondMove)
+    moveResults.secondResult.text = secondResult.resultString
+
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerView.playerChainCost.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also {
+        opponentView.opponentChainCost.text = it
+    }
 
     (playerChain.secondMove.name + " costs " + playerChain.secondMove.cost + ", deals " + playerChain.secondMove.damage + " damage ").also {
-        pSecondMoveTextView.text = it
+        playerView.PSecondMoveTitle.text = it
     }
 
     (opponentChain.secondMove.name + " costs " + opponentChain.secondMove.cost + ", deals " + opponentChain.secondMove.damage + " damage ").also {
-        oSecondMoveTextView.text = it
+        opponentView.OSecondMoveTitle.text = it
     }
 
     results.add(secondResult.resultString)
-    secondMoveComparisonResult.setImageResource(secondResult.resultImage)
+    moveResults.SecondMoveImgResult.setImageResource(secondResult.resultImage)
 }
 
 fun thirdMoveInChain(
-    oThirdMoveImage: ImageView,
-    pThirdMoveImage: ImageView,
+    opponentView: OpponentViewBinding,
+    playerView: PlayerViewBinding,
     playerChain: Chain,
     opponentChain: Chain,
-    thirdMoveComparisonResult: ImageView,
-    thirdResultText: TextView,
-    pThirdMoveTextView: TextView,
-    oThirdMoveTextView: TextView,
-    playerChainCostText: TextView,
-    opponentChainCostText: TextView
+    moveResults: MoveResultsBinding
 ): MoveResult.Results.ChainResult {
-    pThirdMoveImage.setImageResource(playerChain.thirdMove.moveImg)
-    oThirdMoveImage.setImageResource(opponentChain.thirdMove.moveImg)
+    playerView.PThirdMoveImg.setImageResource(playerChain.thirdMove.moveImg)
+    opponentView.OThirdMoveImg.setImageResource(opponentChain.thirdMove.moveImg)
 
     val thirdResult = moveCompare(playerChain.thirdMove, opponentChain.thirdMove)
-    thirdResultText.text = thirdResult.resultString
+    moveResults.thirdResult.text = thirdResult.resultString
 
-    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerChainCostText.text = it }
-    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also { opponentChainCostText.text = it }
+    "PLAYER CHAIN COST: ${playerChain.chainCost}/6".also { playerView.playerChainCost.text = it }
+    "OPPONENT CHAIN COST: ${opponentChain.chainCost}/6".also {
+        opponentView.opponentChainCost.text = it
+    }
 
     (playerChain.thirdMove.name + " costs " + playerChain.thirdMove.cost + ", deals " + playerChain.thirdMove.damage + " damage ").also {
-        pThirdMoveTextView.text = it
+        playerView.PThirdMoveTitle.text = it
     }
 
     (opponentChain.thirdMove.name + " costs " + opponentChain.thirdMove.cost + ", deals " + opponentChain.thirdMove.damage + " damage ").also {
-        oThirdMoveTextView.text = it
+        opponentView.OThirdMoveTitle.text = it
     }
 
     results.add(thirdResult.resultString)
-    thirdMoveComparisonResult.setImageResource(thirdResult.resultImage)
+    moveResults.ThirdMoveImgResult.setImageResource(thirdResult.resultImage)
     val endResult: MoveResult.Results.ChainResult = chainCompareResult(results)
 
     when (endResult) {
@@ -239,11 +169,11 @@ fun thirdMoveInChain(
 
 fun moveEnd(finalResult: FinalResultBinding, moveResults: MoveResultsBinding, uiObj: List<Any>) {
 
-    Log.v(ContentValues.TAG, "##############################################")
+    Log.v(TAG, "##############################################")
     Log.v(TAG, "${chainCompareResult(results).resultTotalDamage} is the results total damage")
-    Log.v(ContentValues.TAG, "##############################################")
+    Log.v(TAG, "##############################################")
 
-    object : CountDownTimer(1000, 200) {
+    object : CountDownTimer(1000, 100) {
 
         // Callback function, fired on regular interval
         override fun onTick(millisUntilFinished: Long) {
@@ -265,61 +195,41 @@ fun moveEnd(finalResult: FinalResultBinding, moveResults: MoveResultsBinding, ui
 
 fun clearAllMovesAndResults(uiObj: List<Any>) {
 
-    val oFirstMoveImage: ImageView = uiObj[6] as ImageView
-    val oSecondMoveImage: ImageView = uiObj[7] as ImageView
-    val oThirdMoveImage: ImageView = uiObj[8] as ImageView
+    val moveResults = uiObj[0] as MoveResultsBinding
+    val opponentView = uiObj[1] as OpponentViewBinding
+    val playerView = uiObj[2] as PlayerViewBinding
+    val moveButtonsView = uiObj[3] as MoveButtonsBinding
 
-    val oFirstMoveTextView = uiObj[9] as TextView
-    val oSecondMoveTextView = uiObj[10] as TextView
-    val oThirdMoveTextView = uiObj[11] as TextView
+    moveResults.firstResult.text = ""
+    moveResults.secondResult.text = ""
+    moveResults.thirdResult.text = ""
 
-    val pFirstMoveImage: ImageView = uiObj[12] as ImageView
-    val pSecondMoveImage: ImageView = uiObj[13] as ImageView
-    val pThirdMoveImage: ImageView = uiObj[14] as ImageView
+    opponentView.OFirstMoveImg.setImageResource(0)
+    opponentView.OSecondMoveImg.setImageResource(0)
+    opponentView.OThirdMoveImg.setImageResource(0)
+    playerView.PFirstMoveImg.setImageResource(0)
+    playerView.PSecondMoveImg.setImageResource(0)
+    playerView.PThirdMoveImg.setImageResource(0)
 
-    val pFirstMoveTextView = uiObj[15] as TextView
-    val pSecondMoveTextView = uiObj[16] as TextView
-    val pThirdMoveTextView = uiObj[17] as TextView
+    moveResults.FirstMoveImgResult.setImageResource(0)
+    moveResults.SecondMoveImgResult.setImageResource(0)
+    moveResults.ThirdMoveImgResult.setImageResource(0)
 
-    val firstMoveComparisonResult = uiObj[18] as ImageView
-    val secondMoveComparisonResult = uiObj[19] as ImageView
-    val thirdMoveComparisonResult = uiObj[20] as ImageView
+    "Opponent's First Move".also { opponentView.OFirstMoveTitle.text = it }
+    "Opponent's Second Move".also { opponentView.OSecondMoveTitle.text = it }
+    "Opponent's Third Move".also { opponentView.OThirdMoveTitle.text = it }
 
-    val firstResultText = uiObj[21] as TextView
-    val secondResultText = uiObj[22] as TextView
-    val thirdResultText = uiObj[23] as TextView
-
-    val moveButtons = uiObj[28] as MoveButtonsBinding
-
-    oFirstMoveImage.setImageResource(0)
-    oSecondMoveImage.setImageResource(0)
-    oThirdMoveImage.setImageResource(0)
-    pFirstMoveImage.setImageResource(0)
-    pSecondMoveImage.setImageResource(0)
-    pThirdMoveImage.setImageResource(0)
-    firstMoveComparisonResult.setImageResource(0)
-    secondMoveComparisonResult.setImageResource(0)
-    thirdMoveComparisonResult.setImageResource(0)
-
-    firstResultText.text = ""
-    secondResultText.text = ""
-    thirdResultText.text = ""
-
-    "Opponent's First Move".also { oFirstMoveTextView.text = it }
-    "Opponent's Second Move".also { oSecondMoveTextView.text = it }
-    "Opponent's Third Move".also { oThirdMoveTextView.text = it }
-
-    "Player's First Move".also { pFirstMoveTextView.text = it }
-    "Player's Second Move".also { pSecondMoveTextView.text = it }
-    "Player's Third Move".also { pThirdMoveTextView.text = it }
+    "Player's First Move".also { playerView.PFirstMoveTitle.text = it }
+    "Player's Second Move".also { playerView.PSecondMoveTitle.text = it }
+    "Player's Third Move".also { playerView.PThirdMoveTitle.text = it }
 
     Players.pChain.chainList.clear()
     Players.oChain.chainList.clear()
 
-    moveButtons.root.visibility = View.VISIBLE
-    moveButtons.kickButton.visibility = View.VISIBLE
-    moveButtons.punchButton.visibility = View.VISIBLE
-    moveButtons.grabButton.visibility = View.VISIBLE
+    moveButtonsView.root.visibility = View.VISIBLE
+    moveButtonsView.kickButton.visibility = View.VISIBLE
+    moveButtonsView.punchButton.visibility = View.VISIBLE
+    moveButtonsView.grabButton.visibility = View.VISIBLE
 
     Players.pChain.moveSetStr = ""
     Players.oChain.moveSetStr = ""
