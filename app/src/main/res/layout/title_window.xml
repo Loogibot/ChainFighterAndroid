@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/titleName"
             android:layout_width="wrap_content"
-            android:layout_height="600dp"
+            android:layout_height="400dp"
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"
             android:rotationX="-10"
@@ -29,7 +29,7 @@
 
         <Button
             android:id="@+id/startGame"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/flo_blue_wide_box"
@@ -38,6 +38,19 @@
             android:text="@string/start_game"
             android:textColor="@color/button_text_color"
             android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/goToPrivacyPolicy"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/flo_blue_wide_box"
+            android:fontFamily="@font/aclonica"
+            android:layout_margin="24dp"
+            android:padding="16dp"
+            android:text="@string/to_privacy_policy"
+            android:textColor="@color/button_text_color"
+            android:textSize="22sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,15 @@
 package com.loogibot.chainfighter
 
+import android.content.Intent
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.loogibot.chainfighter.databinding.ActivityMainBinding
 import com.loogibot.chainfighter.databinding.EndGameBinding
+import com.loogibot.chainfighter.databinding.PrivacyPolicyBinding
 import com.loogibot.chainfighter.databinding.TitleWindowBinding
 import com.loogibot.chainfighter.gamestate.MoveResult
 import com.loogibot.chainfighter.gamestate.randomMove
@@ -15,6 +18,7 @@ import com.loogibot.chainfighter.moves.MoveSource.M.m
 import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
+import java.net.URI
 
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -39,6 +43,10 @@ open class MainActivity : AppCompatActivity() {
             Players.pChain = Chain()
             Players.oChain = Chain()
         } // starts game
+
+        tBinding.goToPrivacyPolicy.setOnClickListener {
+            privacyPolicyPage()
+        }
     }
 
     private fun gameStart() {
@@ -155,6 +163,19 @@ open class MainActivity : AppCompatActivity() {
             mediaPlayer.stop()
             Players.playerHealth = 200
             Players.opponentHealth = 200
+        }
+
+    }
+
+    private fun privacyPolicyPage() {
+        val ppBinding: PrivacyPolicyBinding = PrivacyPolicyBinding.inflate(layoutInflater)
+        setContentView(ppBinding.root)
+
+        ppBinding.viewPrivacyPolicyOnline.setOnClickListener {
+            val url = URI("https://luigimota.com/Privacy")
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url.toString())
+            startActivity(i)
         }
     }
 }
