@@ -172,7 +172,7 @@ open class MainActivity : AppCompatActivity() {
         setContentView(ppBinding.root)
 
         ppBinding.viewPrivacyPolicyOnline.setOnClickListener {
-            val url = URI("https://luigimota.com/Privacy")
+            val url = URI("https://luigimota.com/#privacypolicy")
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(url.toString())
             startActivity(i)
