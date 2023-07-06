@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
             android:text="@string/privacy_policy"
-            android:textAlignment="center"
             android:textColor="@color/button_text_color"
             android:textSize="20sp" />
     </ScrollView>

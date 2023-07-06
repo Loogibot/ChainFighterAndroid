@@ -44,46 +44,46 @@
     <string name="third_moves_comparison_results">THIRD MOVES COMPARISON RESULTS</string>
     <string name="someone_won">SOMEONE WON!</string>
 
-    <string name="privacy_policy"><b>Privacy Policy</b>
+    <string name="privacy_policy"><b>Privacy Policy</b>\n\n
 
-LRMota Developer built the ChainFighter APP as a Commercial APP. This APP is provided by LRMota Developer and is intended for use as is.
+LRMota Developer built the ChainFighter APP as a Commercial APP. This APP is provided by LRMota Developer and is intended for use as is.\n
 
-This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my APP. The words "ChainFighter" and "APP" are used interchangeably in this page.
+This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my APP. The words "ChainFighter" and "APP" are used interchangeably in this page.\n
 
-The terms used in this Privacy Policy are accessible in the ChainFighter mobile game APP.
+The terms used in this Privacy Policy are accessible in the ChainFighter mobile game APP.\n
+\n
+<b>Information Collection and Use</b>\n
+\n
+This APP does NOT collect user data, Personal Information or any data related to the device on which the APP is running. ChainFighter does NOT require the user to enter personal information in order to access and use the APP. The APP does not store user data or Personal Information when it has been installed on the device, when it is running on the device, when the APP is running in the background, when the APP has been closed nor when it has been uninstalled from the device.\n
 
-<b>Information Collection and Use</b>
+The APP does NOT use third-party services that are typically used to collect information used to identify you.\n
+\n
+<b>Log Data</b>\n
+\n
+I want to inform you that whenever you use my APP, in a case of an error in the APP, I do NOT collect data nor information (usuall y through third-party products) on your phone, otherwise called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the APP when utilizing my Service, the time and date of your use of the Service, and other statistics. Instead, please reach lrmotadev@gmail.com and provide a description of the error or bug, or whenever possible, share the Log Data if you have access to it.\n
+\n
+<b>Cookies</b>\n
+\n
+Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device\'s internal memory. The APP does NOT generate, use or collect cookies.\n
 
-This APP does NOT collect user data, Personal Information or any data related to the device on which the APP is running. ChainFighter does NOT require the user to enter personal information in order to access and use the APP. The APP does not store user data or Personal Information when it has been installed on the device, when it is running on the device, when the APP is running in the background, when the APP has been closed nor when it has been uninstalled from the device.
+ChainFighter does not use these “cookies” explicitly. However, the APP may use third-party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this APP.\n
+\n
+<b>Security</b>\n
+\n
+I value your trust in allowing ChainFightert to be installed and to run on your phone. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.\n
+\n
+<b>Children’s Privacy</b>\n
+\n
+This APP does not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13 years of age. In the case I discover that a child under 13 has provided me with personal information, I will immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to proceed with the necessary actions.\n
+\n
+<b>Changes to This Privacy Policy</b>\n
+\n
+I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.\n
 
-The APP does NOT use third-party services that are typically used to collect information used to identify you.
-
-<b>Log Data</b>
-
-I want to inform you that whenever you use my APP, in a case of an error in the APP, I do NOT collect data nor information (usuall y through third-party products) on your phone, otherwise called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the APP when utilizing my Service, the time and date of your use of the Service, and other statistics. Instead, please reach lrmotadev@gmail.com and provide a description of the error or bug, or whenever possible, share the Log Data if you have access to it.
-
-<b>Cookies</b>
-
-Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device\'s internal memory. The APP does NOT generate, use or collect cookies.
-
-ChainFighter does not use these “cookies” explicitly. However, the APP may use third-party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this APP.
-
-<b>Security</b>
-
-I value your trust in allowing ChainFightert to be installed and to run on your phone. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
-
-<b>Children’s Privacy</b>
-
-This APP does not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13 years of age. In the case I discover that a child under 13 has provided me with personal information, I will immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to proceed with the necessary actions.
-
-<b>Changes to This Privacy Policy</b>
-
-I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.
-
-This policy is effective as of 2023-07-03
-
-<b>Contact Me </b>
-
+This policy is effective as of 2023-07-06
+\n
+<b>Contact Me </b>\n
+\n
 If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at lrmotadev@gmail.com.</string>
     <string name="view_privacy_policy_online">View Privacy Policy Online</string>
     <string name="to_privacy_policy">Privacy Policy</string>
