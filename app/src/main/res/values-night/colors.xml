@@ -3,8 +3,6 @@
     <color name="background_color">#FF000000</color>
     <color name="button_text_color">#00f900</color>
     <color name="text_color">#ff8517</color>
-    <color name="text_color_alt">#0069af</color>
     <color name="text_color_light">#a9d8ff</color>
-    <color name="button_tint">#00b44b</color>
     <color name="image_tint">#00f900</color>
 </resources>
