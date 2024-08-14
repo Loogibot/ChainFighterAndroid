@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_50"
+    android:background="@color/hi_blue"
     tools:context=".MainActivity">
 
     <ImageView
@@ -31,7 +31,7 @@
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/aclonica"
         android:text="@string/start_game"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/flo_blue"
         android:textSize="24sp" />
 
 </RelativeLayout>
