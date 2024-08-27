@@ -14,7 +14,7 @@ import com.loogibot.chainfighter.databinding.TitleWindowBinding
 import com.loogibot.chainfighter.gamestate.MoveResult
 import com.loogibot.chainfighter.gamestate.randomMove
 import com.loogibot.chainfighter.moves.Move
-import com.loogibot.chainfighter.moves.MoveSource.M.m
+import com.loogibot.chainfighter.moves.m
 import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
