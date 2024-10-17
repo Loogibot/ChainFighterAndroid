@@ -14,5 +14,5 @@ class MoveData : MoveSource() {
     val grab = Move(grabStr, 10, kickStr, shieldStr, grabImg, 1, grabSound)
     val dodge = Move(dodgeStr, 10, kickStr, grabStr, dodgeImg, 1, dodgeSound)
     val shield = Move(shieldStr, 5, punchStr, dodgeStr, shieldImg, 0, shieldSound)
-
 }
+val m = MoveData()
