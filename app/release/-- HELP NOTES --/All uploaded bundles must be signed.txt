@@ -1,0 +1,7 @@
+All uploaded bundles must be signed.
+
+Your Android App Bundle is signed with the wrong key. Ensure that your App Bundle is signed with the correct signing key and try again. Your App Bundle is expected to be signed with the certificate with fingerprint:
+SHA1: 1F:42:B4:D7:44:41:C7:BB:C3:46:C4:C0:16:78:54:1B:89:FC:49:A9
+
+but the certificate used to sign the App Bundle you uploaded has fingerprint:
+SHA1: 6E:8A:93:B3:D1:3C:2B:9A:04:63:55:4A:99:82:4B:DA:50:7D:7E:41
