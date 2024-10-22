@@ -1,0 +1,28 @@
+ gradle update, version update, android studio and jdk update, bundle
+ build and siging process was logged, bundle uploaded to play store
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch build
+# Your branch is ahead of 'origin/build' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	modified:   .idea/gradle.xml
+#	modified:   .idea/kotlinc.xml
+#	modified:   .idea/misc.xml
+#	deleted:    .idea/other.xml
+#	new file:   .idea/runConfigurations.xml
+#	modified:   app/build.gradle
+#	new file:   app/release/-- HELP NOTES --/All uploaded bundles must be signed.txt
+#	new file:   app/release/-- HELP NOTES --/HOW TO UPLOAD RELEASE - README.txt
+#	new file:   app/release/-- HELP NOTES --/signed with the wrong bundle.png
+#	new file:   app/release/-- HELP NOTES --/the jks for chainfighter with the key from google play console.png
+#	new file:   app/release/debug/app-debug.aab
+#	renamed:    app/release/app-release.aab -> app/release/release/app-release.aab
+#	new file:   app/release/upload_cert.der
+#	modified:   build.gradle
+#	modified:   gradle.properties
+#	modified:   gradle/wrapper/gradle-wrapper.properties
+#
