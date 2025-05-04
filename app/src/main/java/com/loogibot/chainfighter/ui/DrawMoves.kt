@@ -27,7 +27,6 @@ fun drawMoves(
     val moveResults = uiObj[0] as MoveResultsBinding
     val opponentView = uiObj[1] as OpponentViewBinding
     val playerView = uiObj[2] as PlayerViewBinding
-    val moveButtonsView = uiObj[3] as MoveButtonsBinding
 
     if (playerView.PFirstMoveImg.drawable == null) {
         firstMoveInChain(

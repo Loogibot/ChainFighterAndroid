@@ -16,14 +16,5 @@
     </style>
 
     <!-- on below line creating a theme for our Alert Dialog -->
-    <style name="AlertDialogCustom" parent="Theme.AppCompat.Dialog.Alert">
-        <!-- on below line adding text color for our text in alert dialog -->
-        <item name="android:textColor">@color/flo_blue</item>
-        <!-- on below line adding typeface for alert dialog text -->
-        <item name="android:typeface">sans</item>
-        <!-- on below line setting text size for text -->
-        <item name="android:textSize">200sp</item>
-        <item name="background">@color/hi_green</item>
-    </style>
 
 </resources>
