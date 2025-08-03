@@ -2,7 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@color/teal_50">
+=======
+    android:background="@color/hi_blue">
+>>>>>>> bd875aa909cb22ab0c50b543c4740004776d96df
 
     <Button
         android:id="@+id/to_titlescreen"
@@ -16,7 +20,11 @@
         android:layout_marginBottom="170dp"
         android:fontFamily="@font/aclonica"
         android:text="@string/to_titlescreen"
+<<<<<<< HEAD
         android:textColor="@color/teal_200" />
+=======
+        android:textColor="@color/flo_blue" />
+>>>>>>> bd875aa909cb22ab0c50b543c4740004776d96df
 
     <TextView
         android:id="@+id/final_result"
@@ -33,7 +41,11 @@
         android:fontFamily="@font/aclonica"
         android:text="SOMEONE WON!"
         android:textAlignment="center"
+<<<<<<< HEAD
         android:textColor="@color/teal_700"
+=======
+        android:textColor="@color/button_text_color"
+>>>>>>> bd875aa909cb22ab0c50b543c4740004776d96df
         android:textSize="36sp" />
 
 </RelativeLayout>
