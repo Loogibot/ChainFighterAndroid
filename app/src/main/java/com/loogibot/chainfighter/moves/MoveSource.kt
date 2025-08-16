@@ -1,4 +1,5 @@
 package com.loogibot.chainfighter.moves
+
 import com.loogibot.chainfighter.R
 import com.loogibot.chainfighter.R.raw.fx_dodge
 import com.loogibot.chainfighter.R.raw.fx_grab
