@@ -17,11 +17,9 @@ android {
     defaultConfig {
         applicationId "com.loogibot.chainfighter"
         minSdk 21
-
         targetSdk 35
         versionCode 3
         versionName "3.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -40,7 +38,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '23'
     }
     buildFeatures {
         viewBinding true
