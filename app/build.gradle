@@ -17,6 +17,7 @@ android {
     defaultConfig {
         applicationId "com.loogibot.chainfighter"
         minSdk 21
+        //noinspection OldTargetApi
         targetSdk 35
         versionCode 3
         versionName "3.0"
