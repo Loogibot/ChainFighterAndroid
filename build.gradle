@@ -6,7 +6,7 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '2.2.10' apply false
 
 }
-
-tasks.register('clean', Delete) {
-    delete rootProject
-}
+// this was proeblematic
+//tasks.register('clean', Delete) {
+//    delete rootProject
+//}
