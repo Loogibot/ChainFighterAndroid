@@ -89,10 +89,7 @@ open class MainActivity : AppCompatActivity() {
 
         // pass around elements from MainActivity
         val uIObjectsList: List<Any> = listOf(
-            binding.moveResults,
-            binding.opponentView,
-            binding.playerView,
-            binding.moveButtonView//3
+            binding.moveResults, binding.opponentView, binding.playerView, binding.moveButtonView//3
         )
         moveResult(drawMoves(Players.pChain, Players.oChain, uIObjectsList))
     }
