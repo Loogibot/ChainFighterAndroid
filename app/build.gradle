@@ -6,10 +6,12 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('D:\\OneDrive\\Coding Projects\\Android Apps\\ChainFighter\\app\\build\\outputs\\apk\\debug\\app-debug.apk')
+            storeFile file(agp_version)
             storePassword 'bopington'
             keyAlias 'key0'
             keyPassword 'bopington'
+        }
+        release {
         }
     }
     compileSdk 36
