@@ -8,6 +8,7 @@ class MoveData : MoveSource() {
     // the first move weak to the named move,
     // the second move weak to the named move,
     // how much is costs to use the named move)
+    // the sound effect associated with the move
 
     val kick = Move(kickStr, 25, punchStr, shieldStr, kickImg, 3, kickSound)
     val punch = Move(punchStr, 15, grabStr, dodgeStr, punchImg, 2, punchSound)
@@ -15,4 +16,5 @@ class MoveData : MoveSource() {
     val dodge = Move(dodgeStr, 10, kickStr, grabStr, dodgeImg, 1, dodgeSound)
     val shield = Move(shieldStr, 5, punchStr, dodgeStr, shieldImg, 0, shieldSound)
 }
+
 val m = MoveData()
