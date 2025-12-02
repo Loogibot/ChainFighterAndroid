@@ -4,8 +4,13 @@ If you lost the .jks file, you may need to get a new one from Google Play Consol
 
 You may need to update, refactor and debug the app. You will likely have to update Gradle, JVM, dependencies and any code that has changed. Do these before building and submitting the app.
 
->>> To sign the App, you must use the right key and certificate. Note the SHA-1 fingerprint if you upload the bundle with the wrong signing will be shown, it must match the one shown in Upload key certificate page. Use that cert like this:
-1.	first get the certificate from google play console in 'Google Play Console > App > Setup > App 	signing > Upload key certificate'.
+>>> To sign the App, you must use the right key and certificate. Note that the SHA-1 fingerprint, if you upload the bundle with the wrong, signing will be shown, it must match the one shown in Upload key certificate page. Use that cert like this:
+
+1.	first get the certificate from google play console in 'Google Play Console > App (or view app) > Setup > App 	signing > Upload key certificate'.
+
+>> UPDATE 10:08 PM 8/24/2025
+	The app signing page is in Google Play Console > View app > Test and release > App integrity > Settings of Play app signing. Download sertificate
+
 2.	in Android Studio, go to 'Settings > Tools > Server Certificates' and ADD the cert you downloaded
 3.	notice the fingerprints should match the ones in Upload key certificate page in Google Play 	Console.
 4.	apply the cert
@@ -31,6 +36,9 @@ You may need to update, refactor and debug the app. You will likely have to upda
 
 (*Tangent Note, you may notice in gradle the signingConfigs{ debug{} } has the storePassword and keyPassword. I'm not sure if this matters, but try changing this as well. I may have lost track of this in the days trying to get this app update and bundle signing working properly)
 
+>>>> UPDATE 6:41 PM 8/24/2025
 
+going through this all over again
 
+>>>> UPDATE
 
