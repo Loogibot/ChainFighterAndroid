@@ -42,3 +42,6 @@ going through this all over again
 
 >>>> UPDATE
 
+>>>> UPDATE 8:58 PM 8/28/2025
+
+To upload the bundle, got to google play console > test and release > latest releases and bundles > view all app bundles (it should be just under the table of latest releases to the right, just below the arrows)

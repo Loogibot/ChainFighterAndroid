@@ -7,7 +7,6 @@ android {
     signingConfigs {
         debug {
             storeFile file("C:\\Users\\Owner\\OneDrive\\Coding Projects\\Android Apps\\ChainFighter\\app\\release\\chainfighter.jks")
-//            storeFile file("C:\\Users\\Owner\\OneDrive\\Coding Projects\\Android Apps\\ChainFighter\\app\\build\\build-keys\\chainfighter")
             storePassword 'bopington'
             keyAlias 'key0'
             keyPassword 'bopington'
@@ -15,11 +14,11 @@ android {
         release {
         }
     }
-    compileSdk 36
+    compileSdk 37
 
     defaultConfig {
         applicationId "com.loogibot.chainfighter"
-        minSdk 21
+        minSdk 23
         //noinspection OldTargetApi
         targetSdk 35
         versionCode 4
@@ -27,7 +26,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
-
 
     buildTypes {
         release {
@@ -42,7 +40,7 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+//        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding true
@@ -52,11 +50,11 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation 'androidx.core:core-ktx:1.19.0'
     implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'com.google.android.material:material:1.14.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation 'androidx.core:core-ktx:1.19.0'
     implementation 'com.android.support:animated-vector-drawable:28.0.0'
     implementation 'androidx.vectordrawable:vectordrawable-animated:1.2.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
