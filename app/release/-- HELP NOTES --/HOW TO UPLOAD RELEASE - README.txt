@@ -49,8 +49,14 @@ going through this all over again
 
 >>>> UPDATE
 
+<<<<<<< HEAD
 make sure the file path in build.gradle(:app) is correct. It should point to the actual location of the actual .jks file that was used for signing the generated bundle. If
 
 >>> ERRORS you may get 10:45 PM 8/24/2025
 
 something something 'the keystore file' is not correct. Double check that the path is correct, and the file is correct. The keystore file should be .jks
+=======
+>>>> UPDATE 8:58 PM 8/28/2025
+
+To upload the bundle, got to google play console > test and release > latest releases and bundles > view all app bundles (it should be just under the table of latest releases to the right, just below the arrows)
+>>>>>>> 2a8ba5fdc02d2eae98b6ac8be4d6375a2786f95d
