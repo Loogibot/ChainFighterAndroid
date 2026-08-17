@@ -5,17 +5,9 @@ buildscript {
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
 
-<<<<<<< HEAD
-    id 'com.android.application' version '9.3.0' apply false
-    id 'com.android.library' version '9.3.0' apply false
-=======
-    id 'com.android.application' version '9.2.1' apply false
-    id 'com.android.library' version '9.2.1' apply false
->>>>>>> 2a8ba5fdc02d2eae98b6ac8be4d6375a2786f95d
-    id 'org.jetbrains.kotlin.android' version '2.2.10' apply false
+
+    id 'com.android.application' version '9.3.1' apply false
+    id 'com.android.library' version '9.3.1' apply false
+    id 'org.jetbrains.kotlin.android' version '2.4.0' apply false
 
 }
-// this was proeblematic
-//tasks.register('clean', Delete) {
-//    delete rootProject
-//}
