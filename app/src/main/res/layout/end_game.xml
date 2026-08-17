@@ -27,7 +27,7 @@
             android:textSize="60sp" />
 
         <Button
-            android:id="@+id/to_titlescreen"
+            android:id="@+id/to_title_screen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -29,8 +29,20 @@
         android:textColor="@color/text_color"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/opponent_chain_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/player_hp"
+        android:textColor="@color/text_color"
+        android:textSize="20sp" />
+
     <LinearLayout
-        android:id="@+id/OChainImages"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_row="2"
@@ -70,7 +82,6 @@
     </LinearLayout>
     <!-- move texts -->
     <LinearLayout
-        android:id="@+id/PChainTitles"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_row="2"
@@ -120,7 +131,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/opponent_chain_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"

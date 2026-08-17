@@ -29,6 +29,13 @@ You may need to update, refactor and debug the app. You will likely have to upda
 3.	go to 'Edit Releases'
 4.	in 'App bundles', select 'Upload'
 
+>>>>> HOW TO UPLOAD UPDATE 11:00 PM 8/24/2025
+
+1. Assuming you are on the Google Play Console, note the pinned app, likely ChainFighter, and select 'View app ->'
+
+2. Go to 'Test and release' (rocket icon)
+3. La
+
 >>> ERRORS you may get
 > THE BUNDLE HAS NOT BEEN SIGNED. If when you upload the bundle after building it, you get an error saying it was not signed, make sure the right key ( the .JKS file) was used. You may see a private_key.pepk file, but thats for something else I forgot about, and at the time of writing the .jks file is working.
 > THE SHA-1 FINGERPRINT CODE DOES NOT MATCH. Check the cert you are using for the project. See the above steps for adding the cert from Google Play Store. Add it to the server certificates page in settings.
@@ -42,6 +49,14 @@ going through this all over again
 
 >>>> UPDATE
 
+<<<<<<< HEAD
+make sure the file path in build.gradle(:app) is correct. It should point to the actual location of the actual .jks file that was used for signing the generated bundle. If
+
+>>> ERRORS you may get 10:45 PM 8/24/2025
+
+something something 'the keystore file' is not correct. Double check that the path is correct, and the file is correct. The keystore file should be .jks
+=======
 >>>> UPDATE 8:58 PM 8/28/2025
 
 To upload the bundle, got to google play console > test and release > latest releases and bundles > view all app bundles (it should be just under the table of latest releases to the right, just below the arrows)
+>>>>>>> 2a8ba5fdc02d2eae98b6ac8be4d6375a2786f95d
