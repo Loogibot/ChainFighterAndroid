@@ -19,6 +19,7 @@ import com.loogibot.chainfighter.player.Chain
 import com.loogibot.chainfighter.player.Players
 import com.loogibot.chainfighter.ui.drawMoves
 import java.net.URI
+import androidx.core.net.toUri
 
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -171,7 +172,7 @@ open class MainActivity : AppCompatActivity() {
         ppBinding.viewPrivacyPolicyOnline.setOnClickListener {
             val url = URI("https://luigimota.com/#privacypolicy")
             val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(url.toString())
+            i.data = url.toString().toUri()
             startActivity(i)
         }
     }
