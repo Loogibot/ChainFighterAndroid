@@ -147,7 +147,6 @@ open class MainActivity : AppCompatActivity() {
 
         mediaPlayer.isLooping = false
         mediaPlayer.release()
-
         mediaPlayer = MediaPlayer.create(this, R.raw.maxed_in)
         mediaPlayer.start()
         mediaPlayer.isLooping = true
@@ -156,7 +155,7 @@ open class MainActivity : AppCompatActivity() {
             MoveResult.playerWin -> eBinding.finalResult.text = getString(R.string.you_won)
             MoveResult.opponentWin -> eBinding.finalResult.text = getString(R.string.opponent_won)
         }
-        eBinding.toTitlescreen.setOnClickListener {
+        eBinding.toTitleScreen.setOnClickListener {
             recreate()
             mediaPlayer.stop()
             Players.playerHealth = 200
